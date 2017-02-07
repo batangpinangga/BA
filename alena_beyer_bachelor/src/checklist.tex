@@ -1,0 +1,67 @@
+\chapter{Checklist}
+\label{chap:appendix:checklist}
+Use the following list to check if you have followed the hints from this document in your work.
+Refer to \cref{chap:introduction} for more information on the items.
+
+\tabulinesep=2.5mm
+% tabu allows to use relative width specifier: Use X[<ratio>] to specify the width of a column. In
+% this example, the table is divided into 20 parts that are spread over the three columns.
+\begin{longtabu} to 0.8\textwidth {rX}
+% Begin header on first page
+\caption[Formatting checklist]{The checklist for correctly formatted and prettier documents.}
+\label{tab:checklist}
+\\ \addlinespace
+\endfirsthead
+% End header on first page
+
+% Begin header on consecutive pages
+\caption[]{The checklist for correctly formatted and prettier documents, continued.}
+\\ \addlinespace
+\toprule
+\endhead
+% End header on consecutive pages
+
+% Begin footer
+\\ \addlinespace
+\multicolumn{2}{c}{Table is continued on the next page.} \\
+\endfoot
+% End footer
+
+% Begin footer on last page
+\endlastfoot
+% End footer on last page
+
+% Begin content
+\toprule
+1. & Check for incorrect/missing citations (\emph{(?)}) or references (\emph{??}).\\
+\midrule
+2. & Remove all \LaTeX{} errors and underfull/overfull boxes.\\
+\midrule
+3. & Make sure to use a consistent encoding for your \TeX{} files, especially for special characters (ä, ö, ü, ß, \dots).\\
+\midrule
+4. & Format your \textsc{Bib}\TeX{} document: Check if the information is correct and complete for each entry. Pay notice to warnings when running  the \texttt{bibtex} command.\\
+\midrule
+5. & Add access dates to online sources in your bibliography (see \texttt{library.bib}) or in footnotes.\\
+\midrule
+6. & Run a spell checker over your document (included with some \LaTeX{} editors).\\
+\midrule
+7. & Place figures or tables in the \TeX{} file at the end of the paragraph you are referring to them in the text (\texttt{\textbackslash{}cref}).\\
+\midrule
+8. & Use the correct format for quotation marks (\emph{``x''} or \emph{\glqq{}x\grqq{}}).\\
+\midrule
+9. & Use the correct format for separating paragraphs (one empty line). Manual line breaks (\texttt{\textbackslash{}\textbackslash}) should be avoided.\\
+\midrule
+10. & Use the correct form of dashes (-, --, ---).\\
+\midrule
+11. & Name sources of images/figures you did not create yourself in the description (\emph{Source: [X]}).\\
+\midrule
+12. & Use the short form of captions for List of Figures, Tables, etc. (\texttt{caption[<short>]\{<long>\}}).\\
+\midrule
+13. & If you print your work double-sided (recommended for bachelor and master thesis) remove the \texttt{oneside} option from the document class.\\
+\midrule
+14. & Make sure to use high-quality figures and images that are readable both in the digital and the printed version.\\
+\midrule
+15. & If you include the declaration of honor do not forget to sign it.\\
+\bottomrule
+% End content
+\end{longtabu}

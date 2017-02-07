@@ -1,0 +1,120 @@
+\ifglsentryexists{hdr}{}%
+{%
+\gls@defglossaryentry{hdr}%
+{%
+name={HDR},%
+sort={HDR},%
+type={acronym},%
+first={High Dynamic Range\glsspace (HDR)},%
+firstplural={High Dynamic Ranges\glsspace (HDRs)},%
+text={HDR},%
+plural={HDRs},%
+description={High Dynamic Range},%
+descriptionplural={High Dynamic Range\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={High Dynamic Range},%
+longplural={High Dynamic Ranges},%
+short={HDR},%
+shortplural={HDRs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{ctan}{}%
+{%
+\gls@defglossaryentry{ctan}%
+{%
+name={CTAN},%
+sort={CTAN},%
+type={acronym},%
+first={The Comprehensive T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}{} Archive Network\glsspace (CTAN)},%
+firstplural={The Comprehensive T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}{} Archive Networks\glsspace (CTANs)},%
+text={CTAN},%
+plural={CTANs},%
+description={The Comprehensive \TeX {} Archive Network},%
+descriptionplural={The Comprehensive \TeX {} Archive Network\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={The Comprehensive T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}{} Archive Network},%
+longplural={The Comprehensive T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}{} Archive Networks},%
+short={CTAN},%
+shortplural={CTANs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{fim}{}%
+{%
+\gls@defglossaryentry{fim}%
+{%
+name={FIM},%
+sort={FIM},%
+type={acronym},%
+first={Fachschaft f\IeC {\"u}r Mathematik und Informatik\glsspace (FIM)},%
+firstplural={Fachschaft f\IeC {\"u}r Mathematik und Informatiks\glsspace (FIMs)},%
+text={FIM},%
+plural={FIMs},%
+description={Fachschaft für Mathematik und Informatik},%
+descriptionplural={Fachschaft für Mathematik und Informatik\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Fachschaft f\IeC {\"u}r Mathematik und Informatik},%
+longplural={Fachschaft f\IeC {\"u}r Mathematik und Informatiks},%
+short={FIM},%
+shortplural={FIMs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{seam_carving}{}%
+{%
+\gls@defglossaryentry{seam_carving}%
+{%
+name={Seam Carving},%
+sort={Seam Carving},%
+type={main},%
+first={Seam Carving},%
+firstplural={Seam Carvings},%
+text={Seam Carving},%
+plural={Seam Carvings},%
+description={Seam carving describes an algorithm to rescale images. Originally proposed by Avidan and Shamir, it has been further developed and adapted for videos. Instead of just cropping or rescaling an image, single seams through the image are identified that are least significant to the image's content},%
+descriptionplural={Seam carving describes an algorithm to rescale images. Originally proposed by Avidan and Shamir, it has been further developed and adapted for videos. Instead of just cropping or rescaling an image, single seams through the image are identified that are least significant to the image's content},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

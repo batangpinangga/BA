@@ -1,0 +1,129 @@
+\chapter{Introduction}
+\label{chap:introduction}
+% Start with yout text here.
+Welcome to this thesis template!
+It is based on the KOMA script classes of \LaTeX{} and should provide you with a basic yet functional template for your bachelor or master thesis.
+If you already are familiar with \LaTeX{} you might want to skip the introduction and just go to the formatting checklist right away (see \cref{tab:checklist}).
+
+This template includes the document structure you can use with your thesis and it includes some hints and tips for using \LaTeX{}.
+The following examples will assume that you are familiar with writing basic texts in \LaTeX{}, including the overall document structure with chapters and sections etc., creating a PDF file from the source documents and managing your references.
+More technical details are integrated into the source document as comments, so if you want change something like the document language start looking into the \texttt{main.tex} file.
+In the source files you also will find some comments about the different topics covered in this document.
+If you should have any detailed questions concerning a specific package (e.g., you want to create a listing, a complex table or just add some todo notes) it is a good idea to consult the package documentation available at the \emph{\gls{ctan}} homepage\footnote{\url{http://www.ctan.org/pkg/}, accessed on 13.10.2015.}.
+
+If this is your first \LaTeX{} document, you might want to start at the beginning and read some tutorials about how to write a text with it.
+For example, \emph{LaTeX Wikibooks}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/}, accessed on 13.10.2015.} provides a comprehensive overview of how to use \LaTeX{}.
+There are tons of other tutorials out in the Internet so you might just search and take one that fits you best.
+The \emph{\gls{fim}}\footnote{\url{http://fim.uni-mannheim.de}, accessed on 13.10.2015.} also offers an introductory course and learning material on \LaTeX{}.
+
+
+\section{Tips and Hints}
+Here we start with some dummy elements you might need in your thesis.
+I like to start every sentence in a new line in the source document so that it is easier to spot errors reported by \LaTeX.
+Use a distinctive name for your labeling scheme so that you can refer to it easily in your text with \texttt{\textbackslash{}cref\{\dots\}}\footnote{I used the mono\hyp{}spaced font here that you can trigger with \texttt{\textbackslash{}texttt\{\dots\}}.}.
+I like to use the following scheme:
+\begin{itemize}
+	\item \texttt{chap:<name>} for chapters
+	\item \texttt{sec:<name>} for sections
+	\item \texttt{fig:<name>} for figures
+	\item \texttt{tab:<name>} for tables
+\end{itemize}
+You can find more information on the topic at the \emph{LaTeX Wikibooks}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing} contains more information on the topic. And this, by the way, is how to insert footnotes and URLs. Accessed on 13.10.2015.}.
+As you can see here, to emphasize words use the \texttt{\textbackslash{}emph} command.
+You can do this with product names or newly introduced terms.
+This is \cref{chap:introduction} of this paper.
+Now we can start with some references.
+These are typically placed at the end of the sentence or the paragraph they are referring to \citep{Avidan2007,Elalfy2007}.
+If you like to name the author of a citation within a sentence you can do it as follows:
+In their recent work, \citet{Avidan2007} state that they produced good results with their \gls{seam_carving} approach.
+If you refer to online resources such as the article by \citet{Fortune2015}, do not forget to include the access date in the bibliography (see \texttt{library.bib}).
+
+To start a new paragraph just leave (at least) one line blank in the source document.
+Always use this approach and do not use manual line breaks (\texttt{\textbackslash{}\textbackslash{}}) as this will mess with \LaTeX{}'s internal formatting rules.
+Now we are at acronyms and glossary entries.
+If you have acronyms within your text, first add new items to the glossary file.
+As soon as you refer to acronyms in your text with the \texttt{\textbackslash{}gls} command, the following will happen:
+At the first occurrence, the full term will be displayed.
+At any following occurrence just the abbreviated term will get displayed.
+This works both for acronyms and for glossary entries.
+This is how it looks like:
+A different image manipulation approach other than \gls{seam_carving} is the use of \gls{hdr} images.
+Such \gls{hdr} images help to record scenes with challenging lighting conditions.
+You can also use \texttt{\textbackslash{}Gls} to insert entries starting with a capital letter (e.g., at the beginning of sentences) or \texttt{\textbackslash{}glspl} to insert the plural form.
+
+Maybe you will need to include a table in you paper.
+I will just include a very basic table that you can use as a starting point for your own one (see \cref{tab:dummy}).
+If you need to create more complex tables again the \emph{LaTeX Wikibooks}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/Tables}, accessed on 13.10.2015.} gives a more or less complete overview or have a look at \cref{tab:checklist}.
+\begin{table}[th]
+	\centering
+	% caption format: \caption[<short version for list of tables>]{<long version>}
+	\caption[Dummy table]{Captions of tables should appear above the table. When integrating a figure, however, the caption should appear below it.}
+	\label{tab:dummy}
+	\begin{tabu}{ccc}
+	\toprule
+	 & First & Second \\
+	\midrule
+	A & 0 & 1 \\
+	B & 1 & 0 \\
+	\bottomrule
+	\end{tabu}
+\end{table}
+
+\hyphenation{Su-per-du-per-really-long-word-word-word-word}
+In this paragraph I just want so say a few more words on text formatting.
+Normally, \LaTeX{} does a proper job with word separation at end of lines.
+However, if it does not know words or if they contain special characters, words will exceed the normal text width, resulting in \texttt{overfull} warnings.
+For proper handling of special characters like dashes and slashes, you can use \texttt{\textbackslash{}hyp} and \texttt{\textbackslash{}fshyp}.
+In that way, words like server\hyp{}based and Client\fshyp{}Server will be treated properly by \LaTeX{}.
+There are more forms of dashes.
+You can display numeric ranges like 11--15 with en dashes or---if you wish to---insert em dashes for breaks in English sentences.
+For German sentences en dashes -- like those -- are used instead.
+If you need to explicitly tell \LaTeX{} how words can be separated, you can use the \texttt{\textbackslash{}hyphenation} command by specifying the separation.
+In that way, even really long and complicated words like Superduperreallylongwordwordwordword will get separated just as you want them to get separated.
+Quotes in \LaTeX{} are not that straight\hyp{}forward either.
+To insert quotes in an English text you should do something like ``that''.
+In a German text correct quotes are generated by something like \glqq{}this\grqq{} (see comment in source document).
+% When you write in German you may also use this format: "`this"'. However, this will not work
+% when the English header is active. That is why I used \glqq{}this\grqq{} in the text example.
+
+Now we use this paragraph to insert a dummy figure.
+After inserting it, you can refer to it with the \texttt{\textbackslash{}cref} command (see \cref{fig:dummy}) as well.
+See how this command automatically included the right type of reference?
+If you want to include your own figure, you can basically just copy this example and edit image source, caption and its label.
+Refer to the \LaTeX{} source file for an example with subfigures.
+You should insert figures at the bottom of the paragraph you are referring to it.
+In that way, the figure will get displayed right there or at the top of the next page, if there is not enough space left on the current page.
+Luckily, \LaTeX{} will automatically handle all of that for you.
+When you take a look in the source document you can see that I inserted a pair of parenthesis (\texttt{\{\}}, an ``empty command'') after the \texttt{\textbackslash{}LaTeX} command.
+You will have to do this with certain commands to get the right spacings.
+If I just wrote \LaTeX the space between the words would have been wrong (as you can see here).
+Also insert the parenthesis if there is no space between a command and the following word.
+\begin{figure}[th]
+	\centering
+	% Image width is set to 0.7 of the whole text width. Change this factor if you need to rescale
+	% your image in a different way.
+	\includegraphics[width=0.7\textwidth]{src/images/dummy}
+	% caption format: \caption[<short version for list of figures>]{<long version>}
+	\caption[Dummy figure]{This is just a dummy figure to demonstrate how to include one in your own text.  Source: <source of image if taken from an existing source>}
+	\label{fig:dummy}
+\end{figure}
+
+% Another example with subfigures.
+% \begin{figure}[th]
+% 	\centering
+% 	\subfloat[First subfigure\label{fig:dummy_subfigs:first}]{\includegraphics[width=0.4\textwidth]{src/images/dummy}}
+% 	\hfil
+% 	\subfloat[Second subfigure\label{fig:dummy_subfigs:second}]{\includegraphics[width=0.4\textwidth]{src/images/dummy}}
+% 	\caption[Dummy figure]{This is just a dummy figure to demonstrate how to include one in your own text.  Source: <source of image if taken from an existing source>}
+% 	\label{fig:dummy_subfigs}
+% \end{figure}
+
+Ok, that should be enough for now.
+If you already know everything stated above you just can remove it and begin to write your own text.
+Of course you also can leave it here as a reference until you found everything out.
+Good luck with your thesis and have fun with \LaTeX{}!
+
+\section{More Text}
+% Just some more random words. Remove it and write your own text.
+\Blindtext
+
