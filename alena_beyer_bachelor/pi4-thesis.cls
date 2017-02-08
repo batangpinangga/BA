@@ -192,6 +192,8 @@
 % Tree
 \RequirePackage{tikz}
 \usetikzlibrary{shapes,arrows}
+% Colored Cell
+\RequirePackage[table]{xcolor}
 % ---------------------------------
 
 % Language options for specific packages
