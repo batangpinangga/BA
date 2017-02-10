@@ -48,6 +48,22 @@ When tools are used in the discovery of data information visualization has two i
 
 Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. 
 
+\section{Large Data}:
+In visualizing large data there appears a number of challenges. 
+\textit{Information Loss}:
+While reducing the number of data items to present them on the limited screen informations in the data can be lost. The important question is which data characteristics to keep such that the user tasks still can be supported.
+\\*
+\textit{Overlap}: 
+If the whole dataset is visualized or even a subset the data may overlap and reduce visual clutter. Visual clutter hinders the user in the completion of its tasks.
+\\*
+\textit{Visual Noise}: 
+Even if data items are not overlapping data in large datasets might be to similar to each other. Thus, the user cannot differentiate distinct items on the screen.\\*
+\textit{Limited monitor resolution}:
+As data collection nowadays is done on the fly, with smartphones, sensors etc. the amount of available data is massive. Even if large monitors are used to visualize data in the end the available pixels on the monitor is smaller than the number of data items in a dataset. 
+\\*
+\textit{Limited visual perception}:
+Moreover, human perception is also limited.
+
 % Users in BIV are usually no computer scientist. [Share of Workers in Business] 
 % Self-Service Data
 % Role of Visual driven analysis -> need for tools
@@ -337,6 +353,7 @@ Sampling describes a strategy to reduce data by creating a sample of the origina
 Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exlusion of unrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.
 \subsubsection*{Temporal Data Abstraction}
 Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction.
+One way to implement temporal data abstraction is to use natural language processing in visualization tools. \todo{wie formuliere ich das am besten? Answerrocket + google}
 Clustering reduces the number of data rows by finding expressive groups the data item belongs to. Therefore, the dataset is devided into subgroups according to some similarity. Instead of displaying every single data item, the respective cluster can be displayed and used to reduce visual clutter. Clustering has the advantage of pattern and outlier preservation if the similarity measure is appropriate.
 \subsubsection*{Aggregation}
 As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
@@ -344,7 +361,7 @@ As time-oriented data has specific characteristics analytical methods have to co
 Other ways to reduce data vertically are binning and pivotization. We will not explain them here in detail as they treat continuous and hierarchical datasets which are beyond our scope in this work. 
 
 \subsection{Horizontal Data Reduction}
-Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep similarities after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen}
+Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep similarities after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
 %Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
 
 
@@ -359,8 +376,13 @@ Besides data removal datasize can be reduced by decreasing data dimensionality. 
 \section{Parameterization}
 
 \section{Need for Interaction Techniques}
-Interaction Techniques describe how the user can interact with the data. Interaction is a crucial factor for scalable visualization techniques as they enhance visual scalability\cite{tegarden1999}. The most important interaction techniques are: 
+Interaction Techniques describe how the user can interact with the data. As interaction is a crucial factor for scalable visualization techniques it enhances visual scalability\cite{tegarden1999}. 
+Hereby, we assume that interaction is in responsibility of the visualization tools. The most important interaction techniques are: 
 \subsection{Standard Interaction Techniques}
+\subsubsection*{Selecting}
+Selecting of a single data item or a range of data items.
+\subsubsection*{Linking}
+Linking describes the connection between multiple views. \textit{Linking} in the context of large data is important to provide overview and detail views. 
 \textbf{Brushing \& Linking}\\*
 The user can select data items on the screen(Brushing) and the respective items are highlighted in every connected window (Linking). Therefore, lasso, rubber-band or rectangular selection enables the user to select groups of data items\cite{tegarden1999, Aigner2011}. In the context of time-oriented data a typical brushing activity is the selection of an smaller time-span to see more details during this period of time.
 \textbf{Dynamic Queries}\\*
@@ -381,6 +403,15 @@ For navigating through massive datasets
 \textbf{Information Mural}
 \textbf{Coarse Presentations}
 
+\section{Layout}
+Closely related to interaction techniques is an appropriate layout to enhance visual scalability. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented requires a layout with multiple simultaneous views. Coordinated views are linked views. If one data item is selected and brushed the corresponding characteristic in other windows is also highlighted.
+\begin{figure}[H]
+    \centering
+        \scalebox{.5}{\includegraphics{src/images/zoomVSmultiWindow}}
+    \caption{Measured task performance of zooming compared to multiple windows. \cite{Ware2012a}}
+    \label{fig:my_label}
+\end{figure}
+Other techniques are \textit{distortion techniques}\cite{mackinlay1991perspective}: \textit{Bifocal Displays}\cite{Spence1982}, \textit{Perspective Walls}\cite{mackinlay1991perspective}
 
 
 \section{Technical Details}

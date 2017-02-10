@@ -20,7 +20,51 @@ for Visual Analytics in business and time-oriented data we focus on Business Int
 \end{enumerate}
 
 \section{Investigation of Advanced Visualization Tools using a Feature Classification Scheme}
-In this section we analyze advanced visualization tools in business with a feature classification scheme. We provide the classification scheme based on the collected success criteria of chapter 3 and apply it to current business intelligence and analytics tools offering visualization. Even though the selection of the tools is not exhaustive, we believe that the reviewed products represent the state-of-the art. 
+In this section we analyze advanced visualization tools in business with a feature classification scheme. We provide the classification scheme based on the collected success criteria of chapter 3 and apply it to current visualization tools. Even though the selection of the tools is not exhaustive, we believe that the reviewed products represent the state-of-the art and provide the table of different tools which was used for chosing the remaining 5 tools in the appendix.
+\subsection{The Classification Scheme}
+The tools basis of assessment is the classification scheme which is devided into 3 \todo{maybe 4: Layout?} subsections:\textit{Analytical Techniques, Visualization Techniques, Interaction Techniques}. 
+Each section contains success criteria which are necessary to display large time-oriented data. To rank the tools in the respecting category we developed the following success criteria score(SCS):
+
+\begin{table}[th]
+	\centering
+	\caption[criteria]{Succes Criteria Score}
+	\label{Succes Criteria Score}
+	\begin{tabu}{cl}
+	\toprule
+	Points & Criteria\\
+	\midrule
+	4 & Native support by tool\\
+	3 & Extension exists, but installation necessary \\
+	2 & Extension can be programmed in a popular programming language (R,Javascript,Java) \\
+	1 & Extension can be programmed, but in a tool-specific programming language \\
+	0 & No support by tool\\
+	\bottomrule
+	\end{tabu}
+\end{table}
 
 
+\subsection{Qlik Sense}
+Qliktech was founded in 1993 with the goal to "mimic how the brain works."\cite{qlikHistory}. They offer five products(Qlik Sense, Qlik Sense Cloud, QlikView, QlikView NPrinting, Qlik DataMarket) and the Qlik Analytics platform. Qlik Sense 1.0 was released in September 2014 for visual analytics. 
+It offers functions such as Smart Data Load which allows to load large data from different data sources.
+\subsubsection*{Analytics}
+For analytics Qlik Sense support \text{Visual Data Preparation}: showing data tables as bubbles and connecting them by dragging and dropping them. Moreover, the user can create calculated fields\cite{qlikCalculated}.
 
+\subsubsection*{Visualization Techniques}
+Qlik Sense offers 8 built-in visualization techniques: bar charts, line charts, pie charts, scatterplots, treemap, maps, combi charts and gauge charts. If an additional technique is wanted the user can build a visualization extension with \textit{javascript} and \textit{QEXT} files\cite{qlikWorkbench}. Qlik Sense provides an extension template which supports the user in writing its extensions. However, the user needs to know javascript and html\cite{qlikVisExtensions}. Moreover, the Qlik Community offers ...\todo{anzahl an visualisierungen einfügen}
+\textbf{Aggregation}: In the field of aggregation Qlik Sense offers data aggregation for one chart type: the scatterplot. Hereby, large data is aggregated by aggregation markers (squares) which represents the data point density by the color. The darker the square the denser the data\cite{qlikScatter}. 
+
+\subsubsection*{Interaction}
+To allow a focus + context view Qlik Sense offers navigational maps\cite{beard1990navigational},.
+As a built-in-function Qlik Sense offers a navigational slider which shows a miniature version of the whole data set\cite{beard1990navigational}. 
+Filters can be applied by making selections in the visualization\cite{qlikSheet}, the time range can be limited by zooming inside the visualization\cite{qlikTime} and all views then are adapted to the current selection. Thus, Qlik Sense offers Brushing + Linking. An edditional linking-feature are \textit{master items}\cite{qlikChangeData}, which allow the user to change properties for all master items at once.
+For details the user can search Qlik Sense with Smart Search in which the dimensions, measures and metadata is searched and visualizations ,tables and KPIs are displayed\cite{qlikSmart}.  
+
+\subsection{Power BI}
+Microsoft Power Bi came alive in ...\todo{datum einfügen}. It offers 15 different visualization techniques. 
+
+\subsubsection*{Visualization Techniques}
+Microsoft Power BI offers 8 built-in visualization techniques: 15 different visualization techniques. Moreover, the Power BI visuals gallery offers 75 visualization apps. To build custom visualization apps the user needs to write \textit{TypeScript} or \textit{R}.
+\textbf{Aggregation}: In the field of aggregation Qlik Sense offers data aggregation for one chart type: the scatterplot. Hereby, large data is aggregated by aggregation markers (squares) which represents the data point density by the color. The darker the square the denser the data\cite{qlikScatter}. 
+\textbf{Aggregation}: Power BI offers one way to aggregate: calculated fields.
+\subsubsection*{Interaction}
+With cross-highlighting Power BI included brushing and linking in the tool\cite{powerbiInteract}, it offers filter functions. The focus mode enables the user to have a detailed view on the visualization. In focus mode the visualization will expand to full screen.  
