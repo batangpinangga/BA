@@ -192,6 +192,7 @@
 % Tree
 \RequirePackage{tikz}
 \usetikzlibrary{shapes,arrows}
+\RequirePackage{pgfplots}
 % Colored Cell
 \RequirePackage[table]{xcolor}
 % ---------------------------------

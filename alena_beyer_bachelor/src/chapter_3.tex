@@ -1,5 +1,5 @@
 \chapter{Business Information Visualization of time-oriented Data}
-\label{chap:BIV of BigData}
+\label{chap:BIV}
 
 
 \iffalse
@@ -35,8 +35,10 @@ analysis tasks and data characteristics, which is a goal of Visual Analytics."
 % Business Information Visualization
 \section{The Role of Visualization in Business}
 
-Tools for Business Intelligence (BI) and Analytics, visualization, data discovery as well as for data mining continually gain importance in companies. Although the differentiation between those tools is not selective all of them are used to gain insight into the company's data and help decision-maker in problem-solving. Decision-maker usually are part of the management domain and thus, come from the marketing, sales or management-field but the majority of them uses these tools without any computer science background. Therefore, tools have to be self-explaining, easy-to-use \cite{Crapo2000} and without the requirement of extensive programming. Especially visualization plays an important role as it reduces the information overload\cite{Keima} and simplifys the process of problem-solving\cite{Zhang}. Talking of visualization for business data the literature uses the term \textit{Business Information Visualization} (BIV). BIV is defined as the use of visualization technologies to visualize business data\cite{Tegarden1999}.    
+Tools for Business Intelligence (BI) and Analytics, visualization, data discovery as well as for data mining continually gain importance in companies. Although the differentiation between those tools is not selective all of them are used to gain insight into the company's data and help decision-maker in problem-solving. Decision-maker usually are part of the management domain and thus, come from the marketing, sales or management-field but the majority of them uses these tools without any computer science background. Therefore, tools have to be self-explaining, easy-to-use \cite{Crapo2000} and without the requirement of extensive programming. Especially visualization plays an important role as it reduces the information overload\cite{Keima} and simplifys the process of problem-solving\cite{Zhang}. Talking of visualization for business data the literature uses the term \textit{Business Information Visualization} (BIV). BIV is defined as the use of visualization technologies to visualize business data\cite{Tegarden1999}.  
+Especially, time-oriented data is an important data type for business as it allows business to analyze the past and predict the future of the company\cite{Ao2010}.
 
+\todo{necessary?}
 When tools are used in the discovery of data information visualization has two important roles: presentation and exploration\cite{Crapo2000}. Visualization as presentation is either used to display data without any data mining algorithm or visualization as presentation is used to present the results of a data mining algorithm. Visualization as exploration is used before and during the data mining algorithm to explore the data interactively. This group is called visual analytics. The decision-maker needs both processes for decision making as results are presented on the screen and to explore the data interactively\cite{Ware2012a}. 
 \begin{figure}[H]
     \centering
@@ -45,30 +47,32 @@ When tools are used in the discovery of data information visualization has two i
     \label{fig:my_label}
 \end{figure}
 
-
-Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. 
-
-\section{Large Data}:
-In visualizing large data there appears a number of challenges. 
-\textit{Information Loss}:
-While reducing the number of data items to present them on the limited screen informations in the data can be lost. The important question is which data characteristics to keep such that the user tasks still can be supported.
+\section{Large Data}
+Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. The effective manner was defined by Shneiderman \cite{paterno1997concurtasktrees, Shneiderman2008, Keim2008}: \textit{"Overview first, zoom in and filter, then details on demand}. Overview is a basic yet important task because it navigates the user in the data and allows further analysis. But as large data appears with a number of challenges creating this overview is more difficult:
 \\*
 \textit{Overlap}: 
-If the whole dataset is visualized or even a subset the data may overlap and reduce visual clutter. Visual clutter hinders the user in the completion of its tasks.
+If the whole dataset is visualized or even a subset the data may overlap and reduce visual clutter.
 \\*
 \textit{Visual Noise}: 
-Even if data items are not overlapping data in large datasets might be to similar to each other. Thus, the user cannot differentiate distinct items on the screen.\\*
+Even if data items are not overlapping data in large datasets might be to similar to each other. Thus, the user cannot differentiate distinct items on the screen.
+\\*
 \textit{Limited monitor resolution}:
-As data collection nowadays is done on the fly, with smartphones, sensors etc. the amount of available data is massive. Even if large monitors are used to visualize data in the end the available pixels on the monitor is smaller than the number of data items in a dataset. 
+Even if large monitors are used to visualize data in the end the available pixels on the monitor is smaller than the number of data items in a dataset. 
 \\*
 \textit{Limited visual perception}:
-Moreover, human perception is also limited.
+Moreover, human perception is limited.
+\\*
+\textit{Information Loss}:
+While reducing the number of data items to present them on the limited screen informations in the data can be lost. The important question is which data characteristics to keep such that the user tasks still can be supported.
+
+This is why Shneiderman itself extended its own mantra with the use of aggregation markers and Keim formulated it as \textit{Analyze First - Show the Important - Zoom and Filter, and Analyze Further - Details on Demand}\cite{Keima}. The effective representation of large amounts of data requires to extend the Overview by the use of aggregation which can be achieved by appropriate techniques, correct parameterization, interaction and analytical methods\cite{Aigner2008}. 
+
 
 % Users in BIV are usually no computer scientist. [Share of Workers in Business] 
 % Self-Service Data
 % Role of Visual driven analysis -> need for tools
 
-The effective representation of large amounts of data requires to extend the Overview-Level of the visualization mantra\cite{Shneiderman2008} \textit{Overview first, zoom-in and filter, then details on demand.} by the use of aggregation which can be achieved by appropriate techniques, correct parameterization, interaction and analytical methods\cite{Aigner2008}. Keim summed it up as the Visual Analytics Mantra\cite{Aigner2011}: \textit{Analyze first - Show the Important - Zoom, Filter, Zoom, Filter and Analyze Further- Details on Demand.} 
+
 
 
 
@@ -85,9 +89,8 @@ The way how data variables are mapped to graphical primitives is called visualiz
 
 \textbf{Visual Data Exploration}\\*
 
-\\*
 \textbf{Time-oriented Data}\\*
-Time-oriented data is data which is linked to time\cite{Aigner2011}. In literature time-oriented data is also called time-dependent, dynamic, time-variant, time-based, time-varying or temporal data\cite{Moere2004}. Often, time-oriented datasets are very large and multi-variate which makes it difficult to analyze them. The question is how time-oriented data can be analyzed if the number of data points exceeds the screen resolution. This brings us to the definition of large time-oriented Data. 
+Time-oriented data is data which is linked to time\cite{Aigner2011}. In literature time-oriented data appears with various names as well as various ways to be visualized. Time-oriented data is also called time-dependent, dynamic, time-variant, time-based, time-varying or temporal data\cite{Moere2004}. Often, time-oriented datasets are very large and multi-variate which makes it difficult to analyze them. The question is how time-oriented data can be analyzed if the number of data points exceeds the screen resolution. This brings us to the definition of large time-oriented Data. 
 We define large time-oriented Data as abstract time-dependent data which is too large to fit on the screen. \cite{Shneiderman2008} 
 In the following work, we will use time-oriented Data, time-oriented Big Data and Big time-oriented Data equivalently for large time-oriented Data.
 \cite{Bacic2013} divided time-oriented data into three sections: data with a linear discrete data model, data with a continuous data model and event-based.
@@ -127,29 +130,30 @@ Talking of large time-oriented data for business we will consider the three give
 \end{table}
 
 The bottom line is that business data ususally is abstract and multi-variate according to Tegarden\cite{tegarden1999}. Multi-variate data is usually presented in tables\cite{Borgo2013} and thus we assume that business data is given in tables, each attribute is represented by a column and each row is one data item. The attributes can be either numerical or text-based. 
-Talking of time-oriented business data we assume that the data is linked to time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. 
+Talking of time-oriented business data we assume that the data is linked to time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time-series}. The time-series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}
 Lastely, we will characterize the size of the data. We are considering large and huge amounts of data. Large data is defined according to\cite{Huber1994} as datasets with $10^6$ and huge data with $10^8$ data entries.
 
 
 % User Tasks
-\section{Advanced time-oriented Visualization Tasks}
+\section{Time-oriented User Tasks}
 \textbf{Why is it presented?}\\*
-To specify the the problem-domain user task analysis are a common way in the field of software development to describe the tool requirements\cite{Aigner2011}. Different user task taxonomies exist\cite{paterno1997concurtasktrees, Shneiderman2008, Keim2008}. But probably the most famous task taxonomy for visualization is Shneiderman's Visual Information Seeking Mantra \textit{"Overview first, zoom in and filter, then details on demand}. In \cite{Shneiderman2008} Schneiderman extended its own mantra by the use of aggregation markers and Keim formulated it as \textit{Analyze First - Show the Important - Zoom and Filter, and Analyze Further - Details on Demand}\cite{Keima}.
-Based on Keims Visual Analytics Mantra there exits the following 6 tasks: 
+To specify the the problem-domain user task analysis are a common way in the field of software development to describe the tool requirements\cite{Aigner2011}.
+For analyzing time-series the following seven tasks are the major tasks\cite{Esling2012}:
 \todo{Tasks ausformulieren}
 \\*
-\textbf{T1: Analyze}
+\textbf{T1: Query by Content}
 \\*
-\textbf{T2: Overview}
+\textbf{T2: Clustering}
 \\*
-\textbf{T3: Zoom}
+\textbf{T3: Classification}
 \\*
-\textbf{T4: Filter}
+\textbf{T4: Segmentation}
 \\*
-\textbf{T5: Analyze further}
+\textbf{T5: Prediction}
 \\*
-\textbf{T6: Details}
-
+\textbf{T6: Anomaly Detection}
+\\*
+\textbf{T7: Motif Discovery}
 
 \iffalse
 \begin{tikzpicture}[sibling distance=12em,
@@ -174,14 +178,22 @@ Based on Keims Visual Analytics Mantra there exits the following 6 tasks:
 \fi
 
 % Visualization Techniques
-\section{Advanced Visualization of large-scale time-oriented Data}
+\section{Visualization of large-scale time-oriented Data}
+\textbf{How is it presented?}
+The following section discusses several visualization techniques for time-oriented data and their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
+Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to name every single existing visualization technique.
+However, most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, only can visualize 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" datasets follow this approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaiton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. 
+For displaying time-oriented data \textit{Aigner et al.} made a survey of different visualization techniques. Based on Keim's taxonomy\cite{Keim1995} these visualization techniques were classified in the classes: \textit{pixel-oriented}, \textit{icon-based}, \textit{geometric-projective} and \textit{hierarchical}. Next, the visual scalability of the classes was determined. 
+
+\section{Visual Scalability}
+
+\iffalse
 \textbf{How is it presented?}
 To display time-oriented data successfully appropriate techniques
 proper parametrization,
 interaction facilites are required\cite{Aigner2011}. Additionally, analytical methods such as vertical and horizontal data reduction are necessary to explore large-scale time-oriented data. 
 
-The following section discusses several visualization techniques for time-oriented data and their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
-Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to hence to name every single existing visualization technique.
+
 %Different Data Types for time-oriented data
 
 Typical visualization techniques for time-oriented data are 
@@ -193,12 +205,14 @@ Equilibrium Attainment
 
  The discussion whether a visualization technique is part of the standard visualization or belongs to advanced visualization is not unambigiously. \textit{Aigner et. al} classify Parallel Coordinates as a standard visualizations\cite{Aigner2011} whereas \textit{Keim et. al.} \cite{Keim} are talking about Parallel Coordinates as a novel techniques. This discussion of course is determined by the time epoche. The longer a visualization technique is available the more it is counted as standard visualization technique. But defining a time-period after which the visualization technique is seen as standard is not possible as other factors influence the judgment of standard or advanced data visualization, such as for example the degree of familiarity. Nevertheless, researcher tried to define advanced data visualization. Russom stated "Advanced Data Visualization (ADV) is able to "scale the visualizations to thousands or millions of data points, can handle different data types and present analytical data structures." \cite{Russom2011}. Thus, we define advanced data visualization as large-scale data visualization techniques which are able to scale to large and huge amounts of data. 
  \\*
-\section{Visual Scalability}
+
 %Aspects of Scalability:
 % Wie viele Datenpunkte sind notwendig, um Pattern darzustellen? -> data 
 % Interaction Techniques
 % Downsampling -> Analytical Methods
+
  The challenges of large-scale data for ADV are \textit{scalability} and \textit{dynamics}\cite{Wang2015}. With its volume the challenges for large-scale data are also challenges for Big Data defined as high volume, high velocity, high veracity and high variety datasets\cite{Wang2015}. In this work we concentrate on the scalability challenge for visualization techniques. The challenge is in finding appropriate techniques\cite{Aigner2008,Keim2005} which scale to large amount of data.
+ \fi
  
 Visual or perceptual scalability is defined as the capability of visualization tools in displaying large datasets in an effective manner\cite{Eick2002} such that the user tasks are supported. In the context of time-oriented business data effective means the presentation of patterns to support the temporal analysis tasks. To measure the visual scalability of different visualization techniques for time-oriented data we refer to the work of Eick\cite{Eick2002}. He proposed to measure visual scalability by the database metrics of the dataset and the visual characteristics of the visualization technique.\\*
 
@@ -240,7 +254,7 @@ Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit
 \\*
 \textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows them hierarchically. 
 \\*
-\textbf{Graph-based} techniques are dealing with the question how to present graphs in a best way. As we analyze abstract, time-oriented, multi-dimensional data graph-based techniques are not relevant and thus, we exclude this class in our analysis. 
+
 
 
 \begin{table}[th]
@@ -270,7 +284,7 @@ Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit
 
 Radial layout techniques can scale up to 10-20 attributes. If the mapping is pixel-based it scales up to 1000 pixels\cite{Jayaraman2002}. 
 Non-radial techniques
-
+\todo{weniger Visualisierungstechniken, mehr auf die Klassen}
 \textbf{EventRiver} was created in journalism to compare hot topics and their relevance over time. This technique uses clustering algorithms to analyze frequent words. Colored Bubbles with different sizes are placed along the x axis according to time. The bubble size represents one cluster and its relevance. The shape shows when the topic appeared and disappeared. Color and the position on the y axis are used to group topics together.
 Due to the clustering analysis beforehand the rendering of the visualization data is grouped and thus large data can be displayed. 
 EventRiver comes along with interaction techniques such as filtering, reordering and zooming.
@@ -295,41 +309,10 @@ Parallel Glyphs provide brushing of polylines, filtering, axis reordering, rotat
 \cite{Carlis}
 
 
-
-Moreover, besides the database metrics and the visualization characteristic visual scalability is influenced by six factors: 
-\begin{itemize}
-    \item Human Perception\cite{Keim2005,Deering1998}
-    \item Monitor Resolution 
-    \item Visual Metaphors
-    \item Interactivity
-    \item Data structures and algorithms
-    \item Computational infrastructure
-\end{itemize}
-\todo{Entscheiden, inwiefern ich diese 6 Faktoren mit aufnehme. Wenn ich sie mit aufnehme, muss ich sie auch erläutern}
-
-\subsubsection*{Human Perception} 
-% What can humans perceive? How many pixels? 
-One way to measure the viual ability to see details is called \textit{visual acuity}\cite{Ware2012a}. 
-According to experiments discussing the limits of human perception \cite{Deering1998} the human visual system is able to perceive 15mio pixels per eye. Assuming that the amount of perceivable pixels for two eyes is larger than 15mio pixels but smaller than 30mio pixels due to the overlap of the field of view the max. amount of perceivable pixels (pp) is:
-\begin{math}
-15 mio. \leq pp < 30 mio.
-\end{math}
-Nevertheless, the important question is not the amount of perceivable pixels but whether the data structure, patterns, trends and further information in the data can be perceived. To achieve this goal Keim\cite{Keim2005} created \textit{CircleView}.
-%Talking of scalability visualization techniques should be able to scale according to their data types, data sources and levels of quality \cite{Keim2008}. 
-\subsubsection*{Focal Depth-of-Focus Information}
-\\*
-\subsubsection*{Monitor Resolution}
-Even though large wall-sized screens have been developed in business usually \todo{schreiben}
-\\*
-\subsubsection*{Visual Metaphors}
-Improved visual metaphors enhance the scalability of visualization techniques\cite{Eick2002}. \todo{Beispiel} One way to improve visual metaphors are multi-resolution metaphors\cite{Keim2005}. These show less details at the \textit{Overview-Level} of a visualization and more details at the \textit{Detail-Level}. \textit{CircleView} is one visualization technique with a multi-resolution metaphor which clusters data items according to their relevance and displays the clusters first.
-\\*
-
-Multi-dimensional visualizations are classified into pixel-oriented, geometric, icon-based, hierarchical and graph-based techniques\cite{Keim2000}.
-\textbf{Pixel-oriented} techniques map a data point to a colored pixel. Since each data entry requires one pixel on the monitor pixel-based visualizations can maximal display around 2.000.000. data points. Moreover, they use multiple windows and center the most relevant data in the middle and the less relevant data outside the center\cite{Keim1996}.\\*
+In conclusion a visualization tools should offer the possibility to create multi-resolution and geometric-projection techniques. 
 
 \section{Analytical Methods}
-Comparing every visualization technique the need for data reduction becomes obvious. Since the amount of pixel on a monitor is finite, the space for displaying visualizations is limited. Hence, large datasets of $10^6$ data items cannot be displayed at once but require some kind of data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: reduce data horizontally or vertically. 
+Comparing every visualization technique the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: reduce data horizontally or vertically. 
 Vertical data reduction describes the process to remove data rows whereas horizontal data reduction is used for dimensionality reduction. 
 \begin{figure}[H]
     \centering
@@ -356,6 +339,7 @@ Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by fo
 One way to implement temporal data abstraction is to use natural language processing in visualization tools. \todo{wie formuliere ich das am besten? Answerrocket + google}
 Clustering reduces the number of data rows by finding expressive groups the data item belongs to. Therefore, the dataset is devided into subgroups according to some similarity. Instead of displaying every single data item, the respective cluster can be displayed and used to reduce visual clutter. Clustering has the advantage of pattern and outlier preservation if the similarity measure is appropriate.
 \subsubsection*{Aggregation}
+Aggregation describes the process of grouping several data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation devides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time-series data into a set of equidistant time spans\cite{jugel2014m4}.
 As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
 \\*
 Other ways to reduce data vertically are binning and pivotization. We will not explain them here in detail as they treat continuous and hierarchical datasets which are beyond our scope in this work. 
@@ -373,12 +357,49 @@ Besides data removal datasize can be reduced by decreasing data dimensionality. 
 
 
 
+
+Moreover, besides the database metrics and the visualization characteristic visual scalability is influenced by six factors: 
+\begin{itemize}
+    \item Human Perception\cite{Keim2005,Deering1998}
+    \item Monitor Resolution 
+    \item Visual Metaphors
+    \item Interactivity
+    \item Data structures and algorithms
+    \item Computational infrastructure
+\end{itemize}
+\todo{Entscheiden, inwiefern ich diese 6 Faktoren mit aufnehme. Wenn ich sie mit aufnehme, muss ich sie auch erläutern}
+
+\subsubsection*{Human Perception} 
+% What can humans perceive? How many pixels? 
+One way to measure the viual ability to see details is called \textit{visual acuity}\cite{Ware2012a}. 
+According to experiments discussing the limits of human perception \cite{Deering1998} the human visual system is able to perceive 15mio pixels per eye. Assuming that the amount of perceivable pixels for two eyes is larger than 15mio pixels but smaller than 30mio pixels due to the overlap of the field of view the max. amount of perceivable pixels (pp) is:
+\begin{math}
+15 mio. \leq pp < 30 mio.
+\end{math}
+Nevertheless, the important question is not the amount of perceivable pixels but whether the data structure, patterns, trends and further information in the data can be perceived. To achieve this goal Keim\cite{Keim2005} created \textit{CircleView}.
+%Talking of scalability visualization techniques should be able to scale according to their data types, data sources and levels of quality \cite{Keim2008}. 
+\subsubsection*{Focal Depth-of-Focus Information}
+\\*
+\subsubsection*{Monitor Resolution}
+Even though large wall-sized screens have been developed in business usually. \todo{schreiben}
+\\*
+\subsubsection*{Visual Metaphors}
+Improved visual metaphors enhance the scalability of visualization techniques\cite{Eick2002}. \todo{Beispiel} One way to improve visual metaphors are multi-resolution metaphors\cite{Keim2005}. These show less details at the \textit{Overview-Level} of a visualization and more details at the \textit{Detail-Level}. \textit{CircleView} is one visualization technique with a multi-resolution metaphor which clusters data items according to their relevance and displays the clusters first.
+\\*
+
+\textbf{Pixel-oriented} techniques map a data point to a colored pixel. Since each data entry requires one pixel on the monitor pixel-based visualizations can maximal display around 2.000.000. data points. Moreover, they use multiple windows and center the most relevant data in the middle and the less relevant data outside the center\cite{Keim1996}.\\*
+
+
 \section{Parameterization}
 
 \section{Need for Interaction Techniques}
 Interaction Techniques describe how the user can interact with the data. As interaction is a crucial factor for scalable visualization techniques it enhances visual scalability\cite{tegarden1999}. 
-Hereby, we assume that interaction is in responsibility of the visualization tools. The most important interaction techniques are: 
-\subsection{Standard Interaction Techniques}
+Hereby, we assume that interaction is in responsibility of the visualization tools. Keim\cite{2002} devided interaction techniques into two classes of techniques. The first group supports the user in exploring the data \textit{interaction techniques} and the second helps in displaying large databases \textit{distortion techniques}. \\*
+\textbf{Interaction techniques} include several techniques such as dynamic projection, filtering, zooming, and linking \& brushing.
+The main idea of \textbf{interactive distortion techniques} is the presentation of showing the data at different levels of detail. Examples are hyberbolic and spherical distortion, bifocal displays, perspective wall, graphical fisheye view, hyperbolic visualization and hyperbox\cite{Keim2002}\todo{genauere Zitierung}. 
+
+\subsubsection*{Filtering}
+
 \subsubsection*{Selecting}
 Selecting of a single data item or a range of data items.
 \subsubsection*{Linking}
@@ -407,14 +428,8 @@ For navigating through massive datasets
 Closely related to interaction techniques is an appropriate layout to enhance visual scalability. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented requires a layout with multiple simultaneous views. Coordinated views are linked views. If one data item is selected and brushed the corresponding characteristic in other windows is also highlighted.
 \begin{figure}[H]
     \centering
-        \scalebox{.5}{\includegraphics{src/images/zoomVSmultiWindow}}
+        \scalebox{.3}{\includegraphics{src/images/zoomVSmultiWindow}}
     \caption{Measured task performance of zooming compared to multiple windows. \cite{Ware2012a}}
     \label{fig:my_label}
 \end{figure}
 Other techniques are \textit{distortion techniques}\cite{mackinlay1991perspective}: \textit{Bifocal Displays}\cite{Spence1982}, \textit{Perspective Walls}\cite{mackinlay1991perspective}
-
-
-\section{Technical Details}
-The used monitors had a screen resolution of 1920*1080 and  2.073.600 px.  
-Important is the resolution of the visualization window. (Smaller than 2mio px).
-% BigData
