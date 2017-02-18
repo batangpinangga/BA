@@ -105,14 +105,14 @@ Visualization tools display hundreds of items on the screen and offer interactio
 
 % Data types for Information Visualization
 \section{Data type}
-For choosing appropriate visualization techniques the first step is in understanding the underlying data and creating a correct data model\cite{Aigner2011}, so that the visualization technique represents the underlying data structure and offers best insights\cite{Bacic}. \textit{Aigner et. al.} proposed  the following questions to model the visualization problem: 
+For choosing appropriate visualization techniques the first step is in understanding the data  and creating a correct data model\cite{Aigner2011} so that the visualization technique fits to the data and offers insights\cite{Bacic} into the data. This problem is called visualization problem. \textit{Aigner et. al.} proposed  the following questions to model the visualization problem: 
 \begin{itemize}
     \item What is presented?
     \item Why is it presented?
     \item How it is presented?
 \end{itemize}
 \textbf{What is presented?}\\*
-Talking of large time-oriented data for business we will consider the three given characteristics of the data: characteristics of business data, time-dependency and the size. Business data is collected in many different areas. The following table gives an overview about the applications: 
+Talking of large time-oriented data for business we will consider the three given characteristics of the data: characteristics of business data, time-dependency and their size. Business data is collected in many different areas. The following table gives an overview about the applications: 
 
 \begin{table}[th]
 	\centering
@@ -130,15 +130,19 @@ Talking of large time-oriented data for business we will consider the three give
 \end{table}
 
 The bottom line is that business data ususally is abstract and multi-variate according to Tegarden\cite{tegarden1999}. Multi-variate data is usually presented in tables\cite{Borgo2013} and thus we assume that business data is given in tables, each attribute is represented by a column and each row is one data item. The attributes can be either numerical or text-based. 
-Talking of time-oriented business data we assume that the data is linked to time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time-series}. The time-series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}
-Lastely, we will characterize the size of the data. We are considering large and huge amounts of data. Large data is defined according to\cite{Huber1994} as datasets with $10^6$ and huge data with $10^8$ data entries.
+
+
+Talking of time-oriented business data we assume that the data is linked to time and one of the table rows contains time-related data. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Data with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. 
+Lastely, we will characterize the size of the data. We are considering large and huge amounts of data. Large data is defined according to\cite{Huber1994} as datasets with $10^6$ and huge data with $10^8$ data entries. We will not explicitely consider \textit{Big Data} as the classical definition \textit{Big Data} includes not only the volume, but also variety, varacity and velocity. We will only consider the volume of data.
 
 
 % User Tasks
 \section{Time-oriented User Tasks}
 \textbf{Why is it presented?}\\*
+
 To specify the the problem-domain user task analysis are a common way in the field of software development to describe the tool requirements\cite{Aigner2011}.
 For analyzing time-series the following seven tasks are the major tasks\cite{Esling2012}:
+
 \todo{Tasks ausformulieren}
 \\*
 \textbf{T1: Query by Content}
@@ -154,6 +158,25 @@ For analyzing time-series the following seven tasks are the major tasks\cite{Esl
 \textbf{T6: Anomaly Detection}
 \\*
 \textbf{T7: Motif Discovery}
+
+Besides the Information Visualization Task Analysis \cite{Aigner2011} formulated a temporal task analysis which describes the users tasks in exploring time-oriented data:
+\\*
+\textbf{T1: Classification}
+In classification the task is to find the right group the item belongs to. According to \textit{Aigner et al.} temporal classification describes the preprocess of finding the correct group for given data or dataset. This task is important for large data to abstract the data and make them handable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task.
+\\*
+\textbf{T2: Clustering}
+Clustering groups data into similar groups. In the context of large time-oriented data clustering is important to compare similar time-series.
+\\*
+\textbf{T3: Search \& Retrieval}
+The task of search \& retrieval is to find an a priori defined item of which some characteristics are unknown such as the temporal location, the existance or meta-data.
+\\*
+\textbf{T4: Pattern Discovery}
+Pattern Discovery covers the exploration of trends, outliers and clusters. Especially, in business this task is one the most important tasks.\todo{quote finden}
+\\*
+\textbf{T5: Prediction}
+Prediction concerns the challenge of making predicitions for the future based on the past and the present.
+\\*
+
 
 \iffalse
 \begin{tikzpicture}[sibling distance=12em,
@@ -189,10 +212,11 @@ For displaying time-oriented data \textit{Aigner et al.} made a survey of differ
 
 \iffalse
 \textbf{How is it presented?}
-To display time-oriented data successfully appropriate techniques
-proper parametrization,
-interaction facilites are required\cite{Aigner2011}. Additionally, analytical methods such as vertical and horizontal data reduction are necessary to explore large-scale time-oriented data. 
+%To display time-oriented data successfully the user should be supported appropriate techniques proper parametrization, interaction facilites are required\cite{Aigner2011}. Additionally, analytical methods such as vertical and horizontal data reduction are necessary to explore large-scale time-oriented data. 
 
+
+The following section discusses several visualization techniques for time-oriented data including the question of their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
+Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to hence to name every single existing visualization technique.
 
 %Different Data Types for time-oriented data
 
