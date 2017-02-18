@@ -143,22 +143,22 @@ Every tool for decision-support should consider the user perspective. The busine
 Query by content describes the retrieval of similar items to the query and returns a set with the most similar solutions to the query. In time-oriented data query by content returns the \textit{k} most similar time series to the queried time series.
 \\*
 \textbf{T2: Clustering}\\*
-Clustering is the process of finding expressive groups (clusters) out of the data. Therefore, the dataset is devided into subgroups according to some similarity measure. In the time domain whole time series can be clustered or only subsequences.  
+Clustering is the process of finding expressive groups (clusters) out of the data. Therefore, the dataset is devided into subgroups according to some similarity measure. In the context of large time-oriented data clustering is important to compare similar time-series.
 \\*
 \textbf{T3: Classification}\\*
-Classification assigns label to the data from a set of labels. 
+In classification the task is to find the right group the item belongs to. According to \textit{Aigner et al.} temporal classification describes the preprocess of finding the correct group for given data or dataset. This task is important for large data to abstract the data and make them handable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task. 
 \\*
 \textbf{T4: Segmentation}\\*
 Segmentation splits a time series into \textit{k} meaningful subsequences (segments)\cite{batyrshin2007perception}. 
 \\*
 \textbf{T5: Prediction}\\*
-In Prediction\textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. 
+In Prediction\textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. Forecasting 
 \\*
 \textbf{T6: Anomaly Detection} \\*
 Anomaly detection points out events which behave in a different way than expected.
 \\*
 \textbf{T7: Pattern Discovery} \}\*
-Pattern discovery finds regularly appearing structures in a time series. 
+Pattern discovery finds regularly appearing structures in a time series.  It covers the exploration of trends, outliers and clusters. Especially, in business this task is one the most important tasks.\todo{quote finden}
 
 
 \iffalse
