@@ -1,21 +1,21 @@
 \chapter{Related Work}
 \label{chap:related Work}
-In this chapter we provide an overview about the current literature for the visualization of large time-oriented business data. 
-
-
-% Cognitive Fit Theory
-
-% Time-oriented Work: Aigner et al
-
-% Data interaction taxonomies: Shneiderman, Keim
-Studies compared animation, small multiples and traces. Yet, they found that none of them is able to scale beyond 200 data items\cite{Robertson2013}. Analyzing large datasets can be enhanced by abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering.
-
-% Visualizing Big Data: Shneiderman, Tufte (reduce information overload), reduce information complexity (Bačić), evtl (Zack, 2007)
+In this chapter we provide an overview about the current literature which intersects with the topic of our work,the visualization of large time-oriented business data. Therefore, we consider the influencing factors: business and time-oriented data, its size and tools which apply visualization. 
 
 % Business Information Visualization: Tegarden, Bačić
-\textbf{Business Information Visualization} Tegarden and Bačić\cite{Bacic,Bacic2013,Bacic2012TheCreation,Tegarden1999} published to the topic how business data can be visualized. While Tegarden describes several visualization techniques for Business Information Visualization (BIV) and their applications Bačić explored the process of knowledge creation\cite{Bacic2012}.
+\subsubsection*{Business Information Visualization} 
+Business Information Visualization (BIV) is defined as the use of visualization technologies to visualize business data\cite{Tegarden1999}. Although Information Visualization is intensively researched\cite{Shneiderman2008,Shneiderman2002,Shneiderman1996,Keim2002} only few researchers published to Business Information Visualization itself. While Tegarden\cite{Tegarden1999} introduced the most common definition of BIV and covered appropriate visualization techniques Bačić explored the process of knowledge creation\cite{Bacic2012} and how Business Intelligence can support business decision-making\cite{Bacic,Bacic2012}. Zhang\cite{Zhang,Zhang1998,Zhang2001} published a generalized visualization model in which she described the scope: BIV on the one side has to deal with non-geometric data and on the other side consider the human problem-solving process. This human centered perspective covered by Ware\cite{Ware2012a} as he examined how to design information visualization for human perception.
 
-% Tool Comparison
-Forrester Research, Inc. published a survey\cite{Evelson2012} regarding commercial advanced visualization tools.
+\subsubsection*{Large Scale Information Visualization}
+The topic of information visualization for large data is studied by a broad number of researchers. Visualization Techniques for large data has been created in different areas\cite{Krzywinski2009,Luo2012}. Important work was published by Keim\cite{Keim1996}. He proposed five categories for visualization techniques: pixel-oriented\cite{Keim1995,Stein2013,Keim2000,keim1996pixel,Keim2001, Keim2005,Keim2008VisualChallenges}, icon-based\cite{Chung2014,Borgo2013,Fanea2005}, hierarchical\cite{Yang2003,Shneiderman1992,LeBlanc1990}, graphic-based and geometric\cite{Noirhomme-Fraiture2002}.
+A way to measure the scalability of large databases was defined with the term visual scalability. Visual or perceptual scalability is defined as the capability of visualization tools in displaying large datasets in an effective manner\cite{Eick2002}.
+Interactions with large databases are covered in \cite{Fisher2012,Buono,Jerding1998,mackinlay1991perspective,Keim2005}. 
 
-In summary, the literature...\todo{einfügen, worüber die Literatur informiert}
+\subsubsection*{Time-oriented Visualization}
+Data which is linked to time appears in the literature with various names: time-dependent\cite{Postfach2003, Tominski2005,Kriglstein2014,Aigner2007,VanBuuren2001,FerreiradeOliveira2003,Yang2003,Chung2014,Rind2011}, time-varying\cite{Moere2004}, time-oriented\cite{Aigner2008,Aigner2007,Aigner2011,Hinum2005,Walker} or time-related\cite{Keimc}. Significant work to the visualization of time-oriented data was done by Aigner\cite{Aigner2011,Aigner2008,Aigner2007}. They proposed a taxonomy for the time-domain and various visualization techniques. Other differentiations concerning time was made by \cite{Kriglstein2014}. They collected experimental findings for animation and space-metaphors for time. These studies compared animation, small multiples and traces. Yet, they found that none of them is able to scale beyond 200 data items\cite{Robertson2013}. Instead they suggested to use abstraction for analyzing large time-oriented datasets. Moreover, there exists a lot of ongoing research for univariate time-oriented data called time series\cite{Aigner2011, Buono, Walker,Leonard,Chen1993,Esling2012}.
+
+\subsubsection*{Visualization Tools}
+In the last chapter we will compare different visualization tools and their ability to display large data. In a survey to the Semantic Web generic visualization systems and graph-based systems have been surveyed\cite{Bikakis2016}. They compared the spectrum of analytical methods and visualization techniques. Yet, these systems are usually not used in business. Every year Gartner publishes a market overview of the most important Business Intelligence(BI) and Analytics tools which also serve for data discovery. The leading tools also appear in the survey\cite{Evelson2012} regarding commercial advanced visualization tools and the works of Zhang et al.\cite{Zhanga} and Patil\cite{Patil}. These work compared commercial visual analytics system in the era of Big Data. In contrast Harger et al. surveyed open source visual analytics systems\cite{Harger}. All the surveys consider visualization, interaction and analysis capabilites.
+
+\subsubsection*{}
+This work will contribute to the visualization of large data by focusing on time-oriented data. We will study different visualization techniques for time-oriented data in business and point out requirements for visualizing large time-oriented data in visualization systems. In a next step, visualization tools which are used in business, are selected and the requirements are checked. Finally, we give a recommendation for the tool use depending on the ease-of-use and programming skills and show further research topics.

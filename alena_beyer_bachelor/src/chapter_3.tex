@@ -33,13 +33,12 @@ analysis tasks and data characteristics, which is a goal of Visual Analytics."
 \fi
 ----- \\*
 % Business Information Visualization
-\section{The Role of Visualization in Business}
+\section{The Role of Visualization in Business} \label{BIV}
+Tools for Business Intelligence (BI) and Analytics, visualization, data discovery as well as for data mining continually gain importance in companies to assist humans to gain insights into their data. Although the differentiation between those tools is not selective and the terms are not clearly distinguished we can make the following differentiation: Data Mining tools allow automatic decision-making by applying algorithms to the data and extract patterns in an automatic way\cite{Goebel1999} while exploratory data analysis (EDA) tools are used to mine data with support of human input. We will use the definition of EDA tools if we speak of visualization tools in this work. As a pwc-survey showed eventhough automatic ways for decision support exists data analysis stil relies on human judgement and thus\cite{PwC2016}, visualization tools are used to support the business user in the data discovery process.
 
-Tools for Business Intelligence (BI) and Analytics, visualization, data discovery as well as for data mining continually gain importance in companies. Although the differentiation between those tools is not selective all of them are used to gain insight into the company's data and help decision-maker in problem-solving. Decision-maker usually are part of the management domain and thus, come from the marketing, sales or management-field but the majority of them uses these tools without any computer science background. Therefore, tools have to be self-explaining, easy-to-use \cite{Crapo2000} and without the requirement of extensive programming. Especially visualization plays an important role as it reduces the information overload\cite{Keima} and simplifys the process of problem-solving\cite{Zhang}. Talking of visualization for business data the literature uses the term \textit{Business Information Visualization} (BIV). BIV is defined as the use of visualization technologies to visualize business data\cite{Tegarden1999}.  
-Especially, time-oriented data is an important data type for business as it allows business to analyze the past and predict the future of the company\cite{Ao2010}.
-
-\todo{necessary?}
-When tools are used in the discovery of data information visualization has two important roles: presentation and exploration\cite{Crapo2000}. Visualization as presentation is either used to display data without any data mining algorithm or visualization as presentation is used to present the results of a data mining algorithm. Visualization as exploration is used before and during the data mining algorithm to explore the data interactively. This group is called visual analytics. The decision-maker needs both processes for decision making as results are presented on the screen and to explore the data interactively\cite{Ware2012a}. 
+Decision-maker usually are part of the management domain and thus, come from the marketing, sales or management-field but the majority of them uses these tools with few computer science background. Therefore, tools have to be self-explaining, easy-to-use \cite{Crapo2000} and without the requirement of extensive programming. Especially visualization plays an important role as it reduces the information overload\cite{Keima} and simplifys the process of problem-solving\cite{Zhang}. Eventhough we only consider visualization tools which are used to explore data visualization tools have the two roles of presentation and exploration\cite{Crapo2000}. Visualization as presentation is either used to display data without any data mining algorithm or visualization as presentation is used to present the results of a data mining algorithm. Visualization as exploration is used before and during the data mining algorithm to explore the data interactively. This group is called visual analytics. The decision-maker needs both processes for decision making as results are presented on the screen and to explore the data interactively\cite{Ware2012a}. 
+Talking of visualization an important data type for business is time-oriented data(\ref{data}) as it allows business to analyze the past and predict the future of the company\cite{Ao2010}. We will have a closer look at user tasks in section \ref{tasks}.
+ 
 \begin{figure}[H]
     \centering
         \scalebox{.5}{\includegraphics{src/images/VisPipeline}}
@@ -90,10 +89,9 @@ The way how data variables are mapped to graphical primitives is called visualiz
 \textbf{Visual Data Exploration}\\*
 
 \textbf{Time-oriented Data}\\*
-Time-oriented data is data which is linked to time\cite{Aigner2011}. In literature time-oriented data appears with various names as well as various ways to be visualized. Time-oriented data is also called time-dependent, dynamic, time-variant, time-based, time-varying or temporal data\cite{Moere2004}. Often, time-oriented datasets are very large and multi-variate which makes it difficult to analyze them. The question is how time-oriented data can be analyzed if the number of data points exceeds the screen resolution. This brings us to the definition of large time-oriented Data. 
+Time-oriented data is data which is linked to time\cite{Aigner2011}. Often, time-oriented datasets are very large and multi-variate which makes it difficult to analyze them. The question is how time-oriented data can be analyzed if the number of data points exceeds the screen resolution. This brings us to the definition of large time-oriented Data. 
 We define large time-oriented Data as abstract time-dependent data which is too large to fit on the screen. \cite{Shneiderman2008} 
-In the following work, we will use time-oriented Data, time-oriented Big Data and Big time-oriented Data equivalently for large time-oriented Data.
-\cite{Bacic2013} divided time-oriented data into three sections: data with a linear discrete data model, data with a continuous data model and event-based.
+In the following work, we will use time-oriented Data, time-oriented Big Data and Big time-oriented Data equivalently for large time-oriented Data. 
 
 
 
@@ -104,7 +102,8 @@ Visualization tools display hundreds of items on the screen and offer interactio
 
 
 % Data types for Information Visualization
-\section{Data type}
+\section{Data type} \label{data}
+
 For choosing appropriate visualization techniques the first step is in understanding the underlying data and creating a correct data model\cite{Aigner2011}, so that the visualization technique represents the underlying data structure and offers best insights\cite{Bacic}. \textit{Aigner et. al.} proposed  the following questions to model the visualization problem: 
 \begin{itemize}
     \item What is presented?
@@ -130,30 +129,37 @@ Talking of large time-oriented data for business we will consider the three give
 \end{table}
 
 The bottom line is that business data ususally is abstract and multi-variate according to Tegarden\cite{tegarden1999}. Multi-variate data is usually presented in tables\cite{Borgo2013} and thus we assume that business data is given in tables, each attribute is represented by a column and each row is one data item. The attributes can be either numerical or text-based. 
-Talking of time-oriented business data we assume that the data is linked to time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time-series}. The time-series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}
+Talking of time-oriented business data we assume that the data is linked to time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}.
 Lastely, we will characterize the size of the data. We are considering large and huge amounts of data. Large data is defined according to\cite{Huber1994} as datasets with $10^6$ and huge data with $10^8$ data entries.
 
 
 % User Tasks
-\section{Time-oriented User Tasks}
+\section{Time-oriented User Tasks} \label{tasks}
 \textbf{Why is it presented?}\\*
-To specify the the problem-domain user task analysis are a common way in the field of software development to describe the tool requirements\cite{Aigner2011}.
-For analyzing time-series the following seven tasks are the major tasks\cite{Esling2012}:
-\todo{Tasks ausformulieren}
+Every tool for decision-support should consider the user perspective. The business user is a kind of person which is interested in verify existing hypothesis (verification) and discover new patterns (discovery) and by using the tool he expects the tool to assist him in analyzing the data, finding critical points and perform analysis automatically\cite{Brachman1996}. Verification and discovery in the analysis of time-oriented data can be split in seven major tasks\cite{Esling2012}:
+
 \\*
-\textbf{T1: Query by Content}
+\textbf{T1: Query by Content}\\*
+Query by content describes the retrieval of similar items to the query and returns a set with the most similar solutions to the query. In time-oriented data query by content returns the \textit{k} most similar time series to the queried time series.
 \\*
-\textbf{T2: Clustering}
+\textbf{T2: Clustering}\\*
+Clustering is the process of finding expressive groups (clusters) out of the data. Therefore, the dataset is devided into subgroups according to some similarity measure. In the time domain whole time series can be clustered or only subsequences.  
 \\*
-\textbf{T3: Classification}
+\textbf{T3: Classification}\\*
+Classification assigns label to the data from a set of labels. 
 \\*
-\textbf{T4: Segmentation}
+\textbf{T4: Segmentation}\\*
+Segmentation splits a time series into \textit{k} meaningful subsequences (segments)\cite{batyrshin2007perception}. 
 \\*
-\textbf{T5: Prediction}
+\textbf{T5: Prediction}\\*
+In Prediction\textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. 
 \\*
-\textbf{T6: Anomaly Detection}
+\textbf{T6: Anomaly Detection} \\*
+Anomaly detection points out events which behave in a different way than expected.
 \\*
-\textbf{T7: Motif Discovery}
+\textbf{T7: Pattern Discovery} \}\*
+Pattern discovery finds regularly appearing structures in a time series. 
+
 
 \iffalse
 \begin{tikzpicture}[sibling distance=12em,
@@ -178,11 +184,12 @@ For analyzing time-series the following seven tasks are the major tasks\cite{Esl
 \fi
 
 % Visualization Techniques
-\section{Visualization of large-scale time-oriented Data}
+\section{Visualization of large-scale time-oriented Data} \label{vis}
 \textbf{How is it presented?}
 The following section discusses several visualization techniques for time-oriented data and their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
 Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to name every single existing visualization technique.
-However, most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, only can visualize 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" datasets follow this approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaiton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. 
+
+However, most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, are limited to 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" datasets follow the pixel-oriented approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaiton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. 
 For displaying time-oriented data \textit{Aigner et al.} made a survey of different visualization techniques. Based on Keim's taxonomy\cite{Keim1995} these visualization techniques were classified in the classes: \textit{pixel-oriented}, \textit{icon-based}, \textit{geometric-projective} and \textit{hierarchical}. Next, the visual scalability of the classes was determined. 
 
 \section{Visual Scalability}
@@ -198,7 +205,7 @@ interaction facilites are required\cite{Aigner2011}. Additionally, analytical me
 
 Typical visualization techniques for time-oriented data are 
 Static State Replacement,
-Time-Series Plots,
+time series Plots,
 Static State Morphing,
 Control Applications,
 Equilibrium Attainment
@@ -335,11 +342,11 @@ Sampling describes a strategy to reduce data by creating a sample of the origina
 \subsubsection*{Filtering}
 Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exlusion of unrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.
 \subsubsection*{Temporal Data Abstraction}
-Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction.
+Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. \todo{besser integrieren}
 One way to implement temporal data abstraction is to use natural language processing in visualization tools. \todo{wie formuliere ich das am besten? Answerrocket + google}
-Clustering reduces the number of data rows by finding expressive groups the data item belongs to. Therefore, the dataset is devided into subgroups according to some similarity. Instead of displaying every single data item, the respective cluster can be displayed and used to reduce visual clutter. Clustering has the advantage of pattern and outlier preservation if the similarity measure is appropriate.
+Clustering as defined in the user tasks~\ref{sec:user} have the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. Clustering has the advantage of pattern and outlier preservation if the similarity measure is appropriate.
 \subsubsection*{Aggregation}
-Aggregation describes the process of grouping several data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation devides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time-series data into a set of equidistant time spans\cite{jugel2014m4}.
+Aggregation describes the process of grouping several data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation devides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time series data into a set of equidistant time spans\cite{jugel2014m4}.
 As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
 \\*
 Other ways to reduce data vertically are binning and pivotization. We will not explain them here in detail as they treat continuous and hierarchical datasets which are beyond our scope in this work. 
