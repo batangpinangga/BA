@@ -90,7 +90,7 @@ The way how data variables are mapped to graphical primitives is called visualiz
 
 \textbf{Time-oriented Data}\\*
 Time-oriented data is data which is linked to time\cite{Aigner2011}. Often, time-oriented datasets are very large and multi-variate which makes it difficult to analyze them. The question is how time-oriented data can be analyzed if the number of data points exceeds the screen resolution. This brings us to the definition of large time-oriented Data. 
-We define large time-oriented Data as abstract time-dependent data which is too large to fit on the screen. \cite{Shneiderman2008} 
+We define large time-oriented Data as abstract time-dependent data which is too large to fit on the screen. \cite{Shneiderman2008} Multi-variate time series are time series where one data item holds severable variables at the same point of time \cite{Aigner2011}.
 In the following work, we will use time-oriented Data, time-oriented Big Data and Big time-oriented Data equivalently for large time-oriented Data. 
 
 
@@ -119,7 +119,7 @@ Talking of large time-oriented data for business we will consider the three give
 	% caption format: \caption[<business aplications>]{<long version>}
 	\caption[Table 1]{Business applications\cite{Brachman1996,Tegarden1999}}
 	\label{businessapplications}
-	\begin{tabu}{lcc}
+	\begin{tabu}{ll}
 	\toprule
 	Marketing & Financial Sector \\
 	Fraud Detection & Manufacturing and Production \\
@@ -129,10 +129,23 @@ Talking of large time-oriented data for business we will consider the three give
 	\end{tabu}
 \end{table}
 
-The bottom line is that business data ususally is abstract and multi-variate according to Tegarden\cite{tegarden1999}. Multi-variate data is usually presented in tables\cite{Borgo2013} and thus we assume that business data is given in tables, each attribute is represented by a column and each row is one data item. The attributes can be either numerical or text-based. 
-
-Talking of time-oriented business data we assume that the data is linked to time and one of the table columns . The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}.
-Lastely, we will characterize the size of the data. We are considering large and huge amounts of data. Large data is defined according to\cite{Huber1994} as datasets with $10^6$ and huge data with $10^8$ data entries.
+For each application area exists a number of publications covering different aspects. Thus, the analysis of every single application would go beyond our scope and we decided to consider data with the following characteristics: 
+\begin{enumerate}
+    \item The data is structured. 
+    \item The data is abstract.
+    \item The data is multi-variate.
+    \item The data is discrete.
+\end{enumerate}
+\textbf{Structured data}: Data can come in many different forms. Unstructured data appears in text, speech and language processing\cite{Borgo2013}. Structured data comes in tables in which each attribute are represented by one column and each row is one data item. The attributes can be either numerical or text-based. As multi-variate data is usually presented in tables\cite{Borgo2013} we assume that business data is structured.\\*
+\textbf{Abstract data}: Abstract data is defined as data without any spatial relationship in the data\cite{Shneiderman1996}. \\*
+\textbf{Multi-variate data}: 
+Often, multi-variate is mixed-up with the term multi-dimensional. For this reason we define  multi-variate data by the number of dependent attributes. If the dataset holds more than two dependent attributes then we call the data \textit{multi-variate}. In contrast, multi-dimensional depicts the number of independent attributes of a dataset\cite{Aigner2011}.  \\*
+\textbf{Discrete and time-oriented data}: Talking of time-oriented business data we assume that the each data item is linked to time. Thus, one table column represents time. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Thus, we will focus on the analysis of time series data. \\*
+These assumptions are based on the work of Tegarden in which business data is described as abstract and multi-variate and discrete\cite{Tegarden1999}.
+\\*
+\todo{drin lassen? Raus?}
+Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}.\\*
+\textbf{Large data:} Lastely, we characterize the size of the data. Therefore, we stick to a definition of Huber. He devided data in small, medium, large, huge and massive data. Large data according to\cite{Huber1994} is defined as datasets with $10^6$ and huge data with $10^8$ data entries. We are considering large and huge amounts of data. Nowadays, companies strive to do \textit{Big Data}. Big Data in typically defined as data with  high volume, high velocity, high veracity and high variety\cite{Wang2015}. The contribution of our work to Big Data is the study of presentation of of high volume datasets.
 
 
 
@@ -143,7 +156,8 @@ Lastely, we will characterize the size of the data. We are considering large and
 Every tool for decision-support should consider the user perspective. The business user is a kind of person which is interested in verify existing hypothesis (verification) and discover new patterns (discovery) and by using the tool he expects the tool to assist him in analyzing the data, finding critical points and perform analysis automatically\cite{Brachman1996}. Verification and discovery in the analysis of time-oriented data can be split in seven major tasks\cite{Esling2012}:
 
 \\*
-\textbf{T1: Query by Content}\\*
+\textbf{T1: Query by Content}
+\\*
 Query by content describes the retrieval of similar items to the query and returns a set with the most similar solutions to the query. In time-oriented data query by content returns the \textit{k} most similar time series to the queried time series.
 \\*
 \textbf{T2: Clustering}\\*
@@ -163,25 +177,6 @@ Anomaly detection points out events which behave in a different way than expecte
 \\*
 \textbf{T7: Pattern Discovery} \}\*
 Pattern discovery finds regularly appearing structures in a time series.  It covers the exploration of trends, outliers and clusters. Especially, in business this task is one the most important tasks.\todo{quote finden}
-
-
-Besides the Information Visualization Task Analysis \cite{Aigner2011} formulated a temporal task analysis which describes the users tasks in exploring time-oriented data:
-\\*
-\textbf{T1: Classification}
-In classification the task is to find the right group the item belongs to. According to \textit{Aigner et al.} temporal classification describes the preprocess of finding the correct group for given data or dataset. This task is important for large data to abstract the data and make them handable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task.
-\\*
-\textbf{T2: Clustering}
-Clustering groups data into similar groups. In the context of large time-oriented data clustering is important to compare similar time-series.
-\\*
-\textbf{T3: Search \& Retrieval}
-The task of search \& retrieval is to find an a priori defined item of which some characteristics are unknown such as the temporal location, the existance or meta-data.
-\\*
-\textbf{T4: Pattern Discovery}
-Pattern Discovery covers the exploration of trends, outliers and clusters. Especially, in business this task is one the most important tasks.\todo{quote finden}
-\\*
-\textbf{T5: Prediction}
-Prediction concerns the challenge of making predicitions for the future based on the past and the present.
-\\*
 
 
 \iffalse
@@ -209,31 +204,127 @@ Prediction concerns the challenge of making predicitions for the future based on
 % Visualization Techniques
 \section{Visualization of large-scale time-oriented Data} \label{vis}
 \textbf{How is it presented?}
-The following section discusses several visualization techniques for time-oriented data and their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
+% introduction of methodology: selection of vizTechniques, introduction of classes
+The following section discusses several visualization techniques for time-oriented data including the question of their scalability because the key to a successful representation of the data is the choice of an appropriate technique. This is shown in the cognitive fit theory\cite{Vessey1991} as this theory showed a significant increase of user task performance the better the visual representation of a problem fitted to the cognitive user model. Visualizations of time-oriented data therefore have to represent the cognitive user model. Based on the findings in literature we assume that the cognitive user model is represented by the user tasks which we described in section \ref{tasks}.\\* 
+\textbf{Standard Visualizations of time series data}
+Usually time series data is visualized with line charts. However, line charts can only show \textit{univariate} data. Our selection of visualization techniques is based on Aigner et al.\cite{Aigner2011} which presents current approaches to visualize time-oriented data. Hereby, we focus on 34 techniques which can be used to show business data: abstract, multi-variate and discrete data (compare section \ref{data}). 
+As the work of Aigner was published in 2011 we completed the set of techniques with current approaches based on the \href{http://survey.timeviz.net/}{TimeVizBrowser}. Moreover, we consider only stand-alone visualization techniques which are techniques no systems, tools or software. In literature a significant amount of publications describe new tools or systems which tackle the visualization of time-oriented data. These tools usually are specific tools which can only be applied in a limited field. As we write this work with the perspective of business users tools have to be generic and single-task systems are not appropriate.
+
+We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
 Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to name every single existing visualization technique.
 
-However, most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, are limited to 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" datasets follow the pixel-oriented approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaiton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. 
-For displaying time-oriented data \textit{Aigner et al.} made a survey of different visualization techniques. Based on Keim's taxonomy\cite{Keim1995} these visualization techniques were classified in the classes: \textit{pixel-oriented}, \textit{icon-based}, \textit{geometric-projective} and \textit{hierarchical}. Next, the visual scalability of the classes was determined. 
+
+However, we think that this work gives a good overview of visualization techniques as we stick to Keim's taxonomy\cite{Keim1995} of visualization techniques for multi-variate data which classifies them into the classes: \textit{geometric-projective}, \textit{graph-based}, \textit{hierarchical}, \textit{icon-based} and \textit{pixel-oriented}.
+\\*
+\textbf{Graph-based} techniques present large graphs by using layout algorithms\cite{Keim1996}.
+\\*
+\textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}.
+\\*
+\textbf{Pixel-oriented} techniques map each data item to one pixel on the screen. Position and color are used to represent data attributes\cite{Keim1996}.
+\\*
+\textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows them hierarchically. 
+\\*
+\textbf{Icon-based} techniques map each data item onto one icon. The attributes are mapped to different icon features\cite{Keim2001}.
 
 \section{Visual Scalability}
 
+This work studies how well these techniques scale to large data. To define the ability of visualizations to present large amounts of data we introduce the term \textit{visual scalability}.
+Visual or perceptual scalability is defined as the capability of visualization tools in displaying large datasets in an effective manner\cite{Eick2002}. In the context of time-oriented business data effective means the presentation of patterns to support the user tasks. To measure the visual scalability of different visualization techniques for time-oriented data we refer to the work of Eick\cite{Eick2002}. He proposed to measure visual scalability by the database metrics of the dataset and the visual characteristics of the visualization technique. \\*
+
+\textbf{Database metrics} measures the \textit{size of the database} in bytes, the number of rows or the number of attributes at the level of the visualization tool. For multi-dimensional data the \textit{database metrics} are a combination of the number of rows and the attributes. \\*
+
+\textbf{Visualization characteristics} describe the number of elements and attributes presented on the screen, thus measuring how many distinct items a visualization technique can display. This number is measured on the visualization technique level.
+\\*
+The combination of the database metrics and the visualization characteristics describes the scalability of a visualization tool. Furthermore, the tools scalability is influenced by more factors which will be discussed later (\ref{factors}).
+
+\subsection{Visual Scalability of time-oriented techniques}
+In the analysis of the techniques we discovered that time-oriented techniques are covered by only four classes. Thus, we measured the scalability of four classes. 
+ Based on this analysis we identified a number of \todo{Anzahl der Techniken einfügen} techniques which are appropriate to show large time-oriented data. These techniques will be described in detail.
+
+\begin{table}[H]
+	\centering
+	% caption format: \caption[<Scalability of Visualization Classes>]{<long version>}
+	\caption{Scalability of Visualization Classes}
+	\label{vizScalability}
+	\begin{tabu}{  | l | l | l |}
+	\toprule
+	Visualization Class & Technique & References\\
+	\midrule
+	    \multirow{10}*{Geometric} 
+		& EventRiver        & \cite{Luo2012}\\
+		& Flocking Boids    & \cite{Moere2004}\\
+		& Intrusion Detection\\
+	    & Kiviat Tube       & \cite{Tominski2005}\\
+        & Layer Area Graph\\
+        & MultiComb         & \cite{Tominski}\\
+        & Multi-resolution CircleView & \cite{Keim2005}\\
+        & Parallel Glyphs   & \cite{Fanea2005}\\
+        & Temporal Star     & \cite{Noirhomme-Fraiture2002}\\
+        & TimeWheel         & \cite{Tominski}\\
+        & Worm Plots\\ \hline
+        \multicolumn{3}{|p{\linewidth}|}{
+        \textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. The mapping-function often includes data reduction techniques (see section \ref{analytical}). Thus, the visualization characteristics of GP-techniques strongly depend on the mapping-function. When data reduction techniques are involved, this class of techniques becomes a high-potential class for large datasets as they allow to present large to huge data.} \\ \hline
+        
+		\multirow{3}*{Hierarchical} 
+		& Pixel-Oriented Network Visualization \\
+		& Software Evolution Analysis & \cite{}\\
+		& Timeline Trees \\ \hline
+		\multicolumn{3}{|p{\linewidth}|}{\textbf{Hierarchical} techniques: we analyzed three hierarchical visualization techniques. One technique included aggregation techniques by collapsing the nodes. With collapsed nodes the technique can display large to huge amount of data. Pixel-oriented Networks use clustering and thus, can.} \\ \hline
+        \multirow{5}*{Icon-based}
+        & Gravi++\\
+        & InfoBUG\\
+        & PeopleGarden\\
+        & Spiral Graph\\
+        & VIE-VISU\\ \hline
+        \multicolumn{3}{|p{\linewidth}|}{
+        \textbf{Icon-based} techniques: As every data item requires one icon icon-based techniques can show less data items than the number of pixels on the screen. When showing large data icon-based techniques face the challenge of clutter and occlusion\cite{Borgo2013}. Thus, icon-based techniques can display small- to medium-sized datasets.}\\ \hline
+        \multirow{12}*{Pixel-oriented}
+        & 3D ThemeRiver & \cite{Imrich2002}\\
+        & Braided Graph\\
+        & CircleView\\
+        & Data Tube Technique\\
+        & history flow\\
+        & Kaleidomaps\\
+        & Pixel-Oriented Network Visualization\\
+        & Recursive Pattern\\
+        & Spiral Display\\
+        & Stacked Graphs\\
+        & ThemeRiver\\
+        & Time Curves\\
+        & TimeRider\\ \hline
+        \multicolumn{3}{|p{\linewidth}|}{
+        \textbf{Pixel-oriented} techniques: Since only one pixel per data item is used this class can maximize the used screen space. Let $M$ be the monitor resolution with the screen-width $w$ and the screen-height $h$, $P$ the number of pixels in $M$ and $D$ the maximum of data which can be displayed at once. In pixel-oriented techniques  \begin{math}
+        D = w*h
+        \end{math}
+        which shows that pixel-oriented techniques can display large, but not huge data.} \\ \hline
+	\bottomrule
+	\end{tabu}
+\end{table}
+
+
+Most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, are limited to 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" datasets follow the pixel-oriented approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. Their scalability depends on the mapping-function. 
+One interesting extension of pixel-oriented techniques is the \textit{multi-resolution} approach\cite{Keim2005}. The idea is to show more relevant data items at a pixel-based level and less relevant data items in an aggregated way. In Multiresolution CircleView recent data is shown at full resolution in the middle of the circle and previous-year-data is placed at the outer circle. With multi-resolution it is possible to extent the pixel-limit from $w*h$ to larger datasets. 
+
+\begin{table}[H]
+	\centering
+	% caption format: \caption[<Scalability of Visualization Classes>]{<long version>}
+	\caption{Scalability of Visualization Classes}
+	\label{vizScalability}
+	\begin{tabu}{ l | c }
+	\toprule
+	Visualization Class & Scalability\\
+	\midrule
+	Geometric &  \cellcolor{green!25 } > 2 mio. pixel\\
+	Hierarchical & \cellcolor{green!25} > 2 mio. pixel \\
+	Icon-based & \cellcolor{red!25} $\leq$ 1 mio. pixel \\
+	Pixel-oriented & \cellcolor{yellow!25} $\leq$ 2 mio. pixel \\	
+	\bottomrule
+	\end{tabu}
+\end{table}
+
+
+
 \iffalse
-\textbf{How is it presented?}
-%To display time-oriented data successfully the user should be supported appropriate techniques proper parametrization, interaction facilites are required\cite{Aigner2011}. Additionally, analytical methods such as vertical and horizontal data reduction are necessary to explore large-scale time-oriented data. 
-
-
-The following section discusses several visualization techniques for time-oriented data including the question of their scalability. We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
-Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to hence to name every single existing visualization technique.
-
-%Different Data Types for time-oriented data
-
-Typical visualization techniques for time-oriented data are 
-Static State Replacement,
-time series Plots,
-Static State Morphing,
-Control Applications,
-Equilibrium Attainment
-
  The discussion whether a visualization technique is part of the standard visualization or belongs to advanced visualization is not unambigiously. \textit{Aigner et. al} classify Parallel Coordinates as a standard visualizations\cite{Aigner2011} whereas \textit{Keim et. al.} \cite{Keim} are talking about Parallel Coordinates as a novel techniques. This discussion of course is determined by the time epoche. The longer a visualization technique is available the more it is counted as standard visualization technique. But defining a time-period after which the visualization technique is seen as standard is not possible as other factors influence the judgment of standard or advanced data visualization, such as for example the degree of familiarity. Nevertheless, researcher tried to define advanced data visualization. Russom stated "Advanced Data Visualization (ADV) is able to "scale the visualizations to thousands or millions of data points, can handle different data types and present analytical data structures." \cite{Russom2011}. Thus, we define advanced data visualization as large-scale data visualization techniques which are able to scale to large and huge amounts of data. 
  \\*
 
@@ -243,52 +334,16 @@ Equilibrium Attainment
 % Downsampling -> Analytical Methods
 
  The challenges of large-scale data for ADV are \textit{scalability} and \textit{dynamics}\cite{Wang2015}. With its volume the challenges for large-scale data are also challenges for Big Data defined as high volume, high velocity, high veracity and high variety datasets\cite{Wang2015}. In this work we concentrate on the scalability challenge for visualization techniques. The challenge is in finding appropriate techniques\cite{Aigner2008,Keim2005} which scale to large amount of data.
- \fi
  
-Visual or perceptual scalability is defined as the capability of visualization tools in displaying large datasets in an effective manner\cite{Eick2002} such that the user tasks are supported. In the context of time-oriented business data effective means the presentation of patterns to support the temporal analysis tasks. To measure the visual scalability of different visualization techniques for time-oriented data we refer to the work of Eick\cite{Eick2002}. He proposed to measure visual scalability by the database metrics of the dataset and the visual characteristics of the visualization technique.\\*
+\fi
 
-\textbf{Database metrics} measures the size of the database in bytes, the number of rows or the number of attributes. \\*
-
-\textbf{Visualization characteristics} describe the number of elements and attributes presented on the screen, thus measuring how many distinct items a visualization technique can display.
-The combination of the database metrics for the visualization tool and the visualization characteristics for the visualization technique describes the scalability of a visualization tool is. For this reason we analyzed 34 visualization techniques with respect to their scalability. The visualization techniques were chosen based on the work of \textit{Aigner et. al.}\cite{Aigner2011} and classified into five classes according to Keim's taxonomy\cite{Keim2002}: pixel-oriented, geometric, icon-based, hierarchical and graph based techniques. Next, these classes have been studied according to their database metrics, visualization characteristics, integration of analytical methods and interaction. Based on this analysis we identified \todo{Anzahl der Techniken einfügen} techniques which are appropriate to show large time-oriented data. 
-
-\begin{table}[th]
-	\centering
-	% caption format: \caption[<Scalability of Visualization Classes>]{<long version>}
-	\caption{Scalability of Visualization Classes}
-	\label{vizScalability}
-	\begin{tabu}{ l | c }
-	\toprule
-	Visualization Class & Scalability\\
-	\midrule
-	Pixel-oriented & \cellcolor{yellow!25} $w*h$ \\
-	Geometric &  \cellcolor{green!25 }\\
-	Icon-based & \cellcolor{red!25} \\
-	Hierarchical & \cellcolor{green!25}  \\
-	\bottomrule
-	\end{tabu}
-\end{table}
-
-\\*
-\textbf{Pixel-oriented} techniques map each data item to one pixel on the screen. Position and color are used to represent data attributes\cite{Keim1996}.
-Since only one pixel per data item is used this class can maximize the used screen space. 
-Let $M$ be the monitor resolution with the screen-width $w$ and the screen-height $h$, $P$ the number of pixels in $M$ and $D$ the maximum of data which can be displayed at once. In pixel-oriented techniques  
-\begin{math}
-D = w*h
-\end{math}
-which shows that pixel-oriented techniques can display large, but not huge data.  
-\\*
-\textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. Depending on the visualization technique and its visual methaphor the projection function differs. Often analytical methods are included in the projection and thus, this class of techniques becomes a high-potential class for large datasets as they allow to reduce data horizontally and vertically.
-Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit{non-radial} visualizations\cite{Diehl2010} as our analysis has shown that a large part of GP-techniques is based on a radial layout. As radial GP-techniques share common properties such as the number of attributes this differentiation is made to analyze the visual scalability of GP-techniques.\todo{definition of radial wie in \cite{Diehl2010}?}
-\\*
-\textbf{Icon-based} techniques map each data item onto one icon. The attributes are mapped to different icon features\cite{Keim2001}. In time-oriented visualization InfoBUG and VIE-VIESU belong to the class of icon-based visualizations. As every data item requires one icon while showing large data icon-based techniques face the challenge of clutter and occlusion\cite{Borgo2013}.
-\\*
-\textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows them hierarchically. 
-\\*
+\subsection{Visualization Techniques in Detail}
+\subsubsection{Geometric-Projection Techniques}
+Geometric-projective visualizations seems to be the most scalable visualization technique depending on the mapping function. For this reason we will explore techniques in the geometric-projective class in detail and discuss their scalability.
+Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit{non-radial} visualizations\cite{Diehl2010} as our analysis has shown that a large part of GP-techniques is based on a radial layout. As radial GP-techniques share common properties such as the number of attributes this differentiation is made to analyze the visual scalability of GP-techniques.\todo{definition of radial wie in \cite{Diehl2010}?} \\*
 
 
-
-\begin{table}[th]
+\begin{table}[H]
 	\centering
 	% caption format: \caption[<Radial and non-radial GP-techniques>]{<long version>}
 	\caption[Table 1]{Radial and non-radial GP-techniques}
@@ -299,50 +354,44 @@ Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit
 	\midrule
 	EventRiver &  & x \\
 	Flocking Boids &  & x \\
-	Intrusion Detection &  & x \\
 	Kiviat Tube & x &  \\
 	MultiComb & x &  \\
 	Multi-resolution CircleView & x &  \\
 	Parallel Glyphs & x &  \\
     Temporal Star & x &  \\
-	Time Curves &  & x \\
-	Time-tunnel & x & \\
 	TimeWheel & x & \\
-	Worm Plots &  & x\\
 	\bottomrule
 	\end{tabu}
 \end{table}
 
-Radial layout techniques can scale up to 10-20 attributes. If the mapping is pixel-based it scales up to 1000 pixels\cite{Jayaraman2002}. 
-Non-radial techniques
-\todo{weniger Visualisierungstechniken, mehr auf die Klassen}
+Radial layout techniques can scale up to 10-20 attributes.
+
 \textbf{EventRiver} was created in journalism to compare hot topics and their relevance over time. This technique uses clustering algorithms to analyze frequent words. Colored Bubbles with different sizes are placed along the x axis according to time. The bubble size represents one cluster and its relevance. The shape shows when the topic appeared and disappeared. Color and the position on the y axis are used to group topics together.
-Due to the clustering analysis beforehand the rendering of the visualization data is grouped and thus large data can be displayed. 
+Due to the clustering analysis before the rendering of the visualization data is grouped and thus large data can be displayed. 
 EventRiver comes along with interaction techniques such as filtering, reordering and zooming.
+\\*
 \textbf{Flocking Boids} simulate the behaviour of data items in 3D. Thus, data items are represented by a colored, curved line with changing transparency. Based on boid simulation behaviour based rules define the position of the data item over time and its velocity. Different variables can be compared by creating several flocking boids next to each other. Flocking Boid was tested with 12.631 data entries\cite{Moere2004}. 
 Analytical Methods such as clustering or subset selection are outsourced to database algorithms and interaction techniques are not implemented but could be extended\cite{Moere2004}.
+\\*
 \textbf{Kiviat Tube} is a unfolded Radar Chart along the z axis in 3D. Several Radar Charts are stacked behind each other along the time (z) axis and form a tube. Thus, variables are mapped on radial aligned planes and can be compared. Interaction such as changing the planes positions and navigating through time enables the user to compare different variables over time.\\*
 The number of attributes is limited to approximately 10-20 attributes as the radial layout limits the number of variables. Experiments which measured the maximum number of variables doesn't exist. 
-\textbf{MultiComb}
+\\*
+In \textbf{MultiComb} \textit{k} time series plots are mapped on a circle in two possible ways. One way is to position the plots along the circumference. Or the plots are mapped perpendicular to the circumference. In this option the plot resembles a star.  
 \textbf{Multi-Resolution CircleView} extends the CircleView technique by aggregating data according to their relevance. Similar to CircleView the circle is devided in k segments and k is the number of attributes. The least relevent data is placed at the outer circle with a high aggregation level and the most relevant data in the inner circle. The higher the relevance the lower the aggregation level. The number of displayed data items thus depends on the relevance function. 
+\\*
+\textbf{Multi-resolution CircleView} enhances the CircleView technique. Instead of mapping each value to one pixel, data items are aggregated. More recent items are placed in the middle of the circle. These items are represented by one pixel each. Less relevant items are aggregated and placed at the outer part of the circle. These items are usually from a preceding point of time.
+\\*
 \textbf{Parallel Glyphs} pair Parallel Coordinates with Star Glyphs. While similar to Parallel Coordinates each data item is represented by a polyline which connects the vertical axis (attributes) the attribute axis are radially unfolded in 3D and show the data value of the data item over time. Thus, each data value over time is represented by a star glyph. The visualization can be expanded by connection lines over star glyphs. Through the extension of 2D to 3D parallel glyphs are able to display more data rows than parallel coordinates (PC). PC had the problem of clutter while displaying 15.000 data on a gray-scale.  items\cite{Keimb}.
 Parallel Glyphs provide brushing of polylines, filtering, axis reordering, rotating in 3 directions, transparency support if the glyphs overlap each other, focus+context presentation through magnification lenses.
-
-\textbf{3D ThemeRiver} (line .... in Table 1) is a 3D representation of the ThemeRiver technique. It inherits the number of usable dimensions and attributes from ThemeRiver, but additionally can map one more variable to the depth of the 3D ThemeRiver.\todo{einzelne Visualisierungen beschreiben}
-
-\textbf{Braided Graph}
-
-\textbf{Spiral Graph}
-
-\cite{Weber2001}
-
-\textbf{Spiral Display}
-\cite{Carlis}
-
+\\*
+\textbf{Temporal Star} aligns multiple attributes in a star-like manner around the centre. Each star is one point of time. The time axis connects several stars to a 3D-object.
+\\*
+\textbf{TimeWheel}is a 2D technique. Similar to variation one of \textit{MultiComb} attribute axis are positioned along the circle circumference. In the centre of the circle the time axis is placed. 
+\\*
 
 In conclusion a visualization tools should offer the possibility to create multi-resolution and geometric-projection techniques. 
 
-\section{Analytical Methods}
+\section{Analytical Methods}\label{analytical}
 Comparing every visualization technique the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: reduce data horizontally or vertically. 
 Vertical data reduction describes the process to remove data rows whereas horizontal data reduction is used for dimensionality reduction. 
 \begin{figure}[H]
@@ -376,7 +425,8 @@ As time-oriented data has specific characteristics analytical methods have to co
 Other ways to reduce data vertically are binning and pivotization. We will not explain them here in detail as they treat continuous and hierarchical datasets which are beyond our scope in this work. 
 
 \subsection{Horizontal Data Reduction}
-Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep similarities after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
+Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. 
+A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
 %Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
 
 
@@ -388,7 +438,7 @@ Besides data removal datasize can be reduced by decreasing data dimensionality. 
 
 
 
-
+\subsection{More factors} \label{factors}
 Moreover, besides the database metrics and the visualization characteristic visual scalability is influenced by six factors: 
 \begin{itemize}
     \item Human Perception\cite{Keim2005,Deering1998}

@@ -171,6 +171,7 @@
 \RequirePackage{array}
 \RequirePackage{tabu}
 \RequirePackage{longtable}
+\RequirePackage{multirow}
 \RequirePackage{booktabs}
 % Support for listings (for displaying algorithms, source code, etc.).
 \RequirePackage{listings}
