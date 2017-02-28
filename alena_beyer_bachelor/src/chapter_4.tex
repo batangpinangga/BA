@@ -244,7 +244,7 @@ Visual or perceptual scalability is defined as the capability of visualization t
 The combination of the database metrics and the visualization characteristics describes the scalability of a visualization tool. Furthermore, the tools scalability is influenced by more factors which will be discussed later (\ref{factors}).
 
 \subsection{Visual Scalability of time-oriented techniques}
-In the analysis of the techniques we discovered that time-oriented techniques are covered by only four classes. Thus, we measured the scalability of four classes. 
+In the analysis of the visualization techniques we discovered that time-oriented techniques are covered by only four of Keims visualization classes: geometric, hierarchical, icon-based and pixel-oriented. Thus, we measured the scalability of these classes. 
  Based on this analysis we identified a number of \todo{Anzahl der Techniken einfügen} techniques which are appropriate to show large time-oriented data. These techniques will be described in detail.
 
 \begin{table}[H]
@@ -259,45 +259,43 @@ In the analysis of the techniques we discovered that time-oriented techniques ar
 	    \multirow{10}*{Geometric} 
 		& EventRiver        & \cite{Luo2012}\\
 		& Flocking Boids    & \cite{Moere2004}\\
-		& Intrusion Detection\\
 	    & Kiviat Tube       & \cite{Tominski2005}\\
-        & Layer Area Graph\\
         & MultiComb         & \cite{Tominski}\\
         & Multi-resolution CircleView & \cite{Keim2005}\\
         & Parallel Glyphs   & \cite{Fanea2005}\\
         & Temporal Star     & \cite{Noirhomme-Fraiture2002}\\
         & TimeWheel         & \cite{Tominski}\\
-        & Worm Plots\\ \hline
+        \hline
         \multicolumn{3}{|p{\linewidth}|}{
-        \textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. The mapping-function often includes data reduction techniques (see section \ref{analytical}). Thus, the visualization characteristics of GP-techniques strongly depend on the mapping-function. When data reduction techniques are involved, this class of techniques becomes a high-potential class for large data sets as they allow to present large to huge data.} \\ \hline
+        \textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. The mapping-function often includes data reduction techniques (see section \ref{analytical}). Thus, the visualization characteristics of GP-techniques strongly depend on the mapping-function. When data reduction techniques are involved, this class of techniques becomes a high-potential class for visualizing large data sets as they allow to present large to huge data.} \\ \hline
         
 		\multirow{3}*{Hierarchical} 
-		& Pixel-Oriented Network Visualization \\
-		& Software Evolution Analysis & \cite{}\\
-		& Timeline Trees \\ \hline
-		\multicolumn{3}{|p{\linewidth}|}{\textbf{Hierarchical} techniques: we analyzed three hierarchical visualization techniques. One technique included aggregation techniques by collapsing the nodes. With collapsed nodes the technique can display large to huge amount of data. Pixel-oriented Networks use clustering and thus, can.} \\ \hline
+		& Pixel-Oriented Network Visualization  & \cite{Stein2013}\\
+		& Software Evolution Analysis   & \cite{Gall}\\
+		& Timeline Trees                & \cite{Burch}\\ \hline
+		\multicolumn{3}{|p{\linewidth}|}{\textbf{Hierarchical} techniques: we analyzed three hierarchical visualization techniques. One technique included aggregation techniques by collapsing nodes. With collapsed nodes the technique can display large to huge amount of data. Pixel-oriented Networks use clustering and thus, \todo{Begrüdung für Skalierbarkeit einfügen}} \\ \hline
         \multirow{5}*{Icon-based}
-        & Gravi++\\
-        & InfoBUG\\
-        & PeopleGarden\\
-        & Spiral Graph\\
-        & VIE-VISU\\ \hline
+        & Gravi++       &\cite{Hinum2005}\\
+        & InfoBUG       &\cite{chuah1998information}\\
+        & PeopleGarden  &\cite{xiong1999peoplegarden}\\
+        & Spiral Graph  &\cite{Weber2001}\\
+        & VIE-VISU      &\cite{horn2001support}\\ \hline
         \multicolumn{3}{|p{\linewidth}|}{
         \textbf{Icon-based} techniques: As every data item requires one icon icon-based techniques can show less data items than the number of pixels on the screen. When showing large data icon-based techniques face the challenge of clutter and occlusion\cite{Borgo2013}. Thus, icon-based techniques can display small- to medium-sized data sets.}\\ \hline
         \multirow{12}*{Pixel-oriented}
         & 3D ThemeRiver & \cite{Imrich2002}\\
-        & Braided Graph\\
-        & CircleView\\
-        & Data Tube Technique\\
-        & history flow\\
-        & Kaleidomaps\\
-        & Pixel-Oriented Network Visualization\\
-        & Recursive Pattern\\
-        & Spiral Display\\
-        & Stacked Graphs\\
-        & ThemeRiver\\
-        & Time Curves\\
-        & TimeRider\\ \hline
+        & Braided Graph & \cite{Javed2010}\\
+        & CircleView    & \cite{Keim2005}\\
+        & Data Tube Technique & \cite{ankerst2001visual}\\
+        & history flow  & \cite{viegas2004studying}\\
+        & Kaleidomaps   & \cite{bale2007kaleidomaps}\\
+        & Pixel-Oriented Network Visualization  & \cite{Stein2013}\\
+        & Recursive Pattern & \cite{Keim1995}\\
+        & Spiral Display    & \cite{Carlis}\\
+        & Stacked Graphs    & \cite{byron2008stacked}\\
+        & ThemeRiver        & \cite{Havre2000}\\
+        & Time Curves       & \cite{Bach2016}\\
+        & TimeRider         & \cite{Rind2011}\\ \hline
         \multicolumn{3}{|p{\linewidth}|}{
         \textbf{Pixel-oriented} techniques: Since only one pixel per data item is used this class can maximize the used screen space. Let $M$ be the monitor resolution with the screen-width $w$ and the screen-height $h$, $P$ the number of pixels in $M$ and $D$ the maximum of data which can be displayed at once. In pixel-oriented techniques  \begin{math}
         D = w*h
@@ -309,8 +307,8 @@ In the analysis of the techniques we discovered that time-oriented techniques ar
 \end{table}
 
 
-Most of the existing visualization techniques nowadays still are not appropriate in visualizing large data. Pixel-based visualizations represent each data item by one pixel and thus, are limited to 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" data sets follow the pixel-oriented approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. Their scalability depends on the mapping-function. 
-One interesting extension of pixel-oriented techniques is the \textit{multi-resolution} approach\cite{Keim2005}. The idea is to show more relevant data items at a pixel-based level and less relevant data items in an aggregated way. In Multiresolution CircleView recent data is shown at full resolution in the middle of the circle and previous-year-data is placed at the outer circle. With multi-resolution it is possible to extent the pixel-limit from $w*h$ to larger data sets. 
+Most of the existing visualization techniques nowadays still are not appropriate in visualizing huge data. Pixel-based visualizations represent each data item by one pixel and thus, are limited to 2 mio. pixels. Even new visualization techniques which where developed to visualize "very large" data sets follow the pixel-oriented approach\cite{Keim1995, Keim1996}. Icon-based visualizations display one data item per icon and thus can display even less data than pixel-oriented visualizaton techniques. The most promising techniques are hierarchical and geometric-projective techniques as they combine aggregation or abstraction with visualization. Their scalability depends on the mapping-function. 
+One interesting extension of pixel-oriented techniques is the \textit{multi-resolution} approach\cite{Keim2005}. The idea is to show more relevant data items at a pixel-based level and less relevant data items in an aggregated way. The technique \textit{multi-resolution CircleView} shows recent data at full resolution in the middle of the circle and places previous-year-data  at the outer circle. With multi-resolution it is possible to extent the pixel-limit from $w*h$ to larger data sets. 
 
 \begin{table}[H]
 	\centering
@@ -337,7 +335,7 @@ One interesting extension of pixel-oriented techniques is the \textit{multi-reso
 % Wie viele Datenpunkte sind notwendig, um Pattern darzustellen? -> data 
 % Interaction Techniques
 % Downsampling -> Analytical Methods
-
+\iffalse
  The challenges of large-scale data for ADV are \textit{scalability} and \textit{dynamics}\cite{Wang2015}. With its volume the challenges for large-scale data are also challenges for Big Data defined as high volume, high velocity, high veracity and high variety data sets\cite{Wang2015}. In this work we concentrate on the scalability challenge for visualization techniques. The challenge is in finding appropriate techniques\cite{Aigner2008,Keim2005} which scale to large amount of data.
  
 \fi
@@ -452,13 +450,15 @@ Parallel Glyphs provide brushing of polylines, filtering, axis reordering, rotat
 \end{table}
 
 
-In summary, visualization tools should offer advanced data visualization (ADV) to visualize time-oriented multi-variate data. The term ADV is not unambigiously defined. \textit{Aigner et. al} classify Parallel Coordinates as a standard visualizations\cite{Aigner2011} whereas \textit{Keim et. al.} \cite{Keim} are talking about Parallel Coordinates as a novel techniques. This discussion of course is determined by the time epoche. The longer a visualization technique is known the more it is counted as a standard visualization technique. In our understanding ADV is a visualization technique which is able to scale to large and huge amounts of data.
-However, only few techniques are able to represent billions of data. In the end, most of them are limited through the 2D-screen. Factors which enhance the scalability are \textit{improved visual metaphors}, \textit{interaction techniques} and \textit{data reduction}.
+In summary, visualization tools should offer advanced data visualization (ADV) to visualize time-oriented multi-variate data. The term ADV is not unambigiously defined\cite{Aigner2011,Keim}. 
+%\textit{Aigner et. al} classify Parallel Coordinates as standard visualizations\cite{Aigner2011} whereas \textit{Keim et. al.} \cite{Keim} are talking about Parallel Coordinates as a novel technique. This discussion of course is determined by the time epoche. The longer a visualization technique is known the more it is counted as a standard visualization technique. 
+In our understanding ADV is a visualization technique which is able to scale to large and huge amounts of data.
+However, only few techniques are able to represent billions of data. In the end, most of them are limited through the 2D-screen. Factors which enhance the scalability are \textit{improved visual metaphors}, \textit{interaction techniques} and \textit{data reduction}. 
 
 
 \section{Analytical Methods}\label{analytical}
-Comparing every visualization technique the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: reduce data horizontally or vertically. 
-Vertical data reduction describes the process to remove data rows whereas horizontal data reduction is used for dimensionality reduction. 
+Comparing every visualization technique the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: to reduce data horizontally or vertically. 
+Vertical data reduction describes the process of removing data rows whereas horizontal data reduction is used for dimensionality reduction. 
 \begin{figure}[H]
     \centering
         \scalebox{.1}{\includegraphics{src/images/dimreduce}}
@@ -474,7 +474,7 @@ Vertical data reduction describes the process to remove data rows whereas horizo
 \end{figure}
 
 \subsection{Vertical Data Reduction}
-One way to decrease the size of large or huge data sets is to remove data rows. This section lists several data removal techniques. One important issue for every technique is the question which data to keep and which data to remove. The disadvantage of data reduction is the information loss.
+One way to decrease the size of large or huge data sets is to remove data rows. This section lists several data removal techniques. \todo{next sentences are not mentioned again: remove or mention} One important issue for every technique is the question which data to keep and which data to remove. The disadvantage of data reduction is the information loss.
 \subsubsection*{Sampling}
 Sampling describes a strategy to reduce data by creating a sample of the original data. Thereby, sampling is scalable, reduces clutter, preserves information of the kept data as well as patterns and trends\cite{PiringerHarald2011}. Still, sampling may eliminate outliers or single data items and does not provide any garantuee to avoid visual overlap. 
 \subsubsection*{Filtering}
@@ -493,6 +493,8 @@ Other ways to reduce data vertically are binning and pivotization. We will not e
 \subsection{Horizontal Data Reduction}
 Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. 
 A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
+
+Data reduction techniques such as horizontal and vertical data reduction condense  data sets in way to fit data sets on the screen and \todo{Umgangsprachlich: sprachstil ändern} make visualization possible. 
 %Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
 
 
@@ -514,18 +516,20 @@ Moreover, besides the database metrics and the visualization characteristic visu
     \item Data structures and algorithms
     \item Computational infrastructure
 \end{itemize}
-Human perception and monitor resolution are discussed in \ref{perception} and \ref{resolution}. Data structures and algorithms as well as computational infrastructure will not be discussed in this work as it would go beyond our scope. 
 
+Out of the six factors which where proposed by Eick \cite{Eick2002} human perception and monitor resolution are already discussed in \ref{perception} and \ref{resolution}. Data structures and algorithms as well as computational infrastructure will not be discussed in this work as it would go beyond our scope. 
+Thus, in the next sections \textit{visual metaphors and interactivity} will be studied.
 \subsubsection*{Visual Metaphors}
-Improved visual metaphors enhance the scalability of visualization techniques\cite{Eick2002}. Let $w$ be the monitor width. If each bar in a bar chart would have the width of one pixel, a bar chart could only visualize  $w$ data items. Thus, the visual metaphor of the bar chart limits the technique how many data items can be mapped at most. One way to improve visual metaphors are \textbf{multi-resolution} metaphors\cite{Keim2005}. The resolution is the ratio of data items to screen pixels, e.g. pixel-oriented visualization maps one data item to one pixel and thus, the resolution is 1:1. Multi-resolution combines several resolution in one technique. Usually, the resolution is lower at \textit{Overview-Level} of a multi-resolution visualization higher at the \textit{Detail-Level}. \textit{CircleView} is one visualization technique with a multi-resolution metaphor.
-Multi-resolution can be implemented with aggregation and fish-eye lenses. Fish-eye lenses is one interaction technique (discussed in \ref{interaction}). Aggregation for multi-resolution needs to consider a relevant function. Only a part of data items should be aggregated, while others are not.
+Visual metaphors define how to map data to graphic primitives. Thereby, the mapping function influences visual scalability. 
+ Let $w$ be the monitor width. If each bar in a bar chart would have the width of one pixel, a bar chart could only visualize  $w$ data items. Thus, the visual metaphor of the bar chart limits the technique how many data items can be mapped at most. Improved visual metaphors can enhance the scalability of visualization techniques\cite{Eick2002}. One way to improve visual metaphors are \textbf{multi-resolution} metaphors\cite{Keim2005}. The resolution is the ratio of data items to screen pixels, e.g. pixel-oriented techniques map one data item to one pixel and thus, the resolution is 1:1. Multi-resolution combines several resolutions in one technique. In a multi-resolution visualization the resolution is usually lower at \textit{Overview-Level} and higher at the \textit{Detail-Level}. \textit{CircleView} is one visualization technique with a multi-resolution metaphor.
+Multi-resolution can be implemented with aggregation and fish-eye lenses (discussed in \ref{interaction}). Aggregation for multi-resolution needs to consider a relevance function which assigns a priority to the pixels and combines them according to this priority. In multi-resolution data is only partially aggregated as some parts of the visualization are compressed while others are not aggregated.
 Multi-resolution is one important aspect for visualization tools to improve visual scalability.
 \\*
 
 
 \todo{Fokus auf Interaction Techniques für große Datenmengen. Warum sind sie wichtig für große Datenmengen?}
 \section{Need for Interaction Techniques}
-Interaction Techniques describe how the user can interact with the data. In large data sets interaction overcomes the challenges of overlap, limited screen space, identifying a region of interest and navigation presented in \ref{problems}. Thus, interaction technique enhance visual scalability\cite{Tegarden1999}.
+Interaction Techniques describe how the user can interact with the data. In this section interaction technqiues for large data sets are discussed and how they can enhace scalability. In large data sets interaction overcomes the challenges of overlap, limited screen space, identifying a region of interest and navigation presented in \ref{problems}. \\*
 
 Overlap can be eliminated by filtering and zooming. By reducing the data size with filters and drilling down less elements are presented on the screen and hence, overlap is minimized. One alternative to zooming are multiple linked views.\\*
 
@@ -575,10 +579,11 @@ All distortion techniques transform the undistorted 2D space by a mathematical f
 \textbf{Navigation Maps}\\*
 With navigational maps the whole data set is displayed in a miniature version. Usually, navigational maps include linked views in which an enlargened subset of the data is presented. The user can choose the subset which is shown in the linked views with the navigational map.
 
-\textbf{Coarse Presentations}
+The discussed interaction techniques are only a subset of available interaction techniques. We focused on interaction styles which can solve the problems of large data visualization and thus enhance visual scalability\cite{Tegarden1999}.
+
 
 \section{Layout}
-Closely related to interaction techniques is an appropriate layout to enhance visual scalability. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented requires a layout with multiple simultaneous views. Coordinated views are linked views. If one data item is selected and brushed the corresponding characteristic in other windows is also highlighted.
+In close relation to interaction techniques stands appropriate layout techniques to enhance visual scalability. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented data requires a layout with multiple simultaneous views. Coordinated views are linked views. If one data item is selected and brushed the corresponding characteristic in other windows is also highlighted.
 \begin{figure}[H]
     \centering
         \scalebox{.3}{\includegraphics{src/images/zoomVSmultiWindow}}
@@ -588,14 +593,29 @@ Closely related to interaction techniques is an appropriate layout to enhance vi
 Another layout are \textit{Perspective walls} which is a 3D-representation existing of 3 walls. The front wall shows details and the two side walls provide context. Perspective walls are one method to provide \textit{Focus + Context} and Navigation in large datasets.
 
 \subsection{Visual Scalability 2.0}
-After our analysis of the limiting factors for displaying large data sets we come to the conclusion that the limitation by human perception is much higher than the limitation by different visualization techniques. The question is \textit{not} how many pixel can be displayed by a visualization technique but whether the visualization technique allows to percepeive patterns. This is achieved by the \textit{visual metaphor} and \textit{data reduction methods}. Data reduction methods can aggregate overlapping data items to cluster by either mapping data density to color or by displaying the mean and the range of data. Visual Metaphors include techniques such as multi-resolution and thus, enhance the number of pixels which can be displayed. 
+After our analysis of the limiting factors for displaying large data sets we come to the conclusion that the limitation by human perception is more restrictive than the limitation by different visualization techniques. The question is \textit{not} how many pixel can be displayed by a visualization technique but whether the visualization technique allows to perceive patterns. This is achieved by the use of \textit{appropriate visual metaphors} and \textit{data reduction methods}. Data reduction methods can aggregate overlapping data items to cluster by either mapping data density to color or by displaying the mean and the range of data. Visual Metaphors include techniques such as multi-resolution and thus, enhance the number of pixels which can be displayed. 
 
 \subsection{Factors}
-Bringing all findings together, the important factors for visualization of large data sets to support decision-making are the following: 
+Bringing all findings together, the important factors for the visualization of large data sets to support decision-making are the following: 
 \begin{enumerate}
-\item How advanced visualization techniques are integrated?
-\item How data reduction is achieved?
-\item How aggregation metaphors are implemented?
-\item How pattern perception is supported?
+\item How advanced visualization techniques are integrated? 
+\item How data reduction is achieved? 
+\item How aggregation metaphors are implemented? 
+\item How pattern perception is supported? 
 \end{enumerate}
 
+Visualization tools need to offer solutions to these questions for a successful visualization of large data sets. Thus, we propose the following success criteria for large data visualizations: 
+\begin{enumerate}
+\item Visualization Techniques
+\subitem The tool offers advanced visualization techniques.
+\subitem The tool offers aggregation metaphors for visualization techniques.
+\item Analytical Methods
+\subitem The tool offers horizontal data reduction.
+\subitem The tool offers vertical data reduction.
+\item Interaction Techniques
+\subitem The tool offers distortion techniques
+\subitem The tool offers coordinated windows.
+\subitem The tool offers drill-down functions.
+\end{enumerate}
+
+In the next chapter we will compare different state-of-the art tools regarding this success criteria for large data visualization.
