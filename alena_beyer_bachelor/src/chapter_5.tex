@@ -1,7 +1,7 @@
 \chapter{Investigation of Visualization Tools using a Feature Classification Scheme}
 \label{chap:Tools}
 
-\section{Selection of Tools}
+\section{Selection of Tools}\label{tool:selection}
 In this section we analyze selected visualization tools in business and their ability to visualize large time-oriented data. Therefore, we developed a classification scheme which is based on the collected success criteria of chapter 3. \\*
 As discussed in chapter 3 visualization tools need to provide scalable visualization techniques or the ability to extend the tool with custom visualizations. Moreover, Interaction and distortion techniques are necessary to improve scalability. Analytical methods reduce the amount of data vertically and horizontally. 
 Advanced Data Visualization in business context requires software that is able to scale visualization in an "effective manner"\cite{Russom2011}. Offering advanced visualization techniques, parameterization, interaction and analytical methods such as data abstraction\cite{Tegarden1999,Aigner2011,Eick2002,Zhanga} are core functions of ADV software. \\*
@@ -23,8 +23,8 @@ Furthermore, the software needs visualization features, the ability to present t
 
 Based on the Magic Quadrant for Business Intelligence and Analytics Platforms 2017 \cite{Sallam2017} Qlik, Tableau and Microsoft are the leading visionaries of BI Vendors. \cite{ITCentralStation} as a crowdsourcing recommendation platform for BI tools ranked Tableau, Qlik, Oracle, Microsoft Power BI and IBM Cognos on the first five places. Nevertheless, marketrelevance reports from Gartner, Forrester, Barc and other so called "research and advisory companies" usually do not publish a detailed scoring model. Thus, the ranking might not be appropriate to our needs.
 
-Eventhough, Qlik, Tableau and PowerBI are ranked as BI tools they can call themselves visualization tools. 
-Thus, we chose the tools: PowerBI, Tableau and Qlik Sense (QS).\\*
+Eventhough, Qlik, Tableau and Power BI are ranked as BI tools they can call themselves visualization tools. 
+Thus, we chose the tools: Power BI, Tableau and Qlik Sense (QS).\\*
 Moreover, we added d3.js as this javascript library is open-source, state-of-the art in visualization and offers a wide range of visualization possibilities.
 
 Even though the selection of the tools is not exhaustive, we believe that the reviewed products represent the state-of-the art and provide the table of different tools which was used for chosing the remaining 5 tools in the appendix.
@@ -53,12 +53,12 @@ We chose d3.js as it is a data visualization tool with interaction. As it is fre
 R is a free and opensource language for statistical computing and graphics. Its modular structure consisting of many packages makes R highly extendable\cite{R}. Some packages enable the user to do analytics with R, others support different visualization techniques. Usually those packages also support interaction except the user additionally uses other libraries such as plot\_ly() or Shiny. Both of them are frameworks which combine R graphics with interaction techniques. Besides of that some packages offer interaction techniques, e.g. dygraphs(), while others do not. Thus, our classification scheme is only valid combined with specific packages.
 There exists many packages which treat time-series data, e.g. \textit{zoo} and \textit{dygraphs} treat time-series. Large data sets are handled in \textit{bigvis}.
 
-\section{Scalability of visualization tools}
+\section{Scalability of visualization tools}\label{tool:scalability}
 The scalability of visualization tools is measured by the \text{visualization characteristics} and the \textit{database metrics}. Moreover, as discussed in \ref{chap:BIV} important features are interaction techniques and analytical methods. 
 
 \subsection{Database metrics}
 According to Eick visual scalability is not only determined by the visualization characteristics but also by the database metrics. Eick defined database metrics as the size of the database which can be handled by tools\cite{Eick2002}. One possibility to measure the database size are the number of lines which can be load into the tool and the limitations on visualizations in the number of rows.\\*\\*
-While \textbf{Tableau} and \textbf{Power BI} have no limitations how many data can be loaded, \textbf{QS} inherits the data load limitations of Qlik View: A QS document cannot have more than 2,147,483,648 distinct values in one field. This limitation still allows Qlik to handle large and huge data sets according to our definition. Moreover, 2 billion data points exceed the limit of screen pixels. But nevertheless, QS is outperformed by Tableau and PowerBI in this particular case.
+While \textbf{Tableau} and \textbf{Power BI} have no limitations how many data can be loaded, \textbf{QS} inherits the data load limitations of Qlik View: A QS document cannot have more than 2,147,483,648 distinct values in one field. This limitation still allows Qlik to handle large and huge data sets according to our definition. Moreover, 2 billion data points exceed the limit of screen pixels. But nevertheless, QS is outperformed by Tableau and Power BI in this particular case.
 \\*\\*
 In context of visualization the number of rows which are loaded into a visualization is a determining factor for scalability. For large data the user expects to load all data he wants the tool to load. However, some tools limit the initial number of rows and the user has to write additional code. This effects the easy-of-use negatively.
 QS limits the initial fetch to 10.000 but gives the opportunity to fetch more data if needed. \textbf{Power BI} and \textbf{Tableau} currently have no limit for rows in visualization.
@@ -78,7 +78,7 @@ In our understanding of visual scalability Eicks definition of database metrics 
 \textbf{In-memory versus Real Time Connection}
 In-memory techniques store their data inside the RAM while real time technologies work directly on the database.
 With large data sets in-memory technologies might not be feasible. Eventhough, working in-memory is faster than working directly at the database. With a smaller subset of large databases working in-memory might be the better option. 
-\textbf{QS} data engine (QIX Engine) and \textbf{PowerBI} use in-memory columnbased technology. While the data engine processes calculation the RAM may be temporarily allocated. Thus, QS and Power BI are limited by the primary memory of the computer. \textbf{Tableaus} Data Engine is designed to work live on the database. Data Extracts can be created to work in-memory. The limits for data extracts are not published but Tableau Public, the free version of Tableau, recently extended the limit of 1 mio. rows to 10 mio. rows in-memory. 
+\textbf{QS} data engine (QIX Engine) and \textbf{Power BI} use in-memory columnbased technology. While the data engine processes calculation the RAM may be temporarily allocated. Thus, QS is limited by the primary memory of the computer. \textbf{Power BI} also connects live to clouds and on premises similar to \textbf{Tableaus} Data Engine which is designed to work live on the database. At Tableau data extracts can be created to work in-memory. The limits for data extracts are not published but Tableau Public, the free version of Tableau, recently extended the limit of 1 mio. rows to 10 mio. rows in-memory. 
 For working with large data sets Tableau again outperformed QS and Power BI.\\*
 \textbf{Connection to multiple data sources}
 With large data sets data is distributed about several places. The ability to connect to multiple databases impacts the scalability. All of the tools can connect to multiple data sources. In future work, a performance review for the connection of the tools to multiple data sources is recommended.\\*
@@ -91,7 +91,7 @@ Scalability of tools can also be measured in terms of users and delivery which g
 
 
 \subsection{Visualization Characteristics}
-In the context of \textit{visualization characteristics} QS, Tableau, PowerBI and d3.js have been compared regarding \textit{Visualization Techniques, Analytical Techniques and Interaction Techniques}. 
+In the context of \textit{visualization characteristics} QS, Tableau, Power BI and d3.js have been compared regarding \textit{Visualization Techniques, Analytical Techniques and Interaction Techniques}. 
 
 \subsection*{Qlik Sense}
 
@@ -148,28 +148,29 @@ Distortion techniques such as graphical fish-eye or bifocal displays are not sup
 \subsection*{Power BI}
 
 \subsubsection*{Visualization Techniques}
-Microsoft Power BI offers 8 built-in visualization techniques and with the MarketPlace 15 different visualization techniques. Moreover, the Power BI visuals gallery offers 75 visualization apps. To build custom visualization apps the user needs to write \textit{TypeScript} or \textit{R}. Advanced Metaphors are not supported. 
+Microsoft Power BI offers 8 built-in visualization techniques, 15 available techniques at the MarketPlace and 75 visualization apps in the visuals gallery. Additionally, the user can build custom visualization apps by writing \textit{TypeScript} or \textit{R}. Out of the 98 techniques none of them implements any discussed techniques of chapter \ref{visualization}. Moreover, so far advanced Metaphors are not supported\cite{Amanda}. One approach to aggregation markers are \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{Groups}} which can be combined with drill-down options.
 
 \subsubsection*{Analytics}
-Data Reduction in PowerBI is only possible with a data view on the database which considers less data than before. 
-\textbf{Aggregation and Sampling} can be achieved in embedding R scripts or in using calculated fields.
+Data Reduction in Power BI is possible with a data view on the database which considers less data than before. Moreover, data sets can be extracted with the \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{Inclusion/Exclusion}} of data points.\\*
+\textbf{Integration of analytical program:} Besides the own core functions for data reduction Power BI is connected to analytical programs such as \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{R, Mixpanel or comScore.}}\\*
+\textbf{Aggregation and Sampling} for example can be achieved in embedding R scripts or in using calculated fields. \\*
 \subsubsection*{Interaction}
-With cross-highlighting Power BI included brushing and linking in the tool\cite{powerbiInteract}, it offers filter functions. The focus mode enables the user to have a detailed view on the visualization. In focus mode the visualization will expand to full screen.  
+With cross-highlighting Power BI includes brushing and linking\cite{Power BIInteract}. Moreover, filter functions are embedded. The \textit{focus mode} expands one visualization to full screen and thus, enables the user to have a detailed view on the visualization. The app \textit{Advanced Time Slicer} is one implementation of the distortion technique navigational map for time-oriented data. Navigation in Power BI is also realized by the search mechanism Power Q&A which answers NLP-question regarding the data set. Power Q&A includes filtering with the keywords WHERE, AFTER, BEFORE, BETWEEN, WITH or by naming the date as well. 
 
 \subsection*{d3.js}
 \subsubsection*{Visualization Techniques}
 In d3.js data attributes are assigned to graphical attributes. It has not only one way to present pie charts but offers functions which process the data set in a way that pie charts can be drawn. This comparison is valid for other techniques but pie charts. By writing javascript code any visualization technique any advanced metaphor can be implemented. Some examples are d3.hexbin which allows binning,  simplify.js for data abstraction or clusterfck for clustering.  
-Advanced metaphors can be achieved with libraries for aggregation or data abstraction. Simplify.js for example reduces data points on polylines while maintaining the characteristic shape of the polyline. This is one example for data abstraction.
+Marker clustering in d3.js can for example be achieved with \href{https://www.phase2technology.com/blog/using-d3-quadtrees-to-power-an-interactive-map-for-bonnier-corporation/}{quadtrees}\cite{Morrison2014}. Simplify.js for example reduces data points on polylines while maintaining the characteristic shape of the polyline. This is one example for data abstraction.
 
 \subsubsection*{Analytics}
 While d3.js is only designed to visualize data it does not inherently offer the ability to analyze data. Therefore, a number of javascript libraries exist which can be combined with d3.js. Some examples are simplestatistics.js, regression.js, node.js with the packages data-reduction, ml-pca or dimensionality-reduction. 
 As javascript allows the integration of libraries there is basically no limit for analytical functions. 
 
 \subsubsection*{Interaction}
-d3.js allows to integrate various interaction techniques such as Zooming, Filtering or Linking \& Brushing. Distortion techniques can be achieved with the d3 plugin Fisheye Distortion.
+d3.js allows to integrate various interaction techniques such as Zooming, Filtering or Linking \& Brushing. Distortion techniques can be achieved with the d3 plugin \hyperlink{https://bost.ocks.org/mike/fisheye/}{\textit{Fisheye Distortion}}\cite{Bostock2012} which allows circular, linear and logarithmic distortion.
+Perspective walls can be implemented with \hyperlink{https://bl.ocks.org/mbostock/10571478}{\textit{Perspective Transformation}}\cite{Bostock2017}.
 
-
-\subsection{The classification scheme}
+\subsection{The classification scheme}\label{tool:classification}
 The tools basis of assessment concerning \textit{visualization characteristics} is the classification scheme. The aspects \textit{Visualization Techniques, Analytical Techniques, Interaction Techniques} are assessed according to the criteria of completeness and required programming skills. The consideration of programming skills in business is important as the standard visualization tool user in a company may have few programming knowledge (compare \ref{user}). Moreover, investment costs in tools also increase the higher the required programming skills.
 
 The criteria completeness and programming skills have been combined in the tool criteria score(TCS). Each tool has been assigned a tuple-sore: (Programming Skills, Completeness). If the assessed aspect did not exist 0 was assigned.
@@ -208,6 +209,7 @@ The criteria completeness and programming skills have been combined in the tool 
 
 %example grid
 \begin{figure}[H]
+\centering
 \scalebox{.75}{
     \begin{tikzpicture} 
         \begin{axis}[
@@ -226,14 +228,16 @@ The criteria completeness and programming skills have been combined in the tool 
         \node at (axis cs: 3,3)   {Tool 2};
         \end{axis}
     \end{tikzpicture}}
-    \caption{Tool Criteria Score} \label{classification}
+    \caption{Tool Criteria Score (TCS)} \label{classification}
 \end{figure}
 
-%Analytics Figure   
+
 \subsection*{Analytics}
+%%% Horizontal Data Reduction
 \begin{figure}[H]
-\scalebox{.75}{
-    \begin{tikzpicture} 
+\subfigure[Supports Analytical Functions]
+{
+    \begin{tikzpicture}[scale=0.55]
         \begin{axis}[
         axis y line     = left,
         axis x line     = bottom,
@@ -241,43 +245,492 @@ The criteria completeness and programming skills have been combined in the tool 
         grid style = {color=gray!50, dotted},
         xticklabels={,,1,2,3,4},
         yticklabels={,0,1,2,3,4},
-        xmin       = 0, xmax = 4.2,
-        ymin       = 0, ymax = 4.2,
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
         xlabel={Programming-Skills},ylabel={Completeness}
         ]
-        %%%%%%%%%%%
-        %QS
-        \addplot [color=green,mark=*, only marks] coordinates{(4,2)};%analytical functions
-                    \node at (axis cs: 2,2)   {QS with extension};
-        \addplot [color=green,mark=square*, only marks] coordinates{(0,0)};%integration of analytical program
-        
-        %Tableau
-        \addplot [fill=blue, 
-        only marks] coordinates{(1,1) (4,2.5)};%analytical functions
-        %\addplot [color=blue,mark=square*, only marks] coordinates{(3,4)};%integration of analytical program
-        \node[shape=rectangle with diagonal fill, 
-            diagonal top color=red,
-            diagonal bottom color=blue,
-            diagonal from right to left, 
-            draw] 
-            at (axis cs: 3,4) {};
-        
-        %PowerBI
-        \addplot [color=yellow,mark=*, only marks] coordinates{};%analytical functions
-        %\addplot [color=yellow!50,mark=square*, only marks] coordinates{(3.03,3.95)};%integration of analytical program
-        
+        % (1) Supports Analytical Functions
+         \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 4,1) {}; %QS
+        \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 1,1) {}; %Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 1,1) {}; %Tableau
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 4,2.5) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Integration of analytical program]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Integration with analytical program
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=blue!50, bottom color=yellow, left color=white!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js, Tableau
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 0,0) {}; %QS
+        \end{axis}
+        \begin{customlegend}[
+            legend entries={ % <= in the following there are the entries
+                d3.js,
+                Power BI,
+                QS,
+                Tableau
+            },
+            legend style={at={(13.5, 5.5)},font=\footnotesize}] % <= to define position and font legend
+            % the following are the "images" and numbers in the legend
+            \addlegendimage{mark=*,red,opacity=0.5}
+            \addlegendimage{mark=*,yellow,opacity=0.5}
+            \addlegendimage{mark=*,green,opacity=0.5}
+            \addlegendimage{mark=*,blue,opacity=0.5}
+        \end{customlegend}
+    \end{tikzpicture}
+}
+\caption{TCS regarding Horizontal Data Reduction} \label{TCShorizontal}
+\end{figure}
 
+%% Vertical Data Reduction
+\begin{figure}[H]
+\subfigure[Sampling]
+{
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (1) Sampling
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 0,0) {}; %QS
+        \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 3,2) {}; %Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 3,3) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Filtering]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Filtering
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 3,4) {}; %d3.js, Power BI
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 1,4) {}; %QS
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\subfigure[Filtering + Extraction ]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Filtering + Extraction
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 0,0) {}; %QS
+        \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 1,4) {}; %Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 2,4) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\subfigure[Abstraction]
+{
+\begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (3) Abstraction
+         \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 0,0) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\caption{TCS regarding Vertical Data Reduction} \label{TCSvertical}
+\end{figure}
+
+\subsection*{Visualization}
+\begin{figure}[H]
+\subfigure[Support of ADV]
+{
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (1) Offers advanced techniques
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Aggregation Marker]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Aggregation Markers
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green!50, left color=green!50,
+        draw]  at (axis cs: 1,1) {SDC}; %QS
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
 
         
         \end{axis}
-    \end{tikzpicture}}
-    \caption{Tool Criteria Score} \label{classification}
+    \end{tikzpicture}
+}
+\subfigure[Multi-resolution]
+{
+\begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (3) Multi-Resolution Metaphor
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow!50, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+
+\caption{TCS regarding Visualization: similar positioning of tools across all criteria} \label{TCSvisualization}
 \end{figure}
 
-\subsection*{Analytics}
-
-
 \subsection*{Interaction}
+%%% Standard Interaction
+\begin{figure}[H]
+\subfigure[Brushing\&Linking]
+{
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (1) Brushing & Linking
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+        draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Zoom]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Zoom
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+        draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\subfigure[Filter]
+{
+\begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (3) Filter
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+        draw]  at (axis cs: 1.5,4) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+
+\caption{TCS regarding Standard Interaction Techniques: similar positioning of tools across all criteria} \label{TCSstandardinteraction}
+\end{figure}
+
+%% Distortion Techniques
+\begin{figure}[H]
+\subfigure[Graphical Fish-Eye]
+{
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (1) Graphical Fish-Eye
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Bifocal-Display]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Bifocal-Display
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\subfigure[Perspective Wall]
+{
+\begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (3) Perspective Wall
+         \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 4,4) {}; %QS, Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+
+\caption{TCS regarding Distortion Techniques: Tableau is outperformed} \label{TCSdistortion}
+\end{figure}
+
+%% Navigation Techniques
+\begin{figure}[H]
+\subfigure[Coordinated Windows]
+{
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (1) Coordinated Windows
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+        draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}    
+\subfigure[Search]
+{  
+    \begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (2) Search
+        \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+        draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+\subfigure[Navigational Maps]
+{
+\begin{tikzpicture}[scale=0.55]
+        \begin{axis}[
+        axis y line     = left,
+        axis x line     = bottom,
+        grid,
+        grid style = {color=gray!50, dotted},
+        xticklabels={,,1,2,3,4},
+        yticklabels={,0,1,2,3,4},
+        xmin       = -0.1, xmax = 4.2,
+        ymin       = -0.1, ymax = 4.2,
+        xlabel={Programming-Skills},ylabel={Completeness}
+        ]
+        % (3) Navigational Maps
+         \addplot [] coordinates{};
+        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        draw]  at (axis cs: 3,4) {}; %d3.js
+        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        draw]  at (axis cs: 1,4) {}; %QS
+        \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
+        draw]  at (axis cs: 1,2) {}; %Power BI
+        \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
+        draw]  at (axis cs: 0,0) {}; %Tableau
+        \end{axis}
+    \end{tikzpicture}
+}
+
+\caption{TCS regarding Navigation Techniques} \label{TCSnavigation}
+\end{figure}
 
 
 \iffalse
@@ -300,29 +753,44 @@ Animation can be achieved by using plot\_ly() and ggploty(). Moreover, plot\_ly(
 \textit{Dygraphs} includes also navigational sliders called Range Selector, panning and zooming and brushing of data items.
 \fi
 
-%\rotatebox{90}{
+\rotatebox{90}{
 
     \begin{tabular}{|l|l|l|l|l|l|}
         \toprule
-        &                       & javascript & QS   & PowerBI  & Tableau \\
+        &                                  & d3.js             & QS              & Power BI  & Tableau \\
         \midrule
-        \multirow{2}*{Analytics}    
-        & Horizontal Data Reduction & Dynamic Data Reduction (3)&   views (3) & data extracts(3)\\
-        & Vertical Data Reduction & 3       & 4, 75\%       & 3         & 4         \\ 
+        \multirow{4}*{Analytics}    
+        & Horizontal Data Reduction         & node.js libraries & \hyperlink{https://help.qlik.com/en-US/sense/1.0/Subsystems/WorkingWith/Content/ChartFunctions/SetAnalysis/AnalyzeSetsOfData.htm}{Set Expressions} & R integration & R integration \\
+        & Vertical Data Reduction           & node.js libraries &  Dynamic Data Reduction & \makecell{views (3) \\ include/exclude (1) \\ data extracts(3)}    &   R integration       \\ 
         \midrule
-        \multirow{3}*{Techniques}
-        & Advanced Techniques   & 4         & 2             & 2         & 0         \\
-        & Multi-Resolution Metaphor & 3     & 0             & 0         & 0         \\
-        & Aggregation Markers   & 3         & 4, 25\%       & 0         & 0         \\
+        \multirow{3}*{Visualization Techniques}
+        & Support of Advanced Techniques     & 4         & Extension        & Extension      & 0         \\
+        & Multi-Resolution Metaphor          & algorithm     & Extension    & Extension      & 0         \\
+        & Aggregation Markers                & Marker Clustering         & Smart Data Compression       & Extension         & 0         \\
         \midrule
-        \multirow{2}*{Interactive Techniques} \\
+        \multirow{2}*{Interactive Techniques} 
+        & Brushing \& Linking   & \checkmark & \checkmark & \checkmark & \checkmark \\
+        & Zooming               & \checkmark & \checkmark & \checkmark & \checkmark \\
+        & Filter                & \checkmark & \checkmark & \checkmark & Quick Filters \\
+        & Graphical Fish-eye    & \hyperlink{https://bost.ocks.org/mike/fisheye/}{\textit{Fisheye Distortion}}\cite{Bostock2012}       & Extension  & Extension  & 0 \\
+        & Bifocal-Display       & \hyperlink{https://bost.ocks.org/mike/fisheye/}{\textit{Fisheye Distortion}}\cite{Bostock2012}       & Extension  & Extension  & 0 \\
+        & Perspective Walls     & Perspective Tranformation & Extension & Extension & 0 \\
+        & Coordinated Windows   & \checkmark & \checkmark & \checkmark & \checkmark \\
+        & Search                &            & \hyperlink{https://help.qlik.com/en-US/sense/2.2/Subsystems/Hub/Content/Search/search-tool.htm}{Smart Search}& \hyperlink{https://powerbi.microsoft.com/en-us/documentation/powerbi-service-q-and-a/}{Q\&A}& \\
+        & Navigational Maps     &            & \hyperlink{https://help.qlik.com/en-US/sense/1.1/Subsystems/Hub/Content/Visualizations/BarChart/BarChart.htm}{Mini Charts}                                           & 0           & 0\\
         \bottomrule
     \end{tabular}
-%}
+    \caption{Tool Comparison}
+}
+\todo{0 ersetzen durch passenden Ausdruck, leere Felder auffüllen}
 \subsubsection{Conclusion}
+\textbf{Analytics}\\*
+\textbf{Visualization}\\*
+\textbf{Interaction}\\*
+
 The strategies of the studied tool for large data visualization differ in the range between analytical and visualization based. 
 \todo{evtl. timeline einfügen}
 Tableau has its strength in the analytical data visualization with the integration of R and built-in-functions such as clustering and prediction. With these functions time-oriented tasks are supported, but if the user decides to show all data rows of a huge data set the visualization will become confusing. 
 QS strength is the javascript-interface in which new visualizations can be integrated into QS. Moreover, the SmartData Compression is a first step in visualizing large data at different levels. 
 Yet, the weak point are the analytical options. While Tableau can integrate algorithms to reduce data, QS can only manipulate data with set expressions and set expressions are limited in data reduction possibilites.
-PowerBI combines both analytical and visualization features. One can build visualizations with R and TypeScript, and also execute R scripts in PowerBI.
+Power BI combines both analytical and visualization features. One can build visualizations with R and TypeScript, and also execute R scripts in Power BI.

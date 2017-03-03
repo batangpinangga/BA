@@ -167,12 +167,14 @@
 \RequirePackage{float}
 % Support for multiple images in one figure environment.
 \RequirePackage{subfig}
+\RequirePackage{subfigure}
 % More options for tabular envrionments.
 \RequirePackage{array}
 \RequirePackage{tabu}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{booktabs}
+\RequirePackage{makecell}
 % Support for listings (for displaying algorithms, source code, etc.).
 \RequirePackage{listings}
 % Provides todo notes that help you keep track of what you have to do.
@@ -250,7 +252,7 @@
 }
 % ---------------------------------
 
-\pgfdeclareshape{rectangle with diagonal fill}
+\pgfdeclareshape{rectangle with four colors}
 {
     % This bit from \pgflibarayshapes.code.tex
     \inheritsavedanchors[from=rectangle]
@@ -286,49 +288,83 @@
         \pgfextracty{\pgf@ya}{\southwest}%
         \pgfextractx{\pgf@xb}{\northeast}%
         \pgfextracty{\pgf@yb}{\northeast}%
-        \ifpgf@diagonal@lefttoright
-            \def\pgf@diagonal@point@a{\pgfpoint{\pgf@xa}{\pgf@yb}}%
-            \def\pgf@diagonal@point@b{\pgfpoint{\pgf@xb}{\pgf@ya}}%
-        \else
-            \def\pgf@diagonal@point@a{\southwest}%
-            \def\pgf@diagonal@point@b{\northeast}%
-        \fi
-        \pgfpathmoveto{\pgf@diagonal@point@a}%
-        \pgfpathlineto{\northeast}%
-        \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}%
+           
+            \def\pgf@point@a{\northeast}%
+            \def\pgf@point@b{\pgfpoint{\pgf@xb}{\pgf@ya}}%
+            \def\pgf@point@c{\southwest}%
+            \def\pgf@point@d{\pgfpoint{\pgf@xa}{\pgf@yb}}%
+            \def\pgf@point@m{\pgfpoint{\pgf@xa+0.5*(\pgf@xb-\pgf@xa)}{\pgf@ya+0.5*(\pgf@yb-\pgf@ya)}}
+            
+        \pgfpathmoveto{\pgf@point@a}%
+        \pgfpathlineto{\pgf@point@b}%
+        \pgfpathlineto{\pgf@point@m}%
         \pgfpathclose
-        \ifpgf@diagonal@lefttoright
-            \color{\pgf@diagonal@top@color}%
-        \else
-            \color{\pgf@diagonal@bottom@color}%
-        \fi
+        \color{\pgf@right@color}%
         \pgfusepath{fill}%
-        \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@yb}}%
-        \pgfpathlineto{\southwest}%
-        \pgfpathlineto{\pgf@diagonal@point@b}%
+
+
+        \pgfpathmoveto{\pgf@point@m}%
+        \pgfpathlineto{\pgf@point@b}%
+        \pgfpathlineto{\pgf@point@c}%
         \pgfpathclose
-        \ifpgf@diagonal@lefttoright
-            \color{\pgf@diagonal@bottom@color}%
-        \else
-            \color{\pgf@diagonal@top@color}%
-        \fi
+        \color{\pgf@bottom@color}%
         \pgfusepath{fill}%
+        
+        
+        \pgfpathmoveto{\pgf@point@c}%
+        \pgfpathlineto{\pgf@point@m}%
+        \pgfpathlineto{\pgf@point@d}%
+        \pgfpathclose
+        \color{\pgf@left@color}%
+        \pgfusepath{fill}%
+        
+        \pgfpathmoveto{\pgf@point@d}%
+        \pgfpathlineto{\pgf@point@m}%
+        \pgfpathlineto{\pgf@point@a}%
+        \pgfpathclose
+        \color{\pgf@top@color}%
+        \pgfusepath{fill}%
+        
     }
 }
 
-\newif\ifpgf@diagonal@lefttoright
-\def\pgf@diagonal@top@color{white}
-\def\pgf@diagonal@bottom@color{gray!30}
+\def\pgf@top@color{yellow!50}
+\def\pgf@right@color{red!50}
+\def\pgf@bottom@color{green!50}
+\def\pgf@left@color{blue!50}
 
 % Use these with PGF
-\def\pgfsetdiagonaltopcolor#1{\def\pgf@diagonal@top@color{#1}}%
-\def\pgfsetdiagonalbottomcolor#1{\def\pgf@diagonal@bottom@color{#1}}%
-\def\pgfsetdiagonallefttoright{\pgf@diagonal@lefttorighttrue}%
-\def\pgfsetdiagonalrighttoleft{\pgf@diagonal@lefttorightfalse}%
+\def\pgfsetdiagonaltopcolor#1{\def\pgf@top@color{#1}}%
+\def\pgfsetdiagonalrightcolor#1{\def\pgf@right@color{#1}}%
+\def\pgfsetdiagonalbottomcolor#1{\def\pgf@bottom@color{#1}}%
+\def\pgfsetdiagonalleftcolor#1{\def\pgf@left@color{#1}}%
+
 
 % Use these with TikZ
-\tikzoption{diagonal top color}{\pgfsetdiagonaltopcolor{#1}}
-\tikzoption{diagonal bottom color}{\pgfsetdiagonalbottomcolor{#1}}
-\tikzoption{diagonal from left to right}[]{\pgfsetdiagonallefttoright}
-\tikzoption{diagonal from right to left}[]{\pgfsetdiagonalrighttoleft}
-\makeatother
+\tikzoption{top color}{\pgfsetdiagonaltopcolor{#1}}
+\tikzoption{right color}{\pgfsetdiagonalrightcolor{#1}}
+\tikzoption{bottom color}{\pgfsetdiagonalbottomcolor{#1}}
+\tikzoption{left color}{\pgfsetdiagonalleftcolor{#1}}
+
+% Code from Christian Feuersänger
+% http://tex.stackexchange.com/questions/54794/using-a-pgfplots-style-legend-in-a-plain-old-tikzpicture#54834
+
+% argument #1: any options
+\newenvironment{customlegend}[1][]{%
+    \begingroup
+    % inits/clears the lists (which might be populated from previous
+    % axes):
+    \csname pgfplots@init@cleared@structures\endcsname
+    \pgfplotsset{#1}%
+}{%
+    % draws the legend:
+    \csname pgfplots@createlegend\endcsname
+    \endgroup
+}%
+
+% makes \addlegendimage available (typically only available within an
+% axis environment):
+\def\addlegendimage{\csname pgfplots@addlegendimage\endcsname}
+
+% define checkmark
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
