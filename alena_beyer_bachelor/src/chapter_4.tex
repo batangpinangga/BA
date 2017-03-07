@@ -1,4 +1,4 @@
-\chapter{Business Information Visualization of time-oriented Data}
+\chapter{The challenge of large time-oriented data in Business Information Visualization}
 \label{chap:BIV}
 
 
@@ -31,83 +31,60 @@ analysis tasks and data characteristics, which is a goal of Visual Analytics."
     \item Conclusion: Which tool for time-oriented data?
 \end{enumerate}
 \fi
------ \\*
 
 
-\section{Large Data}
 Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. The effective manner was defined by Shneiderman \cite{paterno1997concurtasktrees, Shneiderman2008, Keim2008}: \textit{"Overview first, zoom in and filter, then details on demand}. Overview is a basic yet important task because it navigates the user in the data and allows further analysis.  But as large data appears with a number of challenges creating this overview is more difficult\label{problems}:
 \\*
 \textit{Overlap}: 
-If the whole dataset is visualized or even a subset the data may overlap and reduce visual clutter.
+The visualization of large data causes overlap. Depending on the drawing order the picture may look different and cause different interpretation even though the underlying data is the same. 
 \\*
 \textit{Visual Noise}: 
 Even if data items are not overlapping data in large data sets might be to similar to each other. Thus, the user cannot differentiate distinct items on the screen.
 \\*
 \textit{Limited monitor resolution}:
-Even if large monitors are used to visualize data in the end the available pixels on the monitor is smaller than the number of data items in a dataset. 
+Even if large monitors are used to visualize data in the end the available pixels on the monitor is smaller than the number of data items in a data set. 
 \\*
 \textit{Limited visual perception}:
 Moreover, human perception is limited.
 \\*
 \textit{Finding region of interest}:
 If the data set is too large and overlap occurs the user faces the challenge of finding an interesting subset in the data.
-\\*{Navigation}:
-To find a region of interest the user might zoom in. But then another challenge occurs in navigating in the large data set.
+\\*
+\textit{Navigation}:
+To find a region of interest the user might zoom in. But then another challenge occurs in navigating in the large data set. As there are too many data points the user might loose the overview and get lost in data analysis.
+\\*
+\textit{Data Manipulation}:
+If data is too large the user cannot identify whether the data is lying or not. Thus, the user may not detect data manipulation.
 \\*
 \textit{Information Loss}:
 While reducing the number of data items to present them on the limited screen informations in the data can be lost. The important question is which data characteristics to keep such that the user tasks still can be supported.
-
-This is why Shneiderman itself extended its own mantra with the use of aggregation markers and Keim formulated it as \textit{Analyze First - Show the Important - Zoom and Filter, and Analyze Further - Details on Demand}\cite{Keima}. The effective representation of large amounts of data requires to extend the Overview by the use of aggregation which can be achieved by appropriate techniques, correct parametrization, interaction and analytical methods\cite{Aigner2008}. 
-\\*
-Moreover, visualization of large data sets are limited by two "hardware" restrictions: the \textit{Monitor Resolution} and \textit{Human Perception}.
-
-\subsubsection*{Monitor Resolution}\label{resolution}
-Even though large wall-sized screens have been developed nowadays monitors with a display width of 50 cm are used in business. Sometime, -depending on the department- two or three monitors are combined for a larger wall. Thus, the maximum number of pixel which can be used at the workspace ranges from 786.432 (1024x768) to 6.912.000 (3 monitors à 1920x1200).
-Concluding, the amount of data in collected data exceeds the maximal number of screen pixels by far. But, besides the monitor resolution human perception is a critical point in limiting the number of pixels.
-\\*
-\subsubsection*{Human Perception} \label{perception}
-% What can humans perceive? How many pixels? 
-The brain is limited in perceiving pixels on the screen as well as patterns created by visualizations. Since space in brain is represented different from computer monitor pixels in the brain have a different shape. We call them brain pixels. According to \cite{Ware2012a} brain pixels are nearly represented by ganglion cells. Ganglion cells are neurons which send information to the cortex. In the fovea one ganglion cell cares about one single cone. In the periphery one ganglion cell handles thousand rods and cones. Thus, the brain pixel resolution in the fovea is much higher than in the periphery. 
-To model how many data items are percepted by the human brain it is important to make the following distinction: 
-\\*
-\textit{TBP = total amount of brain pixels which is stimulated by the screen pixels}\\*
-and unique stimulated brain pixels: \textit{USBP = TBP - redundant brain pixels}.\\*
-USBP are the number of pixel who determines the human perception of data items. A measure of display efficiency (DE) is the ratio of USBP and screen pixels(SP): \textit{DE = USBP/ SP}.
-
+\par
+To propose a solution to the problems of large-scale data visualization it is important to gain understanding of the process of visualization which is described in the Visualization Pipeline. 
 \begin{figure}[H]
     \centering
-    \scalebox{.3}{\includegraphics{src/images/DE}}
-    \caption{Simulation of display efficiency by exposing the brain to a 1 mio. pixel screen. From \cite{Ware2012a}.}
-    \label{fig:DE}
+        \scalebox{.5}{\includegraphics{src/images/VisPipeline}}
+    \caption{Visualization Pipeline. From \cite{Ware2012a}.}
+    \label{fig:vispipeline}
 \end{figure}
 
-This shows, that a monitor larger than 40cm wide are not increasing the display efficiency anymore. For large data sets this allows the conclusion that the perception of large data has a limit in the human perception. The current monitor size (which approximately is  40-50cm) is sufficient to respond to the number of USBP.
-
-Talking of TBP  the human visual system is able to perceive 15mio pixels per eye\cite{Deering1998}. Assuming that the amount of perceivable pixels for two eyes is larger than 15mio pixels but smaller than 30mio pixels due to the overlap of the field of view the max. amount of perceivable pixels (pp) is:
-\begin{math}
-15 mio. \leq pp < 30 mio.
-\end{math}
-
-Nevertheless, the important question is not the amount of perceivable pixels but whether the data structure, patterns, trends and further information in the data can be perceived as the human brain is a pattern detection machine\cite{Ware2012a}. If we consider the brains ability to detect patterns aggregation methods for visualizations are not only tolerated but moreover recommended. Moreover, the main concern for visualization techniques should be the perception of patterns: trend, outliers, clusters. 
-\\*
-\\*
-In conclusion, human perception shows that visual scalability of techniques and monitor resolution are not important. The interesting question is whether tools integrate aggregation methods to outline patterns.
-
-
-% Data types for Information Visualization
-\section{Data type} \label{data}
-
-For choosing appropriate visualization techniques the first step is in understanding the underlying data and creating a correct data model\cite{Aigner2011}, so that the visualization technique represents the underlying data structure and offers best insights\cite{Bacic}. \textit{Aigner et. al.} proposed  the following questions to model the visualization problem: 
+Business visualization is used in the process of \textit{problem-solving}\cite{Bacic2012}. Thus, the user visualizes data to gain insights in the data and to find answers to formulated questions.  
+As the visualization pipeline shows, the process of visual analysis is influenced by three entities: the data, the user and the visualization.
+The three entities also can be described as \textit{domains}: data-domain, user-domain and visualization-domain. The data-domain represents \textit{what} is visualized. The user-domain explains \textit{why} the problem is visualized and the visualization-domain characterizes \textit{how} the problem is visualized. Thus, we will now explore the three domains to answer the following questions: 
 
 \begin{itemize}
     \item What is presented?
     \item Why is it presented?
     \item How it is presented?
 \end{itemize}
+
+
+% Data types for Information Visualization
+\section{Data type} \label{data}
+
 \textbf{What is presented?}\\*
 Talking of large time-oriented data for business we will consider the three given characteristics of the data: characteristics of business data, time-dependency and their size. Business data is collected in many different areas. The following table gives an overview about the applications: 
 
-\begin{table}[th]
+\begin{table}[H]
 	\centering
 	% caption format: \caption[<business aplications>]{<long version>}
 	\caption[Table 1]{Business applications\cite{Brachman1996,Tegarden1999}}
@@ -121,7 +98,6 @@ Talking of large time-oriented data for business we will consider the three give
 	\bottomrule
 	\end{tabu}
 \end{table}
-
 For each application area exists a number of publications covering different aspects. Thus, the analysis of every single application would go beyond our scope and we decided to consider data with the following characteristics: 
 \begin{enumerate}
     \item The data is structured. 
@@ -132,32 +108,29 @@ For each application area exists a number of publications covering different asp
 \textbf{Structured data}: Data can come in many different forms. Unstructured data appears in text, speech and language processing\cite{Borgo2013}. Structured data comes in tables in which each attribute are represented by one column and each row is one data item. The attributes can be either numerical or text-based. As multi-variate data is usually presented in tables\cite{Borgo2013} we assume that business data is structured.\\*
 \textbf{Abstract data}: Abstract data is defined as data without any spatial relationship in the data\cite{Shneiderman1996}. \\*
 \textbf{Multi-variate data}: 
-Often, multi-variate is mixed-up with the term multi-dimensional. For this reason we define  multi-variate data by the number of dependent attributes. If the dataset holds more than two dependent attributes then we call the data \textit{multi-variate}. In contrast, multi-dimensional depicts the number of independent attributes of a dataset\cite{Aigner2011}.  \\*
-\textbf{Discrete and time-oriented data}: A time-oriented dataset contains data items which change over time. Each data item has a timestamp which is saved in one table-column. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Thus, we will focus on the analysis of time series data. \\*
+Often, multi-variate is mixed-up with the term multi-dimensional. For this reason we define  multi-variate data by the number of dependent attributes. If the data set holds more than two dependent attributes then we call the data \textit{multi-variate}. In contrast, multi-dimensional depicts the number of independent attributes of a data set\cite{Aigner2011}.  \\*
+\textbf{Discrete and time-oriented data}: A time-oriented data set contains data items which change over time. Each data item has a timestamp which is saved in one table-column. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Thus, we will focus on the analysis of time series data. \\*
 These assumptions are based on the work of Tegarden in which business data is described as abstract and multi-variate and discrete\cite{Tegarden1999}.
 \\*
 \todo{drin lassen? Raus?}
 Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}.\\*
-\textbf{Large data:} Lastely, we characterize the size of the data. Therefore, we stick to a definition of Huber. He devided data in small, medium, large, huge and massive data. Large data according to\cite{Huber1994} is defined as data sets with $10^6$ and huge data with $10^8$ data entries. We are considering large and huge amounts of data. Nowadays, companies strive to do \textit{Big Data}. Big Data in typically defined as data with  high volume, high velocity, high veracity and high variety\cite{Wang2015}. The contribution of our work to Big Data is the study of visualization of high volume data sets.
+\textbf{Large data:} Lastely, we characterize the size of the data. Therefore, we stick to a definition of Huber. He divided data in small, medium, large, huge and massive data. Large data according to\cite{Huber1994} is defined as data sets with $10^6$ and huge data with $10^8$ data entries. We are considering large and huge amounts of data. Nowadays, companies strive to do \textit{Big Data}. Big Data in typically defined as data with  high volume, high velocity, high veracity and high variety\cite{Wang2015}. The contribution of our work to Big Data is the study of visualization of high volume data sets.
 
 
 
 % User Tasks
 \section{Time-oriented User Tasks} \label{tasks}
 \textbf{Why is it presented?}\\*
-
-Every tool for decision-support should consider the user perspective. The business user is a kind of person which is interested in verify existing hypothesis (verification) and discover new patterns (discovery) and by using the tool he expects the tool to assist him in analyzing the data, finding critical points and perform analysis automatically\cite{Brachman1996}. Verification and discovery in the analysis of time-oriented data can be split in seven major tasks\cite{Esling2012}:
-
-\\*
+Every tool for decision-support should consider the user perspective. The business user is a kind of person which is interested in verify existing hypothesis (verification) and discover new patterns (discovery) and by using the tool he expects the tool to assist him in analyzing the data, finding critical points and perform analysis automatically\cite{Brachman1996}. Verification and discovery in the analysis of time-oriented data can be split in seven major tasks\cite{Esling2012}:\\*
 \textbf{T1: Query by Content}
 \\*
 Query by content describes the retrieval of similar items to the query and returns a set with the most similar solutions to the query. In time-oriented data query by content returns the \textit{k} most similar time series to the queried time series.
 \\*
 \textbf{T2: Clustering}\\*
-Clustering is the process of finding expressive groups (clusters) out of the data. Therefore, the dataset is devided into subgroups according to some similarity measure. In the context of large time-oriented data clustering is important to compare similar time-series.
+Clustering is the process of finding expressive groups (clusters) out of the data. Therefore, the data set is divided into subgroups according to some similarity measure. In the context of large time-oriented data clustering is important to compare similar time-series.
 \\*
 \textbf{T3: Classification}\\*
-In classification the task is to find the right group the item belongs to. According to \textit{Aigner et al.} temporal classification describes the preprocess of finding the correct group for given data or dataset. This task is important for large data to abstract the data and make them handable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task. 
+In classification the task is to find the right group the item belongs to. According to \textit{Aigner et al.} temporal classification describes the preprocess of finding the correct group for given data or data set. This task is important for large data to abstract the data and make them handable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task. 
 \\*
 \textbf{T4: Segmentation}\\*
 Segmentation splits a time series into \textit{k} meaningful subsequences (segments)\cite{batyrshin2007perception}. 
@@ -196,7 +169,7 @@ Pattern discovery finds regularly appearing structures in a time series.  It cov
 
 % Visualization Techniques
 \section{Visualization of large-scale time-oriented Data} \label{vis}
-\textbf{How is it presented?}
+\textbf{How is it presented?}\\*
 % introduction of methodology: selection of vizTechniques, introduction of classes
 The following section discusses several visualization techniques for time-oriented data including the question of their scalability because the key to a successful representation of the data is the choice of an appropriate technique. This is shown in the cognitive fit theory\cite{Vessey1991} as this theory showed a significant increase of user task performance the better the visual representation of a problem fitted to the cognitive user model. Visualizations of time-oriented data therefore have to represent the cognitive user model. Based on the findings in literature we assume that the cognitive user model is represented by the user tasks which we described in section \ref{tasks}.\\* 
 \textbf{Standard Visualizations of time series data}
@@ -209,44 +182,33 @@ Moreover, time-oriented data appears in different areas of business: E-commerce,
 
 However, we think that this work gives a good overview of visualization techniques as we stick to Keim's taxonomy\cite{Keim1995} of visualization techniques for multi-variate data which classifies them into the classes: \textit{geometric-projective}, \textit{graph-based}, \textit{hierarchical}, \textit{icon-based} and \textit{pixel-oriented}.
 \\*
-\textbf{Graph-based} techniques present large graphs by using layout algorithms\cite{Keim1996}.
-\\*
-\textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}.
-\\*
-\textbf{Pixel-oriented} techniques map each data item to one pixel on the screen. Position and color are used to represent data attributes\cite{Keim1996}.
-
-
-
-\\*
-\textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows them hierarchically. 
-\\*
+\textbf{Graph-based} techniques present large graphs by using layout algorithms\cite{Keim1996}.\\*
+\textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}.\\*
+\textbf{Pixel-oriented} techniques map each data item to one pixel on the screen. Position and color are used to represent data attributes\cite{Keim1996}.\\*
+\textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows them hierarchically. \\*
 \textbf{Icon-based} techniques map each data item onto one icon. The attributes are mapped to different icon features\cite{Keim2001}.
 
-\section{Visual Scalability}\label{scalability}
+\subsection{Visual Scalability}\label{scalability}
 
 This work studies how well these techniques scale to large data. To define the ability of visualizations to present large amounts of data we introduce the term \textit{visual scalability}.
-Visual or perceptual scalability is defined as the capability of visualization tools in displaying large data sets in an effective manner\cite{Eick2002}. In the context of time-oriented business data effective means the presentation of patterns to support the user tasks. To measure the visual scalability of different visualization techniques for time-oriented data we refer to the work of Eick\cite{Eick2002}. He proposed to measure visual scalability by the database metrics of the dataset and the visual characteristics of the visualization technique. \\*
-
+Visual or perceptual scalability is defined as the capability of visualization tools in displaying large data sets in an effective manner\cite{Eick2002}. In the context of time-oriented business data effective means the presentation of patterns to support the user tasks. To measure the visual scalability of different visualization techniques for time-oriented data we refer to the work of Eick\cite{Eick2002}. He proposed to measure visual scalability by the database metrics of the data set and the visual characteristics of the visualization technique. \\*
 \textbf{Database metrics} measures the \textit{size of the database} in bytes, the number of rows or the number of attributes at the level of the visualization tool. For multi-dimensional data the \textit{database metrics} are a combination of the number of rows and the attributes. \\*
-
-\textbf{Visualization characteristics} describe the number of elements and attributes presented on the screen, thus measuring how many distinct items a visualization technique can display. This number is measured on the visualization technique level.
-\\*
+\textbf{Visualization characteristics} describe the number of elements and attributes presented on the screen, thus measuring how many distinct items a visualization technique can display. This number is measured on the visualization technique level.\\*
 The combination of the database metrics and the visualization characteristics describes the scalability of a visualization tool. Furthermore, the tools scalability is influenced by more factors which will be discussed later (\ref{factors}).
 
-\subsection{Visual Scalability of time-oriented techniques}\label{visualization}
-In the analysis of the visualization techniques we discovered that time-oriented techniques are covered by only four of Keims visualization classes: geometric, hierarchical, icon-based and pixel-oriented. Thus, we measured the scalability of these classes. 
- Based on this analysis we identified a number of \todo{Anzahl der Techniken einfügen} techniques which are appropriate to show large time-oriented data. These techniques will be described in detail.
+\subsubsection{Visual Scalability of time-oriented techniques}\label{visualization}
+The analysis of visualization techniques showed that time-oriented techniques are covered by only four of Keim's visualization classes: geometric, hierarchical, icon-based and pixel-oriented. In the following table we will name the corresponding techniques for multivariate time-oriented data. Subsequently, we will discuss the visualization characteristics for each class. 
+
 
 \begin{table}[H]
 	\centering
-	% caption format: \caption[<Scalability of Visualization Classes>]{<long version>}
 	\caption{Scalability of Visualization Classes}
 	\label{vizScalability}
 	\begin{tabu}{  | l | l | l |}
 	\toprule
 	Visualization Class & Technique & References\\
 	\midrule
-	    \multirow{10}*{Geometric} 
+	    \multirow{8}*{Geometric} 
 		& EventRiver        & \cite{Luo2012}\\
 		& Flocking Boids    & \cite{Moere2004}\\
 	    & Kiviat Tube       & \cite{Tominski2005}\\
@@ -254,16 +216,15 @@ In the analysis of the visualization techniques we discovered that time-oriented
         & Multi-resolution CircleView & \cite{Keim2005}\\
         & Parallel Glyphs   & \cite{Fanea2005}\\
         & Temporal Star     & \cite{Noirhomme-Fraiture2002}\\
-        & TimeWheel         & \cite{Tominski}\\
-        \hline
+        & TimeWheel         & \cite{Tominski}\\ \hline
         \multicolumn{3}{|p{\linewidth}|}{
-        \textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. The mapping-function often includes data reduction techniques (see section \ref{analytical}). Thus, the visualization characteristics of GP-techniques strongly depend on the mapping-function. When data reduction techniques are involved, this class of techniques becomes a high-potential class for visualizing large data sets as they allow to present large to huge data.} \\ \hline
+        The visualization characteristics of geometric projection techniques (GP-techniques) strongly depend on the mapping-function which regulates the projection of multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}. The mapping-function often includes data reduction techniques (see section \ref{analytical}).  When data reduction techniques are involved, this class of techniques is able to visualize large to huge data sets. This class will be described in detail (\ref{GP-Techniques}).} \\ \hline
         
 		\multirow{3}*{Hierarchical} 
 		& Pixel-Oriented Network Visualization  & \cite{Stein2013}\\
 		& Software Evolution Analysis   & \cite{Gall}\\
 		& Timeline Trees                & \cite{Burch}\\ \hline
-		\multicolumn{3}{|p{\linewidth}|}{\textbf{Hierarchical} techniques: we analyzed three hierarchical visualization techniques. One technique included aggregation techniques by collapsing nodes. With collapsed nodes the technique can display large to huge amount of data. Pixel-oriented Networks use clustering and thus, \todo{Begrüdung für Skalierbarkeit einfügen}} \\ \hline
+		\multicolumn{3}{|p{\linewidth}|}{We analyzed three hierarchical visualization techniques. Timeline Trees included aggregation techniques by collapsing nodes. With collapsed nodes the technique can display large to huge amounts of data. Pixel-oriented Networks use clustering and thus, \todo{Begrüdung für Skalierbarkeit einfügen}} \\ \hline
         \multirow{5}*{Icon-based}
         & Gravi++       &\cite{Hinum2005}\\
         & InfoBUG       &\cite{chuah1998information}\\
@@ -271,7 +232,7 @@ In the analysis of the visualization techniques we discovered that time-oriented
         & Spiral Graph  &\cite{Weber2001}\\
         & VIE-VISU      &\cite{horn2001support}\\ \hline
         \multicolumn{3}{|p{\linewidth}|}{
-        \textbf{Icon-based} techniques: As every data item requires one icon icon-based techniques can show less data items than the number of pixels on the screen. When showing large data icon-based techniques face the challenge of clutter and occlusion\cite{Borgo2013}. Thus, icon-based techniques can display small- to medium-sized data sets.}\\ \hline
+        As every data item requires one icon icon-based techniques can show less data items than the number of pixels on the screen. When showing large data icon-based techniques face the challenge of clutter and occlusion\cite{Borgo2013}. Thus, icon-based techniques can only display small- to medium-sized data sets.}\\ \hline
         \multirow{12}*{Pixel-oriented}
         & 3D ThemeRiver & \cite{Imrich2002}\\
         & Braided Graph & \cite{Javed2010}\\
@@ -287,7 +248,7 @@ In the analysis of the visualization techniques we discovered that time-oriented
         & Time Curves       & \cite{Bach2016}\\
         & TimeRider         & \cite{Rind2011}\\ \hline
         \multicolumn{3}{|p{\linewidth}|}{
-        \textbf{Pixel-oriented} techniques: Since only one pixel per data item is used this class can maximize the used screen space. Let $M$ be the monitor resolution with the screen-width $w$ and the screen-height $h$, $P$ the number of pixels in $M$ and $D$ the maximum of data which can be displayed at once. In pixel-oriented techniques  \begin{math}
+        Since only one pixel per data item is used this class can maximize the used screen space. Let $M$ be the monitor resolution with the screen-width $w$ and the screen-height $h$, $P$ the number of pixels in $M$ and $D$ the maximum of data which can be displayed at once. In pixel-oriented techniques  \begin{math}
         D = w*h
         \end{math}
         which shows that pixel-oriented techniques can display large, but not huge data.}
@@ -330,11 +291,11 @@ One interesting extension of pixel-oriented techniques is the \textit{multi-reso
  
 \fi
 
-\subsection{Visualization characteristics of GP-Techniques}
+\subsubsection{Visualization characteristics of GP-Techniques} \label{GP-Techniques}
 Geometric-projective visualizations seems to be the most scalable visualization technique depending on the mapping function. For this reason we will explore techniques in the geometric-projective class in detail and discuss their scalability.
 
 
-Furthermore, we suggest to devide GP-techniques into \textit{radial} and \textit{non-radial} visualizations\cite{Diehl2010} as our  analysis has shown that a large part of GP-techniques is based on a radial layout. Radial GP-techniques share common properties such as the maximum number of attributes which is set to 10-20 attributes\cite{Diehl2010}.\\*
+Furthermore, we suggest to divide GP-techniques into \textit{radial} and \textit{non-radial} visualizations\cite{Diehl2010} as our  analysis has shown that a large part of GP-techniques is based on a radial layout. Radial GP-techniques share common properties such as the maximum number of attributes which is set to 10-20 attributes\cite{Diehl2010}.\\*
 
 
 \begin{table}[H]
@@ -378,7 +339,7 @@ The number of attributes is limited to approximately 10-20 attributes as the rad
 \end{figure}
 \\*
 In \textbf{MultiComb} \textit{k} time series plots are mapped on a circle in two possible ways. One way is to position the plots along the circumference. Or the plots are mapped perpendicular to the circumference. In this option the plot resembles a star.  
-\textbf{Multi-Resolution CircleView} extends the CircleView technique by aggregating data according to their relevance. Similar to CircleView the circle is devided in k segments and k is the number of attributes. The least relevent data is placed at the outer circle with a high aggregation level and the most relevant data in the inner circle. The higher the relevance the lower the aggregation level. The number of displayed data items thus depends on the relevance function. 
+\textbf{Multi-Resolution CircleView} extends the CircleView technique by aggregating data according to their relevance. Similar to CircleView the circle is divided in k segments and k is the number of attributes. The least relevent data is placed at the outer circle with a high aggregation level and the most relevant data in the inner circle. The higher the relevance the lower the aggregation level. The number of displayed data items thus depends on the relevance function. 
 \begin{figure}[H]
     \centering
         \scalebox{.3}{\includegraphics{src/images/MultiComb1,2}}
@@ -446,76 +407,54 @@ In our understanding ADV is a visualization technique which is able to scale to 
 However, only few techniques are able to represent billions of data. In the end, most of them are limited through the 2D-screen. Factors which enhance the scalability are \textit{advanced visual metaphors}, \textit{interaction techniques} and \textit{data reduction}. 
 
 
-\section{Analytical Methods}\label{analytical}
-Comparing every visualization technique the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: to reduce data horizontally or vertically. 
-Vertical data reduction describes the process of removing data rows whereas horizontal data reduction is used for dimensionality reduction. 
-\begin{figure}[H]
-    \centering
-        \scalebox{.1}{\includegraphics{src/images/dimreduce}}
-    \caption{Horizontal Data Reduction}
-    \label{fig:my_label}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-        \scalebox{.1}{\includegraphics{src/images/aggregation}}
-    \caption{Vertical Data Reduction}
-    \label{fig:my_label}
-\end{figure}
-
-\subsection{Vertical Data Reduction}
-One way to decrease the size of large or huge data sets is to remove data rows. This section lists several data removal techniques. \todo{next sentences are not mentioned again: remove or mention} One important issue for every technique is the question which data to keep and which data to remove. The disadvantage of data reduction is the information loss.
-\subsubsection*{Sampling}
-Sampling describes a strategy to reduce data by creating a sample of the original data. Thereby, sampling is scalable, reduces clutter, preserves information of the kept data as well as patterns and trends\cite{PiringerHarald2011}. Still, sampling may eliminate outliers or single data items and does not provide any garantuee to avoid visual overlap. 
-\subsubsection*{Filtering}
-Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exclusion of irrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.
-\subsubsection*{Temporal Data Abstraction}
-Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. 
-One way to implement temporal data abstraction is to use natural language processing in visualization tools. The tool \textit{Answerrocket} implemented an NLP-Approach connected with visualization. Another way to achieve data abstraction are unsupervised machine learning methods, such as clustering.
-Clustering as defined in the user tasks~\ref{sec:user} has the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. It also preserves pattern and outlier if the similarity measure is appropriate.\\*
-Temporal Data Abstraction in tools can be implemented by any method which keeps the characteristic shape and removes data points. 
-\subsubsection*{Aggregation}
-Aggregation describes the process of grouping similar data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation devides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time series data into a set of equidistant time spans\cite{jugel2014m4}.
-As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
-\\*
-Other ways to reduce data vertically are binning and pivotization. We will not explain them here in detail as they treat continuous and hierarchical data sets which are beyond our scope in this work. 
-
-\subsection{Horizontal Data Reduction}
-Besides data removal datasize can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. 
-A common way to map a high-dimensional to a low dimensional space is the Principal Component Analysis (PCA)\cite{Aigner2008}. Other approaches are Multi-Dimensional Scaling or Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
-
-Data reduction techniques such as horizontal and vertical data reduction condense  data sets in way to fit data sets on the screen and \todo{Umgangsprachlich: sprachstil ändern} make visualization possible. 
-%Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
-
-
-
-% 3 Methods for Large Data (Aigner2008)
-% 1. Temporal Data Abstraction: VIE-VENT + The Spread
-% 2. Data Abstraction for Multivariate Data: PCA
-% 3. Data Aggregation
-
-
-
-\subsection{More factors} \label{factors}
-Moreover, besides the database metrics and the visualization characteristic visual scalability is influenced by six factors: 
+\section{More factors} \label{factors}
+Moreover, besides the database metrics and the visualization characteristics visual scalability is influenced by six factors\cite{Eick2002}: 
 \begin{itemize}
-    \item Human Perception\cite{Keim2005,Deering1998}
     \item Monitor Resolution 
+    \item Human Perception\cite{Keim2005,Deering1998}
     \item Visual Metaphors
     \item Interactivity
-    \item Data structures and algorithms
-    \item Computational infrastructure
+    \item Data Reduction
 \end{itemize}
 
-Out of the six factors which where proposed by Eick \cite{Eick2002} human perception and monitor resolution are already discussed in \ref{perception} and \ref{resolution}. Data structures and algorithms as well as computational infrastructure will not be discussed in this work as it would go beyond our scope. 
-Thus, in the next sections \textit{visual metaphors and interactivity} will be studied.
-\subsubsection*{Advanced Visual Metaphors}
-Visual metaphors define how to map data to graphic primitives. Thereby, the mapping function influences visual scalability. 
- Let $w$ be the monitor width. If each bar in a bar chart would have the width of one pixel, a bar chart could only visualize  $w$ data items. Thus, the visual metaphor of the bar chart limits the technique how many data items can be mapped at most. advanced visual metaphors can enhance the scalability of visualization techniques\cite{Eick2002}. \\*
- \textbf{Multi-resolution:} one way to improve visual metaphors are \textbf{multi-resolution} metaphors\cite{Keim2005}. The idea of multi-resolution is to devide the screen space into \textit{k} subregions and assign each subregion one individual resolution. The resolution denotes the ratio of data items compared to screen pixels. Pixel-oriented techniques have a resolution of 1:1 as they map one data item to one pixel. 
+\subsection{Monitor Resolution}\label{resolution}
+Even though large wall-sized screens have been developed nowadays monitors with a display width of 50 cm are used in business. Sometime, -depending on the department- two or three monitors are combined for a larger wall. Thus, the maximum number of pixel which can be used at the workspace ranges from 786.432 (1024x768) to 6.912.000 (3 monitors à 1920x1200).
+Concluding, the amount of data in collected data exceeds the maximal number of screen pixels by far. But, besides the monitor resolution human perception is a critical point in limiting the number of pixels.
+
+\subsection{Human Perception} \label{perception}
+% What can humans perceive? How many pixels? 
+The brain is limited in perceiving pixels on the screen as well as patterns created by visualizations. Since space in brain is represented different from computer monitor pixels in the brain have a different shape. We call them brain pixels. According to \cite{Ware2012a} brain pixels are nearly represented by ganglion cells. Ganglion cells are neurons which send information to the cortex. In the fovea one ganglion cell cares about one single cone. In the periphery one ganglion cell handles thousand rods and cones. Thus, the brain pixel resolution in the fovea is much higher than in the periphery. 
+To model how many data items are percepted by the human brain it is important to make the following distinction: 
+\\*
+\textit{TBP = total amount of brain pixels which is stimulated by the screen pixels}\\*
+and unique stimulated brain pixels: \textit{USBP = TBP - redundant brain pixels}.\\*
+USBP are the number of pixel who determines the human perception of data items. A measure of display efficiency (DE) is the ratio of USBP and screen pixels(SP): \textit{DE = USBP/ SP}.
+
+\begin{figure}[H]
+    \centering
+    \scalebox{.3}{\includegraphics{src/images/DE}}
+    \caption{Simulation of display efficiency by exposing the brain to a 1 mio. pixel screen. From \cite{Ware2012a}.}
+    \label{fig:DE}
+\end{figure}
+
+This shows, that a monitor larger than 40cm wide are not increasing the display efficiency anymore. For large data sets this allows the conclusion that the perception of large data has a limit in the human perception. The current monitor size (which approximately is  40-50cm) is sufficient to respond to the number of USBP.
+
+Talking of TBP  the human visual system is able to perceive 15mio pixels per eye\cite{Deering1998}. Assuming that the amount of perceivable pixels for two eyes is larger than 15mio pixels but smaller than 30mio pixels due to the overlap of the field of view the max. amount of perceivable pixels (pp) is:
+\begin{math}
+15 mio. \leq pp < 30 mio.
+\end{math}
+
+Nevertheless, the important question is not the amount of perceivable pixels but whether the data structure, patterns, trends and further information in the data can be perceived as the human brain is a pattern detection machine\cite{Ware2012a}. If we consider the brains ability to detect patterns aggregation methods for visualizations are not only tolerated but moreover recommended. Moreover, the main concern for visualization techniques should be the perception of patterns: trend, outliers, clusters. 
+\par
+In conclusion, human perception shows that visual scalability of techniques and monitor resolution are not important. The interesting question is whether tools integrate aggregation methods to outline patterns.
+
+\subsection{Advanced Visual Metaphors}
+Visual metaphors define how data is mapped to geometric primitives. Thereby, the mapping function influences visual scalability. The visual metaphor of pixel-oriented techniques maps each data item to one pixel. Hence, the maximum number of displayed pixels is equals to the number of screen pixels. The visual metaphor of bar charts  arrange data items as bars along the monitor width ($w$). Thus, if each bar would have the width of one pixel, a bar chart could only visualize  $w$ data items. Thus, the visual metaphor limits how many data items can be showed at most. Advanced visual metaphors can enhance the scalability of visualization techniques\cite{Eick2002}. \\*
+ \textbf{Multi-resolution:} one way to improve visual metaphors are \textbf{multi-resolution} metaphors\cite{Keim2005}. The idea of multi-resolution is to divide the screen space into \textit{k} subregions and assign each subregion one individual resolution. The resolution denotes the ratio of data items compared to screen pixels. Pixel-oriented techniques have a resolution of 1:1 as they map one data item to one pixel. 
  \begin{figure}
      \centering
-     \includegraphics{src/images/multi-resolution}
+     \scalebox{0.5}{\includegraphics{src/images/multi-resolution}}
      \caption{\textit{Multi-Resolution: }data items are grouped with variying granularity depending on their relevance. From \cite{Keim2005}}
      \label{multi-resolution}
  \end{figure}
@@ -525,34 +464,20 @@ Multi-resolution is one important aspect for visualization tools to improve visu
 \textbf{Aggregation Markers:} a different approach for advanced visual metaphors are aggregation markers which were already mentioned by Shneiderman\cite{Shneiderman2008}. He proposed to extend the Information Seeking Mantra\cite{Shneiderman1996} with point clustering which he called aggregation markers. Point clustering groups a larger set of data points onto a smaller set in the 2D-plane\cite{Morrison2014}. This process decreases the visual overlap of data points and thus, increases the perception of large data sets. Moreover, point clustering accelerates the rendering process as first the data clusters  can be rendered at the overview level and later more data items can be loaded. This incremental loading fulfills user satisfaction by shorter response times.\\*
 In contrast to data reduction methods advanced visual metaphors are not actually decreasing data size. They only decrease the \textit{perceived data volume} and keep the actual data volume. This differentiates methods like multi-resolution and aggregation markers from methods like data abstraction, sampling and filtering. Dimensionality reduction can both belong to \textit{advanced visual metaphors} as well to \textit{data reduction}. It depends whether the data of the visualization is kept or reduced. 
 
+\subsection{Need for Interaction Techniques}
+Interaction Techniques describe how the user can interact with the data. In this section interaction techniques for large data sets are discussed and how they can enhance scalability. As discussed in \ref{problems} challenges in visualization are pixel overlap, limited screen space, identifying a region of interest and navigation. Interaction technique can overcome these problems. 
+\par
+Overlap can be eliminated by filtering and zooming as filters and zoom reduce the displayed data and hence, overlap is minimized. One alternative to zooming are multiple linked views which are discussed in this section.\\*
+\textbf{Filtering:} With filters a set of variables can be selected and the visualization is only showing the respecting variables. The excluded data items are kept in memory.
+One way of filtering are dynamic queries. They provide a filter-mechanism by multiple widgets, such as sliders or input fields\cite{Hochheiser2004,Shneiderman2008,Aigner2011}. A specific dynamic query for time-oriented data are time-boxes. These boxes are rectangular selection areas which are drawn by the user. The tool then only displays values with a similar pattern to the pattern in the time-boxes.\\*
+\textbf{Zooming} is the way of drilling down into a data set to a lower level of detail. One special way of zooming is semantic zooming\cite{boulos2003use}. Zooming is one method to achieve \textit{Overview + Detail}.
+\par
 
-\todo{Fokus auf Interaction Techniques für große Datenmengen. Warum sind sie wichtig für große Datenmengen?}
-\section{Need for Interaction Techniques}
-Interaction Techniques describe how the user can interact with the data. In this section interaction technqiues for large data sets are discussed and how they can enhace scalability. In large data sets interaction overcomes the challenges of overlap, limited screen space, identifying a region of interest and navigation presented in \ref{problems}. \\*
+The limited screen space can be enhanced by \textit{interactive distortion techniques}\cite{mackinlay1991perspective}.
+The main idea of \textbf{interactive distortion techniques} is to present more relevant data enlarged in the user focus while less relevant data are shown at the context in a smaller presentation. Distortion technique are not  providing additional pixel to the existing screen pixels but they enhance the screen space metaphor by prioritizing screen pixels.
+Examples for distortion techniques are \textit{Bifocal Displays}\cite{Spence1982}, \textit{Fish-eye Views} and \textit{Perspective walls\cite{Keim2005}, \cite{mackinlay1991perspective}}.\\*
 
-Overlap can be eliminated by filtering and zooming. By reducing the data size with filters and drilling down less elements are presented on the screen and hence, overlap is minimized. One alternative to zooming are multiple linked views.\\*
-
-The screen space is enhanced with \textit{interactive distortion techniques}\cite{mackinlay1991perspective}
-The main idea of \textbf{interactive distortion techniques} is to present more relevant data enlarged in the focus while keeping the context by showing less relevant data in a smaller presentation. With this technique distortion technique are not  providing additional pixel to the existing screen pixels but they enhance the screen space metaphor by prioritizing the screen pixels.
-Examples are \textit{Bifocal Displays}\cite{Spence1982}, \textit{Fish-eye Views} and \textit{Perspective walls\cite{Keim2005}, \cite{mackinlay1991perspective}}.\\*
-
-Navigation can be supported by linked views and information murals, also known as navigational maps\cite{Jerding1998}. With linked views the user can see different level of detail on one glance and navigate in different level of detail with navigational maps. Navigation also helps in finding a region of interest.
-
-Hereby, we assume that interaction is in responsibility of the visualization tools.
-
-\textbf{Filtering}\\*
-With filters a set of variables can be selected and the visualization is only showing the respecting variables.
-One way of filtering are dynamic queries. They provide a filter-mechanism by multiple widgets, such as sliders or input fields\cite{Hochheiser2004,Shneiderman2008,Aigner2011}. A specific dynamic query are time-boxes. These boxes are rectangular selection areas which are drawn by the user. The tool then only displays values with a similar pattern to the pattern in the time-boxes.
-
-\textbf{Zooming} is the way of drill down into a data set to a lower level of detail. One special way of zooming is semantic zooming\cite{boulos2003use}. Zooming is one method to achieve \textit{Overview + Detail}.
-
-\textbf{Brushing \& Linking}\\*
-The user can select data items on the screen(Brushing) and the respective items are highlighted in every connected window (Linking). Therefore, lasso, rubber-band or rectangular selection enables the user to select groups of data items\cite{tegarden1999, Aigner2011}. In the context of time-oriented data a typical brushing activity is the selection of an smaller time-span to see more details during this period of time. Linked views are also known as coordinated windows.
-Brushing \& Linking is one method to achieve \textit{Focus + Context}.
-
-
-\textbf{Distortion techniques}\\*
-All distortion techniques transform the undistorted 2D space by a mathematical function and bring more relevant data points to the focus. \textit{Bifocal Displays}, \textit{Fish-eye Views} (also known as Table and Magnification Lense) and \textit{Perspective walls} differentiate in the way they bend the space. Distortion techniques are good in finding outliers. One disadvantage is that the user might loose the context.
+\textbf{Distortion techniques:} All distortion techniques transform the undistorted 2D space by a mathematical function and bring more relevant data points to the focus. \textit{Bifocal Displays}, \textit{Fish-eye Views} (also known as Table and Magnification Lense) and \textit{Perspective walls} differentiate in the way they bend the space. Distortion techniques are good in finding outliers. One disadvantage is that the user might loose the context.
 \begin{figure}[H]
     \centering
         \scalebox{.25}{\includegraphics{src/images/f06b}}
@@ -573,27 +498,89 @@ All distortion techniques transform the undistorted 2D space by a mathematical f
     \caption{Perspective Walls: distortion by a half linear and half power function From \cite{Stroe1999}.}
     \label{fig:perspectivewall}
 \end{figure}
+\par
 
-In close relation to interaction techniques stands appropriate layout techniques to navigate inside the data set. Layout techniques contain the arrangement and linking of windows and techniques for navigation. The differentiation between layout and interaction techniques is not selective. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented data requires a layout with multiple simultaneous views if the number of data objects exceeds three items. Multiple coordinated views are called linked views. If one data item is selected and brushed the corresponding characteristic in other windows is also highlighted. Thus, layout techniques intersect with \textit{Linking & Brushing}. 
+
+In close relation to interaction techniques stand appropriate interactive navigation techniques to navigate inside the data set such as linked views and information murals, also known as navigational maps\cite{Jerding1998}. With linked views the user can see different level of detail on one glance and navigate in different level of detail with navigational maps. Navigation also helps in finding a region of interest.\\*. The differentiation between navigation and interaction techniques is not selective. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented data requires a layout with multiple simultaneous views if the number of data objects exceeds three items. Multiple coordinated views are called linked views. Often, linked views are combined with Brushing. \\*
+
+\textbf{Brushing \& Linking: }The user can select data items on the screen(Brushing) and the respective items are highlighted in every connected window (Linking). Therefore, lasso, rubber-band or rectangular selection enables the user to select groups of data items\cite{tegarden1999, Aigner2011}. In the context of time-oriented data a typical brushing activity is the selection of an smaller time-span to see more details during this period of time. Linked views are also known as coordinated windows.
+Brushing \& Linking is one method to achieve \textit{Focus + Context}.\\*
+
 \begin{figure}[H]
     \centering
         \scalebox{.3}{\includegraphics{src/images/zoomVSmultiWindow}}
     \caption{Measured task performance of zooming compared to multiple windows. \cite{Ware2012a}}
     \label{fig:my_label}
 \end{figure}
-Another layout technique are \textit{Perspective walls} which is a 3D-representation existing of 3 walls. The front wall shows details and the two side walls provide context. Perspective walls are one method to provide \textit{Focus + Context} and Navigation in large datasets.
-\\*
-Another navigation technique for large data sets are \textit{navigational maps}.\\*
+Another navigation technique is the distortion technique \textbf{Perspective walls} which is a 3D-representation existing of 3 walls. The front wall shows details and the two side walls provide context. Perspective walls is one method to provide \textbf{Focus + Context} and Navigation in large data sets.
+Another navigation technique for large data sets are \textbf{navigational maps}.\\*
 \textbf{Navigational Maps: } display the complete data set next to other linked views as a miniature version in a separate window. With this method, the user can as well see the data set in detail as well keep the context and navigate through the data set.\\*
 \textbf{Search: } Besides navigational maps \textit{Searching} is an approach in querying and retrieving one specific data point. Searching uses natural language processing (NLP). As data set searching can include solutions from the text input at the front-end or it also can consider solutions from the data points - displayed in the visualization. The second case is recommended for large data as the number of data points is difficult to overview.
+\textbf{Pattern Search: }Another navigation technique is called pattern search. Pattern search allows the user to specify a known pattern and query similar pattern\cite{Buono}. Pattern Search is also used in time-series analytics.
+\par
 
-The discussed interaction techniques are only a subset of available interaction techniques. We focused on interaction styles which can solve the problems of large data visualization and thus enhance visual scalability\cite{Tegarden1999}.
+The discussed interaction techniques are only a subset of available interaction techniques. We focused on interaction styles which can solve the problems of large data visualization and thus enhance visual scalability\cite{Tegarden1999}. Hereby, we assume that interaction is in responsibility of the visualization tools.
+
+\subsection{Analytical Techniques}\label{analytical}
+Comparing the visualization techniques in \ref{vis} the need for data reduction becomes obvious. In the literature \textit{data abstraction and aggregation} are well know techniques for data reduction\cite{FerreiradeOliveira2003,Aigner2011, Keim2005}. There exist two ways to data reduction: to reduce data horizontally or vertically. 
+Vertical data reduction describes the process of removing data rows whereas horizontal data reduction is used for dimensionality reduction. 
+\begin{figure}[H]
+    \centering
+        \scalebox{.1}{\includegraphics{src/images/dimreduce}}
+    \caption{Horizontal Data Reduction}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+        \scalebox{.1}{\includegraphics{src/images/aggregation}}
+    \caption{Vertical Data Reduction}
+    \label{fig:my_label}
+\end{figure}
+
+\todo{vertical and horizontal data reduction haben unterschiedliche Granularität: was ist besser? Feedback einholen}
+\subsubsection{Vertical Data Reduction}
+One way to decrease the size of large or huge data sets is to remove data rows. This section lists several data removal techniques. \todo{next sentences are not mentioned again: remove or mention} One important issue for every technique is the question which data to keep and which data to remove. The disadvantage of data reduction is the information loss.
+\textbf{Sampling}
+Sampling describes a strategy to reduce data by creating a sample of the original data. Thereby, sampling is scalable, reduces clutter, preserves information of the kept data as well as patterns and trends\cite{PiringerHarald2011}. Still, sampling may eliminate outliers or single data items and does not provide any guarantee to avoid visual overlap. \\*
+\textbf*{Filtering}
+Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exclusion of irrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.
+\textbf*{Temporal Data Abstraction}
+Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. 
+One way to implement temporal data abstraction is to use natural language processing in visualization tools. The tool \textit{Answerrocket} implemented an NLP-Approach connected with visualization. Another way to achieve data abstraction are unsupervised machine learning methods, such as clustering.
+Clustering as defined in the user tasks~\ref{sec:user} has the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. It also preserves pattern and outlier if the similarity measure is appropriate.\\*
+Temporal Data Abstraction in tools can be implemented by any method which keeps the characteristic shape and removes data points. 
+\textbf*{Aggregation}
+Aggregation describes the process of grouping similar data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation divides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time series data into a set of equidistant time spans\cite{jugel2014m4}.
+As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
+\\*
+Other ways to reduce data vertically are binning and pivoting. We will not explain them here in detail as they treat continuous and hierarchical data sets which are beyond our scope in this work. 
+
+\subsubsection{Horizontal Data Reduction}
+Besides data removal data size can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. 
+Common dimensionality reduction techniques are Principal Component Analysis (PCA)\cite{Aigner2008}, Multi-Dimensional Scaling or  Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
+
+Data reduction techniques such as horizontal and vertical data reduction condense  data sets in way to fit data sets on the screen and overcome the problem of visual clutter.
+
+\subsubsection{Data Modeling}
+Next do data reduction techniques \textit{data modeling} techniques are an important feature for tools. They enable the user to find patterns in the data. This category covers clustering, classification, network modeling and predictive modeling\cite{Zhanga}. These algorithms support the user in its user tasks for time-oriented data.
+
+\subsubsection{Visual Query Analysis}
+Moreover, pattern search is an important feature in navigating in a large data set. Given a defined pattern similar patterns are retrieved. In large data sets pattern search supports the user in detecting region of interests and navigation. 
+%Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
 
 
-\subsection{Visual Scalability 2.0}
+
+% 3 Methods for Large Data (Aigner2008)
+% 1. Temporal Data Abstraction: VIE-VENT + The Spread
+% 2. Data Abstraction for Multivariate Data: PCA
+% 3. Data Aggregation
+
+
+\section{Visual Scalability 2.0}
 After our analysis of the limiting factors for displaying large data sets we come to the conclusion that the limitation by human perception is more restrictive than the limitation by different visualization techniques. The question is \textit{not} how many pixel can be displayed by a visualization technique but whether the visualization technique allows to perceive patterns. This is achieved by the use of \textit{appropriate visual metaphors} and \textit{data reduction methods}. Data reduction methods can aggregate overlapping data items to cluster by either mapping data density to color or by displaying the mean and the range of data. Visual Metaphors include techniques such as multi-resolution and thus, enhance the number of pixels which can be displayed. 
 
-\subsection{Factors}
+\subsection{Success Criteria for large scale data visualization}
 Bringing all findings together, the important factors for the visualization of large data sets to support decision-making are the following: 
 \begin{enumerate}
 \item How advanced visualization techniques are integrated? 
@@ -604,16 +591,16 @@ Bringing all findings together, the important factors for the visualization of l
 
 Visualization tools need to offer solutions to these questions for a successful visualization of large data sets. Thus, we propose the following success criteria for large data visualizations: 
 \begin{enumerate}
+\item Analytical Techniques
+\subitem The tool offers horizontal data reduction.
+\subitem The tool offers vertical data reduction.
 \item Visualization Techniques
 \subitem The tool offers advanced visualization techniques.
 \subitem The tool offers aggregation metaphors for visualization techniques.
-\item Analytical Methods
-\subitem The tool offers horizontal data reduction.
-\subitem The tool offers vertical data reduction.
 \item Interaction Techniques
-\subitem The tool offers distortion techniques
-\subitem The tool offers coordinated windows.
 \subitem The tool offers drill-down functions.
+\subitem The tool offers distortion techniques.
+\subitem The tool offers navigation techniques.
 \end{enumerate}
 
 In the next chapter we will compare different state-of-the art tools regarding this success criteria for large data visualization.

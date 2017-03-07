@@ -181,6 +181,7 @@
 \RequirePackage{todonotes}
 % Produces nonsense text. Can be removed as soon as you started writing your own text.
 \RequirePackage{blindtext}
+\RequirePackage{afterpage}
 % Provides the glossary function.
 \RequirePackage[toc,
 				acronyms,

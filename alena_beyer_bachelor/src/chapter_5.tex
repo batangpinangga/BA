@@ -1,12 +1,12 @@
 \chapter{Investigation of Visualization Tools using a Feature Classification Scheme}
 \label{chap:Tools}
 
+In this section we analyze selected visualization tools which are used in business and their ability to visualize large time-oriented data. Therefore, we developed a classification scheme which is based on the collected success criteria of chapter \ref{chap:BIV}. \\*
+As discussed in chapter \ref{chap:BIV} visualization tools need to provide scalable visualization techniques or the ability to extend the tool with custom visualizations. Moreover, Interaction and distortion techniques are necessary to improve scalability. Analytical methods reduce the amount of data vertically and horizontally. 
 \section{Selection of Tools}\label{tool:selection}
-In this section we analyze selected visualization tools in business and their ability to visualize large time-oriented data. Therefore, we developed a classification scheme which is based on the collected success criteria of chapter 3. \\*
-As discussed in chapter 3 visualization tools need to provide scalable visualization techniques or the ability to extend the tool with custom visualizations. Moreover, Interaction and distortion techniques are necessary to improve scalability. Analytical methods reduce the amount of data vertically and horizontally. 
-Advanced Data Visualization in business context requires software that is able to scale visualization in an "effective manner"\cite{Russom2011}. Offering advanced visualization techniques, parameterization, interaction and analytical methods such as data abstraction\cite{Tegarden1999,Aigner2011,Eick2002,Zhanga} are core functions of ADV software. \\*
+ADV in business context requires software that is able to scale visualization in an "effective manner"\cite{Russom2011}. Offering ADV techniques, parameterization, interaction and analytical methods such as data abstraction\cite{Tegarden1999,Aigner2011,Eick2002,Zhanga} are core functions of ADV software. \\*
 \textbf{The Role of APIs}
-Commercial software tends to need more time for the development and integration of advanced visualization for large data\cite{Zhanga, Simon2014}. To bridge the gap, vendors started to offer a bunch of APIs to create and integrate visualizations. 
+Commercial software tends to need more time for the development and integration of advanced visualization for large data\cite{Zhanga, Simon2014}. To bridge the gap, vendors started to offer a bunch of APIs to expand the visualization functions. 
 % data load for BigData: 
 \textbf{Software not included in this work}
 As the goal of this work is to compare visualization tools in business we only consider software which is 
@@ -139,16 +139,17 @@ In sum, Tableau is a well-known choice in the visualization community. But it do
 
 \subsubsection*{Analytics}
 Tableaus analytical strategy is manifested in the support of analytical functions. On the one hand, Tableau offers build-in modelling functions: prediction, trend line, cluster, average and median. Furthermore, R scripts can be loaded into Tableau.  
-In terms of data reduction data extracts can be loaded in Tableau and filter can be applied. Sampling also can be achieved by using aggregation functions. Sampling based on the selection is not possible.
+In terms of data reduction data extracts can be loaded in Tableau and filter can be applied. Sampling also can be achieved by using aggregation functions. Sampling based on selection is not possible.
 
 \subsubsection*{Interaction}
-Regarding interaction Tableau offers Brushing&Linking, Zooming and Filtering. Furthermore, Tableau supports Pan & Zoom. 
+Regarding interaction Tableau offers Brushing\&Linking, Zooming and  \hyperlink{http://kb.tableau.com/articles/howto/adding-filters-to-dashboards}{Filtering}. Furthermore, Tableau supports Pan\& Zoom. 
 Distortion techniques such as graphical fish-eye or bifocal displays are not supported. 
+Speaking of navigation techniques Tableau offers coordinated windows.
 
 \subsection*{Power BI}
 
 \subsubsection*{Visualization Techniques}
-Microsoft Power BI offers 8 built-in visualization techniques, 15 available techniques at the MarketPlace and 75 visualization apps in the visuals gallery. Additionally, the user can build custom visualization apps by writing \textit{TypeScript} or \textit{R}. Out of the 98 techniques none of them implements any discussed techniques of chapter \ref{visualization}. Moreover, so far advanced Metaphors are not supported\cite{Amanda}. One approach to aggregation markers are \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{Groups}} which can be combined with drill-down options.
+Microsoft Power BI offers 8 built-in visualization techniques, 15 available techniques at the MarketPlace and 75 visualization apps in the visuals gallery. Additionally, the user can build custom visualization apps by writing \textit{TypeScript} or \textit{R}. Out of the 98 techniques none of them implements any discussed techniques of chapter \ref{chap:BIV}. Moreover, so far advanced Metaphors are not supported\cite{Amanda}. One approach to aggregation markers are \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{Groups}} which can be combined with drill-down options.
 
 \subsubsection*{Analytics}
 Data Reduction in Power BI is possible with a data view on the database which considers less data than before. Moreover, data sets can be extracted with the \hyperlink{https://Power BI.microsoft.com/de-de/blog/power-bi-desktop-october-feature-summary/#grouping}{\textit{Inclusion/Exclusion}} of data points.\\*
@@ -171,11 +172,25 @@ d3.js allows to integrate various interaction techniques such as Zooming, Filter
 Perspective walls can be implemented with \hyperlink{https://bl.ocks.org/mbostock/10571478}{\textit{Perspective Transformation}}\cite{Bostock2017}.
 
 \subsection{The classification scheme}\label{tool:classification}
-The tools basis of assessment concerning \textit{visualization characteristics} is the classification scheme. The aspects \textit{Visualization Techniques, Analytical Techniques, Interaction Techniques} are assessed according to the criteria of completeness and required programming skills. The consideration of programming skills in business is important as the standard visualization tool user in a company may have few programming knowledge (compare \ref{user}). Moreover, investment costs in tools also increase the higher the required programming skills.
+The tools basis of assessment concerning \textit{visualization characteristics} is a classification scheme. In chapter \ref{BIV} the importance of \textit{data reduction (Analytical Techniques), advanced visualization techniques (Visualization Techniques) and interaction techniques (Interaction Techniques)} has been shown. These three aspects are assessed according to two business relevant criteria: the criterion of completeness and the criterion of required programming skills. The factor completeness serves as indicator how many features \todo{synonym für functions?} can the the business user achieve with this tool. Completeness in aggregation metaphors thus displays how many visualization techniques include aggregation metaphors. Yet, completeness is difficult to measure. We measured completeness by defining 100\% and comparing the existing tool implementation with our definition of 100\%.\\*
+\begin{table}[H]
+	\caption[completeness]{Criteria Completeness: extend to which assessed aspect is implemented in tool}
+	\label{programming-skills}
+	\begin{tabu}{cl}
+	\toprule
+	Points & Criteria\\
+	\midrule
+	0 & Not existing\\
+	1 & 25\% completed \\
+	2 & 50\% completed \\
+	3 & 75\% completed \\
+	4 & 100\% completed \\
+	\bottomrule
+	\end{tabu}
+\end{table}
 
-The criteria completeness and programming skills have been combined in the tool criteria score(TCS). Each tool has been assigned a tuple-sore: (Programming Skills, Completeness). If the assessed aspect did not exist 0 was assigned.
-
-\begin{table}[th]
+The consideration of programming skills in business is important as the standard visualization tool user in a company may have few programming knowledge (compare \ref{tasks}). Moreover, programming skills are connected with investment costs. The higher the required programming skills the higher are the investment costs. On a scale programming skills are measured by the required user knowledge to achieve a feature. Least effort is needed when the tool offers the feature automatically. The next step is to embed a feature via drag and drop. This step still does not require any programming skill. On the next level programming knowledge is required but in a popular programming language. A popular programming language such as R, Java, Javascript, python, C can used in other environments as well which increases the probability that the user knows the language. The most complex level is when a feature can only be implemented by a tool-specific programming language. Here, we assume that a tool-specific language requires additional training effort. 
+\begin{table}[H]
 	\centering
 	\caption[programming-skills]{Criteria Required Programming-Skills to use the assessed aspect}
 	\label{programming-skills}
@@ -191,21 +206,8 @@ The criteria completeness and programming skills have been combined in the tool 
 	\end{tabu}
 \end{table}
 
-\begin{table}[th]
-	\caption[completeness]{Criteria Completeness: extend to which assessed aspect is implemented in tool}
-	\label{programming-skills}
-	\begin{tabu}{cl}
-	\toprule
-	Points & Criteria\\
-	\midrule
-	0 & Not existing\\
-	1 & 25\% completed \\
-	2 & 50\% completed \\
-	3 & 75\% completed \\
-	4 & 100\% completed \\
-	\bottomrule
-	\end{tabu}
-\end{table}
+The criteria completeness and programming skills have been combined in the tool criteria score (TCS). Each feature of the tool has been assigned the tuple (Programming Skills, Completeness). If the assessed aspect did not exist 0 was assigned.
+Based on the assessment of different features  we draw a conclusion.
 
 %example grid
 \begin{figure}[H]
@@ -232,10 +234,18 @@ The criteria completeness and programming skills have been combined in the tool 
 \end{figure}
 
 
-\subsection*{Analytics}
+\subsection*{Analytical Techniques}
+Analytical Techniques cover horizontal and vertical data reduction. Therefore, a tool either can offer data reduction techniques by itself or it can integrate an analytical program such as R. Built-in-functions require less programming skills while the integration of an analytical program usually offers a wider spectrum of data reduction techniques. Completeness of data reduction techniques is defined as follows: 
+\todo{100\% definieren}
+\begin{enumerate}
+    \item 25\%: 
+	\item 50\% completed \\
+	\item 75\% completed \\
+	\item 100\%: Feature can be applied to every data set. \\
+\end{enumerate}
 %%% Horizontal Data Reduction
 \begin{figure}[H]
-\subfigure[Supports Analytical Functions]
+\subfigure[Supports Analytical Techniques]
 {
     \begin{tikzpicture}[scale=0.55]
         \begin{axis}[
@@ -251,9 +261,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Supports Analytical Functions
          \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=orange!50, right color=orange!50, bottom color=orange!50, left color=orange!50,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 4,1) {}; %QS
         \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 1,1) {}; %Power BI
@@ -280,9 +290,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Integration with analytical program
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=blue!50, bottom color=yellow, left color=white!50,
+        \node[rectangle with four colors, top color=d3orange, right color=blue!50, bottom color=yellow, left color=white!50,
         draw]  at (axis cs: 3,4) {}; %d3.js, Tableau
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 0,0) {}; %QS
         \end{axis}
         \begin{customlegend}[
@@ -294,9 +304,9 @@ The criteria completeness and programming skills have been combined in the tool 
             },
             legend style={at={(13.5, 5.5)},font=\footnotesize}] % <= to define position and font legend
             % the following are the "images" and numbers in the legend
-            \addlegendimage{mark=*,red,opacity=0.5}
+            \addlegendimage{mark=*,d3orange,opacity=1}
             \addlegendimage{mark=*,yellow,opacity=0.5}
-            \addlegendimage{mark=*,green,opacity=0.5}
+            \addlegendimage{mark=*,qlikgreen,opacity=1}
             \addlegendimage{mark=*,blue,opacity=0.5}
         \end{customlegend}
     \end{tikzpicture}
@@ -322,9 +332,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Sampling
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 0,0) {}; %QS
         \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 3,2) {}; %Power BI
@@ -349,9 +359,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Filtering
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 3,4) {}; %d3.js, Power BI
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 1,4) {}; %QS
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -374,9 +384,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Filtering + Extraction
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 0,0) {}; %QS
         \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 1,4) {}; %Power BI
@@ -401,9 +411,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (3) Abstraction
          \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 0,0) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -429,9 +439,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Offers advanced techniques
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -454,11 +464,11 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Aggregation Markers
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green!50, left color=green!50,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 1,1) {SDC}; %QS
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -483,9 +493,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (3) Multi-Resolution Metaphor
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow!50, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow!50, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -515,9 +525,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Brushing & Linking
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+       \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=white,
         draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -538,9 +548,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Zoom
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+       \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=white,
         draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -561,9 +571,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (3) Filter
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+       \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=white,
         draw]  at (axis cs: 1.5,4) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -590,9 +600,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Graphical Fish-Eye
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+       \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -615,9 +625,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Bifocal-Display
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -640,9 +650,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (3) Perspective Wall
          \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=yellow, left color=yellow,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 4,4) {}; %QS, Power BI
         \node[rectangle with four colors, top color=blue!50, right color=blue!50, bottom color=blue!50, left color=blue!50,
         draw]  at (axis cs: 0,0) {}; %Tableau
@@ -671,9 +681,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (1) Coordinated Windows
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+       \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=white,
         draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -694,9 +704,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (2) Search
         \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-       \node[rectangle with four colors, top color=green!50, right color=blue!50, bottom color=yellow, left color=white,
+       \node[rectangle with four colors, top color=qlikgreen, right color=blue!50, bottom color=yellow, left color=white,
         draw]  at (axis cs: 1,4) {}; %QS, Power BI, Tableau
         \end{axis}
     \end{tikzpicture}
@@ -717,9 +727,9 @@ The criteria completeness and programming skills have been combined in the tool 
         ]
         % (3) Navigational Maps
          \addplot [] coordinates{};
-        \node[rectangle with four colors, top color=red!50, right color=red!50, bottom color=red!50, left color=red!50,
+        \node[rectangle with four colors, top color=d3orange, right color=d3orange, bottom color=d3orange, left color=d3orange,
         draw]  at (axis cs: 3,4) {}; %d3.js
-        \node[rectangle with four colors, top color=green!50, right color=green!50, bottom color=green, left color=green,
+        \node[rectangle with four colors, top color=qlikgreen, right color=qlikgreen, bottom color=qlikgreen, left color=qlikgreen,
         draw]  at (axis cs: 1,4) {}; %QS
         \node[rectangle with four colors, top color=yellow, right color=yellow, bottom color=yellow, left color=yellow,
         draw]  at (axis cs: 1,2) {}; %Power BI
@@ -752,9 +762,7 @@ The time range can be decreased by limiting the data range inside the code.
 Animation can be achieved by using plot\_ly() and ggploty(). Moreover, plot\_ly() offers linked animated views.
 \textit{Dygraphs} includes also navigational sliders called Range Selector, panning and zooming and brushing of data items.
 \fi
-
 \rotatebox{90}{
-
     \begin{tabular}{|l|l|l|l|l|l|}
         \toprule
         &                                  & d3.js             & QS              & Power BI  & Tableau \\
@@ -782,15 +790,16 @@ Animation can be achieved by using plot\_ly() and ggploty(). Moreover, plot\_ly(
     \end{tabular}
     \caption{Tool Comparison}
 }
+
 \todo{0 ersetzen durch passenden Ausdruck, leere Felder auffüllen}
 \subsubsection{Conclusion}
+The tool comparison shows that the tools have different strategies for large data visualization. Tableau has its strength in the analytical data visualization with the integration of R and built-in-functions such as clustering and prediction. With these functions time-oriented tasks are supported, but if the user decides to show all data rows of a huge data set the visualization will become confusing. 
+QS' strength is the javascript-interface in which new visualizations can be integrated into QS. Moreover, the SmartData Compression is a first step in visualizing large data at different levels. 
+Yet, the weak point are the analytical options. While Tableau can integrate algorithms to reduce data, QS can only manipulate data with the QS specific set expressions. However, set expressions are limited in data reduction possibilities.
+Power BI combines both analytical and visualization features. One can build visualizations with R and TypeScript, and also execute R scripts in Power BI.\\*\todo{Conclusion erweitern mit Analytics, Viz, Interaction}
 \textbf{Analytics}\\*
 \textbf{Visualization}\\*
 \textbf{Interaction}\\*
 
-The strategies of the studied tool for large data visualization differ in the range between analytical and visualization based. 
-\todo{evtl. timeline einfügen}
-Tableau has its strength in the analytical data visualization with the integration of R and built-in-functions such as clustering and prediction. With these functions time-oriented tasks are supported, but if the user decides to show all data rows of a huge data set the visualization will become confusing. 
-QS strength is the javascript-interface in which new visualizations can be integrated into QS. Moreover, the SmartData Compression is a first step in visualizing large data at different levels. 
-Yet, the weak point are the analytical options. While Tableau can integrate algorithms to reduce data, QS can only manipulate data with set expressions and set expressions are limited in data reduction possibilites.
-Power BI combines both analytical and visualization features. One can build visualizations with R and TypeScript, and also execute R scripts in Power BI.
+
+
