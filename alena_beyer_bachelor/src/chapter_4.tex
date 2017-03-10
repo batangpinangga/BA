@@ -86,8 +86,7 @@ Talking of large time-oriented data for business we will consider the three give
 
 \begin{table}[H]
 	\centering
-	% caption format: \caption[<business aplications>]{<long version>}
-	\caption[Table 1]{Business applications\cite{Brachman1996,Tegarden1999}}
+	\caption[Business Applications]{Business Applications\cite{Brachman1996,Tegarden1999}}
 	\label{businessapplications}
 	\begin{tabu}{ll}
 	\toprule
@@ -102,15 +101,15 @@ For each application area exists a number of publications covering different asp
 \begin{enumerate}
     \item The data is structured. 
     \item The data is abstract.
-    \item The data is multi-variate.
+    \item The data is multivariate.
     \item The data is discrete.
 \end{enumerate}
-\textbf{Structured data}: Data can come in many different forms. Unstructured data appears in text, speech and language processing\cite{Borgo2013}. Structured data comes in tables in which each attribute are represented by one column and each row is one data item. The attributes can be either numerical or text-based. As multi-variate data is usually presented in tables\cite{Borgo2013} we assume that business data is structured.\\*
+\textbf{Structured data}: Data can come in many different forms. Unstructured data appears in text, speech and language processing\cite{Borgo2013}. Structured data comes in tables in which each attribute are represented by one column and each row is one data item. The attributes can be either numerical or text-based. As multivariate data is usually presented in tables\cite{Borgo2013} we assume that business data is structured.\\*
 \textbf{Abstract data}: Abstract data is defined as data without any spatial relationship in the data\cite{Shneiderman1996}. \\*
-\textbf{Multi-variate data}: 
-Often, multi-variate is mixed-up with the term multi-dimensional. For this reason we define  multi-variate data by the number of dependent attributes. If the data set holds more than two dependent attributes then we call the data \textit{multi-variate}. In contrast, multi-dimensional depicts the number of independent attributes of a data set\cite{Aigner2011}.  \\*
+\textbf{multivariate data}: 
+Often, multivariate is mixed-up with the term multi-dimensional. For this reason we define  multivariate data by the number of dependent attributes. If the data set holds more than two dependent attributes then we call the data \textit{multivariate}. In contrast, multi-dimensional depicts the number of independent attributes of a data set\cite{Aigner2011}.  \\*
 \textbf{Discrete and time-oriented data}: A time-oriented data set contains data items which change over time. Each data item has a timestamp which is saved in one table-column. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer\cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order. Ordered discrete data is called \textit{time series}. The time series is an ordered sequence of n data items $T=(t_1+t_2+...+t_n),t_i\in\mathbb{R}$. Thus, we will focus on the analysis of time series data. \\*
-These assumptions are based on the work of Tegarden in which business data is described as abstract and multi-variate and discrete\cite{Tegarden1999}.
+These assumptions are based on the work of Tegarden in which business data is described as abstract and multivariate and discrete\cite{Tegarden1999}.
 \\*
 \todo{drin lassen? Raus?}
 Eventhough, data can be point-based or interval-based (scope), linear or cyclic (arrangement), ordered branching and with multiple perspectives(viewpoint)\cite{Aigner2011}. We will not narrow our focus further but talk on an abstract level. Our perpective is to explore visualization techniques with different scopes, arrangements and viewpoints according to their scalability but of course, every visualization technique is designed for a specific scope such as linearity or seasonal behaviour. The decision for a specific visualization technique is still up to the user. \todo{hier evtl. die unterscheidung von radial und nicht radial einführen / linear oder zyklisch?}.\\*
@@ -136,7 +135,7 @@ In classification the task is to find the right group the item belongs to. Accor
 Segmentation splits a time series into \textit{k} meaningful subsequences (segments)\cite{batyrshin2007perception}. 
 \\*
 \textbf{T5: Prediction}\\*
-In Prediction\textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. Forecasting 
+In Prediction\textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. 
 \\*
 \textbf{T6: Anomaly Detection} \\*
 Anomaly detection points out events which behave in a different way than expected.
@@ -173,14 +172,14 @@ Pattern discovery finds regularly appearing structures in a time series.  It cov
 % introduction of methodology: selection of vizTechniques, introduction of classes
 The following section discusses several visualization techniques for time-oriented data including the question of their scalability because the key to a successful representation of the data is the choice of an appropriate technique. This is shown in the cognitive fit theory\cite{Vessey1991} as this theory showed a significant increase of user task performance the better the visual representation of a problem fitted to the cognitive user model. Visualizations of time-oriented data therefore have to represent the cognitive user model. Based on the findings in literature we assume that the cognitive user model is represented by the user tasks which we described in section \ref{tasks}.\\* 
 \textbf{Standard Visualizations of time series data}
-Usually time series data is visualized with line charts. However, line charts can only show \textit{univariate} data. Our selection of visualization techniques is based on Aigner et al.\cite{Aigner2011} which presents current approaches to visualize time-oriented data. Hereby, we focus on 34 techniques which can be used to show business data: abstract, multi-variate and discrete data (compare section \ref{data}). 
+Usually time series data is visualized with line charts. However, line charts can only show \textit{univariate} data. Our selection of visualization techniques is based on Aigner et al.\cite{Aigner2011} which presents current approaches to visualize time-oriented data. Hereby, we focus on 34 techniques which can be used to show business data: abstract, multivariate and discrete data (compare section \ref{data}). 
 As the work of Aigner was published in 2011 we completed the set of techniques with current approaches based on the \href{http://survey.timeviz.net/}{TimeVizBrowser}. Moreover, we consider only stand-alone visualization techniques which are techniques no systems, tools or software. In literature a significant amount of publications describe new tools or systems which tackle the visualization of time-oriented data. These tools usually are specific tools which can only be applied in a limited field. As we write this work with the perspective of business users tools have to be generic and single-task systems are not appropriate.
 
 We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and day-to-day new visualization techniques are developed.
 Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to name every single existing visualization technique.
 
 
-However, we think that this work gives a good overview of visualization techniques as we stick to Keim's taxonomy\cite{Keim1995} of visualization techniques for multi-variate data which classifies them into the classes: \textit{geometric-projective}, \textit{graph-based}, \textit{hierarchical}, \textit{icon-based} and \textit{pixel-oriented}.
+However, we think that this work gives a good overview of visualization techniques as we stick to Keim's taxonomy\cite{Keim1995} of visualization techniques for multivariate data which classifies them into the classes: \textit{geometric-projective}, \textit{graph-based}, \textit{hierarchical}, \textit{icon-based} and \textit{pixel-oriented}.
 \\*
 \textbf{Graph-based} techniques present large graphs by using layout algorithms\cite{Keim1996}.\\*
 \textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen\cite{FerreiradeOliveira2003}.\\*
@@ -202,7 +201,7 @@ The analysis of visualization techniques showed that time-oriented techniques ar
 
 \begin{table}[H]
 	\centering
-	\caption{Scalability of Visualization Classes}
+	\caption[Visualization Classes]{Visualization Classes}
 	\label{vizScalability}
 	\begin{tabu}{  | l | l | l |}
 	\toprule
@@ -263,8 +262,7 @@ One interesting extension of pixel-oriented techniques is the \textit{multi-reso
 
 \begin{table}[H]
 	\centering
-	% caption format: \caption[<Scalability of Visualization Classes>]{<long version>}
-	\caption{Scalability of Visualization Classes}
+	\caption[Scalability of Visualization Classes]{Scalability of Visualization Classes}
 	\label{vizScalability}
 	\begin{tabu}{ l | c }
 	\toprule
@@ -300,8 +298,7 @@ Furthermore, we suggest to divide GP-techniques into \textit{radial} and \textit
 
 \begin{table}[H]
 	\centering
-	% caption format: \caption[<Radial and non-radial GP-techniques>]{<long version>}
-	\caption[Table 1]{Radial and non-radial GP-techniques}
+	\caption[Radial and non-radial GP-techniques]{Radial and non-radial GP-techniques}
 	\label{radialTable}
 	\begin{tabu}{lcc}
 	\toprule
@@ -383,7 +380,7 @@ Parallel Glyphs provide brushing of polylines, filtering, axis reordering, rotat
 
 \begin{table}[H]
 	\centering
-	\caption[Table 1]{Scalability of GP-Techniques}
+	\caption[Scalability of GP-Techniques]{Scalability of GP-Techniques}
 	\label{GPscalability}
 	\begin{tabu}{lcc}
 	\toprule
@@ -401,7 +398,7 @@ Parallel Glyphs provide brushing of polylines, filtering, axis reordering, rotat
 \end{table}
 
 
-In summary, visualization tools should offer advanced data visualization (ADV) to visualize time-oriented multi-variate data. The term ADV is not unambigiously defined\cite{Aigner2011,Keim}. 
+In summary, visualization tools should offer advanced data visualization (ADV) to visualize time-oriented multivariate data. The term ADV is not unambigiously defined\cite{Aigner2011,Keim}. 
 %\textit{Aigner et. al} classify Parallel Coordinates as standard visualizations\cite{Aigner2011} whereas \textit{Keim et. al.} \cite{Keim} are talking about Parallel Coordinates as a novel technique. This discussion of course is determined by the time epoche. The longer a visualization technique is known the more it is counted as a standard visualization technique. 
 In our understanding ADV is a visualization technique which is able to scale to large and huge amounts of data.
 However, only few techniques are able to represent billions of data. In the end, most of them are limited through the 2D-screen. Factors which enhance the scalability are \textit{advanced visual metaphors}, \textit{interaction techniques} and \textit{data reduction}. 
@@ -467,10 +464,10 @@ In contrast to data reduction methods advanced visual metaphors are not actually
 \subsection{Need for Interaction Techniques}
 Interaction Techniques describe how the user can interact with the data. In this section interaction techniques for large data sets are discussed and how they can enhance scalability. As discussed in \ref{problems} challenges in visualization are pixel overlap, limited screen space, identifying a region of interest and navigation. Interaction technique can overcome these problems. 
 \par
-Overlap can be eliminated by filtering and zooming as filters and zoom reduce the displayed data and hence, overlap is minimized. One alternative to zooming are multiple linked views which are discussed in this section.\\*
+Overlap can be eliminated by filtering and zooming as filters and zoom reduce the displayed data and hence, overlap is minimized. \\*
 \textbf{Filtering:} With filters a set of variables can be selected and the visualization is only showing the respecting variables. The excluded data items are kept in memory.
 One way of filtering are dynamic queries. They provide a filter-mechanism by multiple widgets, such as sliders or input fields\cite{Hochheiser2004,Shneiderman2008,Aigner2011}. A specific dynamic query for time-oriented data are time-boxes. These boxes are rectangular selection areas which are drawn by the user. The tool then only displays values with a similar pattern to the pattern in the time-boxes.\\*
-\textbf{Zooming} is the way of drilling down into a data set to a lower level of detail. One special way of zooming is semantic zooming\cite{boulos2003use}. Zooming is one method to achieve \textit{Overview + Detail}.
+\textbf{Zooming} is the way of drilling down into a data set to a lower level of detail. The user focus is shifted from the \textit{Overview}-Level to a \textit{Detail-Level} where the displayed data is reduced and thus, overlap decreased. One special way of zooming is semantic zooming\cite{boulos2003use}. Instead of zooming multiple linked views are preferred for a higher number of displayed object. This will be discussed in \ref{zoomingVsmultiple}. 
 \par
 
 The limited screen space can be enhanced by \textit{interactive distortion techniques}\cite{mackinlay1991perspective}.
@@ -501,10 +498,12 @@ Examples for distortion techniques are \textit{Bifocal Displays}\cite{Spence1982
 \par
 
 
-In close relation to interaction techniques stand appropriate interactive navigation techniques to navigate inside the data set such as linked views and information murals, also known as navigational maps\cite{Jerding1998}. With linked views the user can see different level of detail on one glance and navigate in different level of detail with navigational maps. Navigation also helps in finding a region of interest.\\*. The differentiation between navigation and interaction techniques is not selective. Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented data requires a layout with multiple simultaneous views if the number of data objects exceeds three items. Multiple coordinated views are called linked views. Often, linked views are combined with Brushing. \\*
+In close relation to interaction techniques stand appropriate interactive navigation techniques to navigate inside the data set such as linked views and information murals, also known as navigational maps\cite{Jerding1998}. With linked views the user can see different level of detail on one glance and navigate in different level of detail with navigational maps. Navigation also helps in finding a region of interest.\\*. The differentiation between navigation and interaction techniques is not selective.
+\label{zoomingVsmultiple}
+Ware\cite{Ware2012} showed that zooming is an easy-to-use-tool for a small amount of items. However, if the user needs to keep three items or more in its visual working memory multiple windows are more effective than zooming. Thus, displaying large time-oriented data requires a layout with multiple simultaneous views if the number of data objects exceeds three items. Multiple coordinated views are called linked views. Often, linked views are combined with Brushing. \\*
 
-\textbf{Brushing \& Linking: }The user can select data items on the screen(Brushing) and the respective items are highlighted in every connected window (Linking). Therefore, lasso, rubber-band or rectangular selection enables the user to select groups of data items\cite{tegarden1999, Aigner2011}. In the context of time-oriented data a typical brushing activity is the selection of an smaller time-span to see more details during this period of time. Linked views are also known as coordinated windows.
-Brushing \& Linking is one method to achieve \textit{Focus + Context}.\\*
+\textbf{Brushing \& Linking: }The user can select data items on the screen(Brushing) and the respective items are highlighted in every connected window (Linking) which is also known as coordinated window. Therefore, lasso, rubber-band or rectangular selection enables the user to select groups of data items\cite{tegarden1999, Aigner2011}. Brushing \& Linking is one way to achieve \textit{Focus + Context} but it also supports the user by the user task \textbf{T3} as similar items are highlighted. Moreover, in the context of time-oriented data a typical brushing activity is the selection of an smaller time-span to see more details during this period of time. 
+\\*
 
 \begin{figure}[H]
     \centering
@@ -512,11 +511,10 @@ Brushing \& Linking is one method to achieve \textit{Focus + Context}.\\*
     \caption{Measured task performance of zooming compared to multiple windows. \cite{Ware2012a}}
     \label{fig:my_label}
 \end{figure}
-Another navigation technique is the distortion technique \textbf{Perspective walls} which is a 3D-representation existing of 3 walls. The front wall shows details and the two side walls provide context. Perspective walls is one method to provide \textbf{Focus + Context} and Navigation in large data sets.
+% Another navigation technique is the distortion technique \textbf{Perspective walls} which is a 3D-representation existing of 3 walls. The front wall shows details and the two side walls provide context. Perspective walls is one method to provide \textbf{Focus + Context} and Navigation in large data sets.
 Another navigation technique for large data sets are \textbf{navigational maps}.\\*
 \textbf{Navigational Maps: } display the complete data set next to other linked views as a miniature version in a separate window. With this method, the user can as well see the data set in detail as well keep the context and navigate through the data set.\\*
 \textbf{Search: } Besides navigational maps \textit{Searching} is an approach in querying and retrieving one specific data point. Searching uses natural language processing (NLP). As data set searching can include solutions from the text input at the front-end or it also can consider solutions from the data points - displayed in the visualization. The second case is recommended for large data as the number of data points is difficult to overview.
-\textbf{Pattern Search: }Another navigation technique is called pattern search. Pattern search allows the user to specify a known pattern and query similar pattern\cite{Buono}. Pattern Search is also used in time-series analytics.
 \par
 
 The discussed interaction techniques are only a subset of available interaction techniques. We focused on interaction styles which can solve the problems of large data visualization and thus enhance visual scalability\cite{Tegarden1999}. Hereby, we assume that interaction is in responsibility of the visualization tools.
@@ -541,33 +539,33 @@ Vertical data reduction describes the process of removing data rows whereas hori
 \todo{vertical and horizontal data reduction haben unterschiedliche Granularität: was ist besser? Feedback einholen}
 \subsubsection{Vertical Data Reduction}
 One way to decrease the size of large or huge data sets is to remove data rows. This section lists several data removal techniques. \todo{next sentences are not mentioned again: remove or mention} One important issue for every technique is the question which data to keep and which data to remove. The disadvantage of data reduction is the information loss.
-\textbf{Sampling}
+\textbf{Sampling & Filtering: }
 Sampling describes a strategy to reduce data by creating a sample of the original data. Thereby, sampling is scalable, reduces clutter, preserves information of the kept data as well as patterns and trends\cite{PiringerHarald2011}. Still, sampling may eliminate outliers or single data items and does not provide any guarantee to avoid visual overlap. \\*
-\textbf*{Filtering}
-Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exclusion of irrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.
-\textbf*{Temporal Data Abstraction}
+Filtering is a method to reduce data by some specific criteria. In visualization filtering often is based on user input such as dynamic query sliders. Thereby, filtering can support the user in excluding task-irrelevant data portions and unlike sampling filtering may be appropriate to detect outliers. However, as filtering is based on the exclusion of irrelevant attributes it does not garantuee a specific target size of the data set. In some cases the target size might still be too large. Moreover, filtering also does not garantuee to discriminate distinct data items\cite{PiringerHarald2011}.\\*
+\textbf{Aggregation: }
+Aggregation describes the process of grouping similar data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation divides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time series data into a set of equidistant time spans\cite{jugel2014m4}.
+As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. 
+\\*
+\textbf{Temporal Data Abstraction: }
 Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. 
 One way to implement temporal data abstraction is to use natural language processing in visualization tools. The tool \textit{Answerrocket} implemented an NLP-Approach connected with visualization. Another way to achieve data abstraction are unsupervised machine learning methods, such as clustering.
-Clustering as defined in the user tasks~\ref{sec:user} has the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. It also preserves pattern and outlier if the similarity measure is appropriate.\\*
-Temporal Data Abstraction in tools can be implemented by any method which keeps the characteristic shape and removes data points. 
-\textbf*{Aggregation}
-Aggregation describes the process of grouping similar data items together. Hierarchical aggregation builds aggregated data items by forming a tree structure and collapsing the children of a tree\cite{elmqvist2010hierarchical}. Binned aggregation divides data into adjacent bins and combines them for aggregation\cite{Liu2013}. Pixel-aware aggregation clusters pixels according to their screen coordinates\cite{li2016polyspector}. M4 aggregation compresses time series data into a set of equidistant time spans\cite{jugel2014m4}.
-As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. \todo{mich damit beschäftigen}
-\\*
+Clustering as defined in the user tasks \ref{tasks} as \textbf{T2} has the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. It also preserves pattern and outlier if the similarity measure is appropriate.\\*
+Temporal Data Abstraction in tools can be implemented by any method which keeps the characteristic shape and removes data points. \\*
+
 Other ways to reduce data vertically are binning and pivoting. We will not explain them here in detail as they treat continuous and hierarchical data sets which are beyond our scope in this work. 
 
 \subsubsection{Horizontal Data Reduction}
 Besides data removal data size can be reduced by decreasing data dimensionality. Since business data often is multi-dimensional but visualization techniques are limited in the number of attributes dimensionality reduction is a way to process data sets in a way that they can be displayed by visualization techniques. 
-Common dimensionality reduction techniques are Principal Component Analysis (PCA)\cite{Aigner2008}, Multi-Dimensional Scaling or  Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. However, the attributes in the low-dimensional space are difficult to understand which makes them unintuitive. To overcome this problem hierarchical dimension reduction has been proposed. \todo{Quellen einfügen + evtl. ausformulieren}
+Common dimensionality reduction techniques are Principal Component Analysis (PCA)\cite{Aigner2008}, K-Means Clustering\cite{AllenHamilton}, Multi-Dimensional Scaling or  Self-Organizing Maps\cite{PiringerHarald2011}. The advantage is that they keep the distance between two points after the projection. Thus, anomalies can be detected and the user can be supported in \textbf{T6}. 
 
 Data reduction techniques such as horizontal and vertical data reduction condense  data sets in way to fit data sets on the screen and overcome the problem of visual clutter.
 
 \subsubsection{Data Modeling}
-Next do data reduction techniques \textit{data modeling} techniques are an important feature for tools. They enable the user to find patterns in the data. This category covers clustering, classification, network modeling and predictive modeling\cite{Zhanga}. These algorithms support the user in its user tasks for time-oriented data.
+Next do data reduction techniques \textit{data modeling} techniques are an important feature for tools. They enable the user to find patterns in the data and thus, support the user in the tasks \textbf{T2, T5, T6}. Data Modeling covers clustering, classification, network modeling and predictive modeling\cite{Zhanga}. 
 
-\subsubsection{Visual Query Analysis}
-Moreover, pattern search is an important feature in navigating in a large data set. Given a defined pattern similar patterns are retrieved. In large data sets pattern search supports the user in detecting region of interests and navigation. 
-%Segmentation Techniques, Factor Analysis, Multidimensional Scaling, FastMap\cite{FerreiradeOliveira2003} Correlation analysis, Information gain or Statistical methods, Sampling, Clustering or Aggregation\cite{Keim2005}
+\subsubsection{Pattern Search}\label{patternsearch}
+Moreover, pattern search is an important feature in navigating in a large data set. Given a defined pattern similar patterns are retrieved. One implementation of pattern search are \textit{Timeboxes}\cite{Buono}. With timeboxes the user can drag out a rectangle which defines the pattern. Then similar patterns are queried and retrieved. That is why pattern search supports the user in the user tasks \textbf{T1} and \textbf{T7} by detecting regions of interest and supporting in navigation. In large data sets pattern search is required more than ever as the human perception is not able to perceive patterns anymore.
+
 
 
 

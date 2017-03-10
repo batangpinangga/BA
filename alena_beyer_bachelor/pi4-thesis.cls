@@ -175,6 +175,9 @@
 \RequirePackage{multirow}
 \RequirePackage{booktabs}
 \RequirePackage{makecell}
+\RequirePackage{tabularx}
+\RequirePackage{bigstrut}
+\RequirePackage{hhline}
 % Support for listings (for displaying algorithms, source code, etc.).
 \RequirePackage{listings}
 % Provides todo notes that help you keep track of what you have to do.
@@ -199,6 +202,10 @@
 \RequirePackage{pgfplots}
 % Colored Cell
 \RequirePackage[table]{xcolor}
+% Landscape Mode 
+\RequirePackage{lscape}
+% For Dashed Line
+\RequirePackage{arydshln}
 % ---------------------------------
 
 % Language options for specific packages
@@ -347,6 +354,8 @@
 \tikzoption{bottom color}{\pgfsetdiagonalbottomcolor{#1}}
 \tikzoption{left color}{\pgfsetdiagonalleftcolor{#1}}
 
+%--------------------------------------------------------------
+
 % Code from Christian Feuersänger
 % http://tex.stackexchange.com/questions/54794/using-a-pgfplots-style-legend-in-a-plain-old-tikzpicture#54834
 
@@ -369,3 +378,18 @@
 
 % define checkmark
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+% define dashed-line
+\def\adl@drawiv#1#2#3{%
+        \hskip.5\tabcolsep
+        \xleaders#3{#2.5\@tempdimb #1{1}#2.5\@tempdimb}%
+                #2\z@ plus1fil minus1fil\relax
+        \hskip.5\tabcolsep}
+\newcommand{\cdashlinelr}[1]{%
+  \noalign{\vskip\aboverulesep
+          \global\let\@dashdrawstore\adl@draw
+          \global\let\adl@draw\adl@drawiv}
+  \cdashline{#1}
+  \noalign{\global\let\adl@draw\@dashdrawstore
+          \vskip\belowrulesep}}
+%--------------------------------------------------------------
