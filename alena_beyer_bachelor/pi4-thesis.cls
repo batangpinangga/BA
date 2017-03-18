@@ -168,6 +168,7 @@
 % Support for multiple images in one figure environment.
 \RequirePackage{subfig}
 \RequirePackage{subfigure}
+\RequirePackage{subcaption}
 % More options for tabular envrionments.
 \RequirePackage{array}
 \RequirePackage{tabu}
@@ -176,10 +177,12 @@
 \RequirePackage{booktabs}
 \RequirePackage{makecell}
 \RequirePackage{tabularx}
+\RequirePackage{rotating}
 \RequirePackage{bigstrut}
 \RequirePackage{hhline}
 % Support for listings (for displaying algorithms, source code, etc.).
 \RequirePackage{listings}
+\RequirePackage{enumitem}
 % Provides todo notes that help you keep track of what you have to do.
 \RequirePackage{todonotes}
 % Produces nonsense text. Can be removed as soon as you started writing your own text.

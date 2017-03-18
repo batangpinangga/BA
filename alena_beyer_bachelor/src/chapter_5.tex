@@ -1,10 +1,10 @@
 \chapter{Investigation of Visualization Tools using a Feature Classification Scheme}
 \label{chap:Tools}
 
-In this section we analyze selected visualization tools and their ability to visualize large time-oriented data. Therefore, we developed a classification scheme which is based on the collected success criteria of chapter \ref{chap:BIV}. \\*
-As discussed in chapter \ref{chap:BIV} visualization tools need to provide scalable visualization techniques or the ability to extend the tool with custom visualizations. Moreover, Interaction and distortion techniques are necessary to improve scalability. Analytical methods reduce the amount of data vertically and horizontally. 
+In this section we analyze selected visualization tools and their ability to visualize large time-oriented data. Therefore, the database metrics were compared for each tool. Database metrics are part of the definition of visual scalability and describe how tools scale to large data sets. A detailed discussion can be found at section \ref{databasemetrics}. Moreover, we developed a classification scheme which is based on the collected success criteria of chapter \ref{chap:BIV} and ranked the tools according to this classification scheme. \\*
+
 \section{Selection of Tools}\label{tool:selection}
-The tools were selected based on their relevance in business. Nowadays, businesses strive to do self-service data science. Therefore, they use self-service tools which are characterized by a graphical user interface (GUI), low prior programming skills and the universal use. The GUI enables non computer scientists to analyze data by the help of the human visual system. Based on the Magic Quadrant for Business Intelligence and Analytics Platforms 2017 \cite{Sallam2017} Qlik, Tableau and Microsoft are the leading visionaries of BI Vendors. All of these tools are \textit{commercial} fee-based tools in the business context. Their strength lies in the user support and their universality. \cite{ITCentralStation} as a crowdsourcing recommendation platform for BI tools confirmed Gartner's assessment as Tableau, Qlik, Oracle, Microsoft Power BI and IBM Cognos ranked among the first five places. \\
+The tools were selected based on their relevance in business. Nowadays, businesses strive to do self-service data science\cite{Russom2011,Parenteau2016,visualization2012making,curran2005self}. Therefore, they use self-service tools which are characterized by a graphical user interface (GUI), low prior programming skills and the universal use. The GUI enables non computer scientists to analyze data by the help of the human visual system. Based on the Magic Quadrant for Business Intelligence and Analytics Platforms 2017 \cite{Sallam2017} Qlik, Tableau and Microsoft are the leading visionaries of BI Vendors. All of these tools are \textit{commercial} fee-based tools in the business context. Their strength lies in the user support and their universality. \cite{ITCentralStation} as a crowdsourcing recommendation platform for BI tools confirmed Gartner's assessment as Tableau, Qlik, Oracle, Microsoft Power BI and IBM Cognos ranked among the first five places. \\
 Qlik, Tableau and Power BI are ranked as BI tools but at the same time they fulfill all criteria to call themselves visualization tools (\ref{tools}).
 Thus, we chose the tools: Power BI, Tableau and Qlik Sense (QS).\\
 Moreover, we added d3.js as it fulfills the criteria for visualization tools. d3.js is an open-source JavaScript library and offers a wide range of visualization possibilities. \\
@@ -85,7 +85,7 @@ Scalability of tools can also be measured in terms of users and delivery which g
 \subsection{Visualization Characteristics}
 
 \textbf{The classification scheme}\label{tool:classification}\\*
-The tools basis of assessment concerning \textit{visualization characteristics} is a classification scheme. In chapter \ref{BIV} the importance of \textit{data reduction (Analytical Techniques), advanced visualization techniques (Visualization Techniques) and interaction techniques (Interaction Techniques)} has been shown. These three aspects are assessed according to two business relevant criteria: the criterion of completeness and the criterion of required programming skills. The factor \textit{completeness} serves as indicator how many features can the business user achieve with this tool. Completeness in aggregation metaphors displays how many visualization techniques include aggregation metaphors. Yet, completeness is difficult to measure. Thus, we compare completeness by relative comparison.\\*
+The tools basis of assessment concerning \textit{visualization characteristics} is a classification scheme. In chapter \ref{BIV} the importance of \textit{data reduction (Analytical Techniques), advanced visualization techniques (Visualization Techniques) and interaction techniques (Interaction Techniques)} has been shown. These three aspects are assessed according to two business relevant criteria for self-service tools: the criterion of completeness and the criterion of required programming skills. The factor \textit{completeness} serves as indicator how many features can the business user achieve with this tool. Completeness in aggregation metaphors displays how many visualization techniques include aggregation metaphors. Yet, completeness is difficult to measure. Thus, we compare completeness by relative comparison.\\*
 \begin{table}[H]
 	\caption[Tool Completeness]{Criteria Completeness: extend to which assessed aspect is implemented in tool}
 	\label{programming-skills}
@@ -109,10 +109,10 @@ The consideration of programming skills in business is important as the standard
 	\toprule
 	Points & Criteria\\
 	\midrule
-	1 & Automatic support by tool \\
-	2 & Available by drag and drop\\
-	3 & Feature can be programmed in a popular programming language (R,JavaScript,Java) \\
-	4 & Feature can be programmed, but in a tool-specific programming language \\
+	1 & Feature can be programmed, but in a tool-specific programming language\\
+	2 & Feature can be programmed in a popular programming language (R,JavaScript,Java)\\
+	3 & Available by drag and drop \\
+	4 & Automatic support by tool\\
 	\bottomrule
 	\end{tabu}
 \end{table}
@@ -220,8 +220,8 @@ Visualization extensions are not possible even though Tableau has a JavaScript A
 In sum, Tableau is a well-known choice in the visualization community. But it does not support large scale visualization features. \\*
 
 \textbf{Analytical Techniques}\\
-Tableau's analytical strategy is manifested in the support of analytical functions. On the one hand, Tableau offers build-in modelling functions: prediction, trend line, cluster, average and median. Furthermore, R scripts can be loaded into Tableau.  
-In terms of data reduction data extracts (DE) can be loaded in Tableau and filter can be applied. Sampling also can be achieved by using aggregation functions. Sampling based on selection is not possible.\\*
+Tableau's analytical strength is manifested in the support of analytical functions. On the one hand, Tableau offers build-in modelling functions: prediction, trend line, cluster, average and median. Furthermore, R scripts can be loaded into Tableau.  
+In terms of data reduction data extracts (DE) can be build based on the data connection. Therefore, filters can be applied and the data set reduced to the filtered data, unused columns can be hidden. 
 
 \textbf{Interaction Techniques}\\
 Regarding interaction Tableau offers Brushing\&Linking, Zooming and  \hyperlink{http://kb.tableau.com/articles/howto/adding-filters-to-dashboards}{Filtering}. Furthermore, Tableau supports Pan\& Zoom. 
@@ -984,7 +984,7 @@ The TCS of Interaction Techniques includes standard interaction techniques such 
 
 
 \subsubsection{Conclusion}\label{conclusion}
-The tool comparison demonstrates that there exists different strategies for large data visualization. Moreover, while some tools already started to offer analytical, visualization and interaction techniques for large scale data there are still features which are not provided by any tool.\\
+The tool comparison demonstrates that there exists different strategies for large data visualization. Moreover, while some tools already started to offer analytical, visualization and interaction techniques for large scale data there are still features which are not provided by any tool and thus, out of the studied tools none of the tools is currently suitable for the visual exploration of large data.\\
 \textbf{Database Metrics}\\*
 \todo{Text einfügen}
 \par
