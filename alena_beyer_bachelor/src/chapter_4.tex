@@ -35,7 +35,7 @@ analysis tasks and data characteristics, which is a goal of Visual Analytics."
 %%%%% Problems %%%%%%%%%%%%%
 The visual data exploration of large time-oriented data in business evokes new requirements for visualizations. In this chapter we describe these requirements. Following a problem-oriented approach the first three sections outline the basics. Section \ref{problems} sketches the problems of visual clutter while section \ref{data} addresses the data and section \ref{tasks} the user tasks. In section \ref{vis} scalable time-oriented visualizations are explored and other factors influencing Big Data visualization are derived \ref{factors}. The visualizations and the factors together result in an advice for tools to visualize large data.
  \section{Understanding the problem}\label{problems}
- Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. Yet, large amounts of data causes conflicts with effective data representation. One conflict is visual clutter. Visual clutter denotes overlapping and distracting data items. Clutter is caused by similar data items which overlap. If similar yet not identical data items are visualized at once items cannot be distinguished anymore. One example is shown in the figure below where clusters cannot be identified. 
+ Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. Yet, large amounts of data causes conflicts with effective data representation. One conflict is visual clutter. Visual clutter denotes overlapping and distracting data items. Clutter is caused by similar data items which overlap. If similar yet not identical data items are visualized at once items cannot be distinguished anymore. One example is shown in the figure below where clusters cannot be identified.
  
  \begin{figure}[H]
  \centering
@@ -109,14 +109,15 @@ Talking of large time-oriented data for business we will consider the three give
 	\centering
 	\caption[Business Applications]{Business Applications\cite{Brachman1996,Tegarden1999}}
 	\label{businessapplications}
-	\begin{tabu}{ll}
+	\begin{tabular}{ll}
 	\toprule
 	Marketing & Financial Sector \\
 	Fraud Detection & Manufacturing and Production \\
 	Operations Planning & Market Analysis \\
 	Health Care & Network Management\\
 	\bottomrule
-	\end{tabu}
+	\label{table:applications}
+	\end{tabular}
 \end{table}
 For each application area exists a number of publications covering different aspects. Thus, the analysis of every single application would go beyond our scope and we decided to consider data with the following characteristics: 
 \begin{enumerate}
@@ -494,7 +495,7 @@ Aggregation describes the process of grouping similar data items together. Hiera
 As time-oriented data has specific characteristics analytical methods have to consider these peculiarities. One way to reduce data size with respect to the time-specific characteristics is temporal aggregation. Hereby, data is aggregated according to the time unit (day, month, year) in temporal hierarchy levels. Examples for temporal aggregation are hierarchical axis \cite{Chung2014} which enable to navigate in time. 
 \\*
 \textbf{Temporal Data Abstraction: }
-Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. 
+Temporal Data Abstraction\cite{Aigner2011} reduces the number of data rows by focusing on relevant concepts, patterns, shapes over time and neglecting irrelevant details. Clusters and summery statistics\cite{PiringerHarald2011} are typical examples for data abstraction. In the context of time-oriented data  However, the authors found a trade-off between abstraction and accuracy: with low abstraction and a high accuracy there exists the problem of cluttering. 
 One way to implement temporal data abstraction is to use natural language processing in visualization tools. The tool \textit{Answerrocket} implemented an NLP-Approach connected with visualization. Another way to achieve data abstraction are unsupervised machine learning methods, such as clustering.
 Clustering as defined in the user tasks \ref{tasks} as \textbf{T2} has the advantage of reducing visual clutter by displaying the natural groups of the data instead of every single data item. It also preserves pattern and outlier if the similarity measure is appropriate.\\*
 Temporal Data Abstraction in tools can be implemented by any method which keeps the characteristic shape and removes data points. \\*
@@ -616,7 +617,7 @@ The discussed interaction techniques are only a subset of available interaction 
 \section{Visual Scalability 2.0}
 After our analysis of the limiting factors for displaying large data sets we come to the conclusion that the limitation by human perception is more restrictive than the limitation by different visualization techniques. The question is \textit{not} how many pixel can be displayed by a visualization technique but whether the visualization technique allows to perceive patterns. This is achieved by the use of \textit{appropriate visual metaphors} and \textit{data reduction methods}. Data reduction methods can aggregate overlapping data items to cluster by either mapping data density to color or by displaying the mean and the range of data. Visual Metaphors include techniques such as multi-resolution and thus, enhance the number of pixels which can be displayed. Data and dimension reduction reduces the number of data items which needs to be displayed. Thus, even non-scalable visualization techniques can display the reduced data. 
 
-\subsection{Success Criteria for large scale data visualization}
+\subsection{Success Criteria for large scale data visualization}\label{success}
 Bringing all findings together, the important factors for the visualization of large data sets to support decision-making are the following: 
 \begin{enumerate}[noitemsep]
 \item How are advanced visualization techniques integrated? 
