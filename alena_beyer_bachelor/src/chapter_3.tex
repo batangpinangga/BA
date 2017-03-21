@@ -1,25 +1,170 @@
-\chapter{Related Work}
-\label{chap:related Work}
-In this chapter we provide an overview about the current literature which intersects with the topic of our work. Therefore, we consider the four influencing factors: business, time-oriented data, large size and surveys of visualization tools. 
-% Alternative: 
-% - Big Data & Information Visualization, Big Data & Decision Making, Big Data & (Visualization) Tools
-% - Big Data & Perception, 
-% - Big Data & Visualization & Problems
-% - Time-Oriented Data
-% - Tools
+\chapter{Basics}\label{chap:BIV}
+\iffalse
+\listoftodos
+\fi
+
+%%%%% Problems %%%%%%%%%%%%%
+The visual data exploration of large time-oriented data in business evokes new requirements for visualizations. In this chapter we describe these requirements. Following a problem-oriented approach the first three sections outline the basics. Section \ref{problems} sketches the problems of visual clutter while section \ref{data} addresses the data and section \ref{tasks} the user tasks. In section \ref{vis} scalable time-oriented visualizations are explored and other factors influencing Big Data visualization are derived \ref{factors}. The visualizations and the factors together result in an advice for tools to visualize large data with.
+
+ \section{Understanding the problem}\label{problems}
+ Nowadays, the challenge in BIV is to handle large amounts of data and displaying them in an effective manner. Yet, large amounts of data causes conflicts with effective data representation. One conflict is visual clutter as shown in figure \ref{fig:first}. Visual clutter denotes overlapping and distracting data items. Clutter is caused by similar data items which overlap. If similar yet not identical data items are visualized at once items cannot be distinguished anymore as in figure \ref{fig:second}. One example is shown in the figure below where clusters cannot be identified.
+ 
+\begin{figure}
+ \centering
+\subfloat[Parallel Coordinates with clusters.]{\label{fig:first}\includegraphics[width = 0.46\textwidth]{src/images/PC1}}
+\qquad
+\subfloat[Visual clutter inhibits cluster detection.]{\label{fig:second}\includegraphics[width = 0.46\textwidth]{src/images/PC2}}
+\caption{Parallel Coordinates without clutter and with clutter}
+\end{figure}
+ 
+ Visual clutter arises if the entire data set necessary to provide the user with an overview is displayed. Shneiderman defined the importance of overview for visualization in his mantra: \textit{"Overview first, zoom in and filter, then details on demand}  \cite{Paterno1997, Shneiderman2008, Keim2008}. Overview is a basic yet important task because it navigates the user in the data and allows further analysis. Thus, the problems of large data can be summarized as follows: 
+\\*
+\textit{Overlap}: 
+The visualization of large data causes overlap. Depending on the drawing order the picture may look different and cause different interpretation even though the underlying data is the same. Visualization techniques need to avoid visual overlap (\ref{vis}, \ref{multi-resolution}). 
+\\*
+\textit{Visual Noise}: 
+Even if data items are not overlapping data in large data sets might be too similar to one another. Thus, the user cannot differentiate distinct items on the screen. A solution is discussed in \ref{aggregationmarkers}.
+\\*
+\textit{Limited monitor resolution}:
+Even if large monitors are used to visualize data in the end the available pixels on the monitor are smaller than the number of data items in a data set. This problem will be discussed in \ref{resolution}.
+\\*
+\textit{Limited visual perception}:
+Moreover, human perception is limited in the number of patterns and pixels which will be reviewed in \ref{perception}.
+\\*
+\textit{Finding region of interest}:
+If the data set is too large and overlap occurs the user faces the challenge of finding an interesting subset in the data. Thus, appropriate interaction techniques are necessary (\ref{search}).
+\\*
+\textit{Navigation}:
+To find a region of interest the user might zoom in. But then another challenge occurs in navigating in the large data set. As there are too many data points the user might loose the overview and get lost in data analysis. Navigation techniques are a method to overcome this problem (\ref{navigation}).
+\\*
+\textit{Data Manipulation}:
+If data is too large the user cannot identify whether the data is lying or not. Thus, the user may not detect data manipulation.
+\\*
+\textit{Information Loss}:
+While reducing the number of data items to present them on the limited screen information in the data can be lost. The important question is which data characteristics to keep such that the user tasks can still be supported.
 \par
-In the context of Big Data Visualization Wang et al. summarized the current challenges and methods. Besides parallelized computation and the handling of unstructured data, visualization tools are challenged. As Big Data Visualization needs to handle large amounts of data the integration of appropriate data sources with hadoop and hive is necessary and visualization tools should run both locally and connect to clusters and clouds\cite{Wang2015}.
-Big Data in BI  Visualization in the business context is called \textit{Business Information Visualization (BIV)}. This term is defined as the use of visualization technologies to visualize business data\cite{Tegarden1999}. Although Information Visualization is intensively researched\cite{Shneiderman2008,Shneiderman2002,Shneiderman1996,Keim2002} only few researchers published to BIV. Tegarden\cite{Tegarden1999} introduced the most common definition of BIV which was considered above.  Besides the definition BIV Tegarden considered the data type, the user and the visualization.   Zhang\cite{Zhang,Zhang1998,Zhang2001} published a generalized visualization model in which she described the scope of BIV. According to Zhang BIV has to deal with non-geometric data and on the other side consider the human problem-solving process. Bačić and Zhang focused on the business user perspective of problem-solving. This psychological view of the user is explored by Bačić. He studied the process of knowledge creation\cite{Bacic2012} and how Business Intelligence can support business decision-making\cite{Bacic,Bacic2012}. A more generalized perspective is covered by Ware\cite{Ware2012a}. He examined how to design information visualization for human perception. 
-\par
-Another important aspect for this work is the characteristic of time-oriented data. As time-oriented data appears in the literature with various names a lot of researchers published to time-oriented data. The following works cover different terms of data which is linked to time:  time-dependent\cite{Postfach2003, Tominski2005,Kriglstein2014,Aigner2007,VanBuuren2001,FerreiradeOliveira2003,Yang2003,Chung2014,Rind2011}, time-varying\cite{Moere2004}, time-oriented\cite{Aigner2008,Aigner2007,Aigner2011,Hinum2005,Walker} or time-related\cite{Keimc}. Significant work to the visualization of time-oriented data was done by Aigner\cite{Aigner2011,Aigner2008,Aigner2007} who proposed a taxonomy for the time-domain and various visualization techniques. He summarized the key criteria of time-oriented data which influence the visualization. The \textit{scale} describes whether data is quantitative or qualitative. The \textit{frame of reference} differentiates between abstract and spatial. The \textit{kind of data} classifies data into event-based and state-based and the \textit{number of variables} devides data into univariate and multivariate. These differentiations are used in the classification of visualization techniques.  Speaking of univariate time-oriented data there exists a lot of ongoing research called \textit{time series}\cite{Aigner2011, Buono, Walker,Leonard,Chen1993,Esling2012}.
-Other differentiations concerning time were published by Kriglstein et al\cite{Kriglstein2014}. Their hypothesis is that time-oriented data can be presented in two ways: either by \textit{animation} or by using \textit{space-metaphors}. One example for a space-metaphor is the timeline where time is mapped to a line. In their work they collected experimental findings for animation and space-metaphors. These studies compared animation, small multiples and traces. Yet, they found that none of them is able to scale beyond 200 data items\cite{Robertson2013}. Instead they suggested to use abstraction for analyzing large time-oriented data sets. 
-\par
-Besides the properties of data regarding time, the volume of data is an active research area. This problem is known in literature as
-\textit{large}\cite{PiringerHarald2011,Keim2001,Keim1996,tennekes2013visualizing, Yang2003, Keim2005, Wickham2013},\textit{large-scale}\cite{Leonard,PiringerHarald2011,Cuzzocrea,Keim2005}, \textit{Big Data}\cite{Patil,KeaheyUsingData,chen2012business} and \textit{data-intensive}\cite{PhilipChen2014,S.MD.MUJEEB2005}.
-While some works tackled the problem of reducing data others invented visualization techniques to display as much data as possible without aggregation\cite{Krzywinski2009,Luo2012,Fekete2002}. Important work was published by Keim\cite{Keim1996}. He proposed five categories for visualization techniques: pixel-oriented\cite{Keim1995,Stein2013,Keim2000,keim1996pixel,Keim2001, Keim2005,Keim2008VisualChallenges}, icon-based\cite{Chung2014,Borgo2013,Fanea2005}, hierarchical\cite{Yang2003,Shneiderman1992,LeBlanc1990}, graphic-based and geometric\cite{Noirhomme-Fraiture2002}. Visualization of large data sets are called \textit{visual scalable} visualizations. Visual or perceptual scalability is defined as the capability of visualization tools to display large data sets in an effective manner\cite{Eick2002}. Eick described that an ideal measure of visual scalability would be the \textit{number of insights} caused by a visualization tool. The definition of insights differ from 'Aha' moments to knowledge building. While 'Aha' moments can be measured by neural activity knowledge building is harder to grasp. As Information Visualization uses the term insights in both ways Eick defined an initial step to measure the visual scalability by measuring the scalability of visualizations \textit{(Visualization Characteristics}) as well as the scalability of tools \textit{(Database Metrics)}. 
-Another important factor of large data visualization is interaction. Interactions with large databases are covered in \cite{Buono,Jerding1998,mackinlay1991perspective,Keim2005}. Keim et al.\cite{Keim2005} cover general interaction techniques while Mackinlay et al. introduce new interaction techniques for large data\cite{mackinlay1991perspective}. Buono et al. describe the system \textit{TimeSearcher} and the implemented interaction techniques\cite{Buono}.
-\par
-In the last chapter we are comparing different visualization tools and their ability to display large data.  Bikakis et al. surveyed different generic visualization systems and graph-based systems in the semantic web\cite{Bikakis2016}. They compared the spectrum of analytical methods and visualization techniques. Yet, these systems are usually not used in business. 
-Other tool comparisons are published by Zhang et al.\cite{Zhanga} and Patil\cite{Patil}. These work compared commercial visual analytics system in the era of Big Data. In contrast Harger et al. surveyed open source visual analytics systems\cite{Harger}. For BI and Analytics the technology research center Gartner publishes every year a market overview of the most important Business Intelligence(BI) and Analytics tools which also serve for data discovery. The leading tools also appear in the survey\cite{Evelson2012} regarding commercial advanced visualization tools and the works of \cite{Zhanga}. All the surveys consider visualization, interaction and analysis capabilities.  
-\par
-This work will contribute to the visualization of large data by focusing on time-oriented data. We will study different visualization techniques for time-oriented data in business and point out requirements for visualizing large time-oriented data in visualization systems. In a next step, visualization tools which are used in business, are selected and the requirements are checked. Finally, we give a recommendation for the tool use depending on the ease-of-use and programming skills and show further research topics.
+To propose a solution to the problems of large-scale data visualization it is important to gain understanding of the process of visualization which is described in the Visualization Pipeline in figure\ref{fig:vispipeline}. 
+\begin{figure}[H]
+    \centering
+        \scalebox{.5}{\includegraphics{src/images/VisPipeline}}
+    \caption{Visualization Pipeline}
+    \label{fig:vispipeline}
+\end{figure}
+Given the data as input visual clutter can be reduced by adapting the steps \textit{preprocessing \& transformation}, \textit{graphics engine}, \textit{visualization} and \textit{data manipulation}. Preprocessing involves data preparation such as database joins or data cleansing. The graphics engine covers rendering processes and data formats. This part will not be covered in this work as it is out of scope since the focus of this work is on visualization techniques. With visualization techniques are considered and data manipulation describes interaction techniques.  
+
+Business visualization is used in the process of \textit{problem-solving}  \cite{Bacic2012}. Thus, the user visualizes data to gain insights into the data and to find answers to previously formulated questions.  
+As the visualization pipeline shows, the process of visual analysis is influenced by three entities: the data, the user and the visualization.
+The three entities can also be described as \textit{domains}: data-domain, user-domain and visualization-domain. The data-domain represents \textit{what} is visualized. The user-domain explains \textit{why} the problem is visualized and the visualization-domain characterizes \textit{how} the problem is visualized. Thus, we will now explore the three domains to answer the following questions: 
+
+\begin{itemize}
+    \item What is presented?
+    \item Why is it presented?
+    \item How it is presented?
+\end{itemize}
+
+
+% Data types for Information Visualization
+\section{Data type} \label{data}
+
+\textbf{What is presented?}\\*
+Talking of large time-oriented data for business we will consider three given characteristics of data: characteristics of business data, time-dependency and its size. Business data is collected in many different areas. Table \ref{table:applications} gives an overview of the applications: 
+
+\begin{table}[H]
+	\centering
+	\caption[Business Applications]{Business Applications  \cite{Brachman1996,Tegarden1999}}
+	\label{businessapplications}
+	\begin{tabular}{ll}
+	\toprule
+	Marketing & Financial Sector \\
+	Fraud Detection & Manufacturing and Production \\
+	Operations Planning & Market Analysis \\
+	Health Care & Network Management\\
+	\bottomrule
+	\label{table:applications}
+	\end{tabular}
+\end{table}
+For each application area a number of publications covering different aspects exists. The analysis of every single application would go beyond our scope so we decided to consider data with the following characteristics only: 
+\begin{enumerate}
+    \item Data that is structured. 
+    \item Data that is abstract.
+    \item Data that is multivariate.
+    \item Data that is discrete.
+\end{enumerate}
+This selection is based on the work of Tegarden in which business data is described as abstract, multivariate and discrete  \cite{Tegarden1999}.
+\textbf{Structured data}: Data can come in many different forms. Unstructured data appears in text, speech and language processing  \cite{Borgo2013}. Structured data comes in tables in which each attribute is represented by one column and each row is one data item. The attributes can be either numerical or text-based. As multivariate data is usually represented in tables  \cite{Borgo2013} we assume that business data is structured.\\*
+\textbf{Abstract data}: Abstract data is defined as data without any spatial relationship in the data  \cite{Shneiderman1996}. \\*
+\textbf{Multivariate data}: 
+Often, multivariate is mixed-up with the term multi-dimensional. For this reason we define  multivariate data by the number of dependent attributes. If the data set holds more than two dependent attributes then we call the data \textit{multivariate}. In contrast, multi-dimensional depicts the number of independent attributes of a data set \cite{Aigner2011}.  \\*
+\textbf{Discrete and time-oriented data}: A time-oriented data set contains data items which change over time. Each data item has a timestamp which is saved in one table-column. The time-dependency of the data structures the data by a given order. Every data item is mapped to a specific point in time with a smallest possible unit such as seconds. Time with a smallest unit is mapped to integer  \cite{Aigner2011} and thus we assume that time-oriented business data is discrete and has a given order.  \\*
+
+In section \ref{vis} different techniques are compared which can display time-oriented abstract, multivariate and discrete data. 
+Time-oriented data can further be differentiated into linear or cyclic, point- or interval-based and branching or multiple perspective  \cite{Aigner2011}. These factors where not considered in the selection of techniques. \\*
+
+\textbf{Large data:} To characterize the data volume we follow a definition of Huber. He divided data into small, medium, large, huge and massive data. Large data according to  \cite{Huber1994} is defined as data sets with $10^6$ and huge data with $10^8$ data entries. We are considering large and huge amounts of data. Nowadays, companies strive to do \textit{Big Data}. Big Data in typically defined as data with  high volume, high velocity, high veracity and high variety  \cite{Wang2015}. 
+
+
+
+% User Tasks
+\section{Time-oriented User Tasks} \label{tasks}
+\textbf{Why is it presented?}\\*
+In the visualization analysis process the user has the role of the data analyst which is why every visualization tool should consider the user perspective. The business user is a person that is interested in verifying existing hypothesis (verification) and discover new patterns (discovery). By using the tool he expects the tool to assist him in analyzing the data, finding critical issues and perform analysis automatically  \cite{Brachman1996}. Verification and discovery in the analysis of time-oriented data can be split in seven major tasks  \cite{Esling2012}:\\*
+
+\textbf{T1: Query by Content}
+\\*
+Given a known query \textit{query by content} describes the retrieval of similar items to this query. In time-oriented data query by content returns the \textit{k} most similar time series to the queried time series.
+\\*
+\textbf{T2: Clustering}\\*
+Clustering is the process of finding expressive groups (clusters) in the data. Therefore, the data set is divided into subgroups according to some similarity measure. In the context of large time-oriented data clustering is important to compare similar time-series.
+\\*
+\textbf{T3: Classification}\\*
+In classification the task is to find the right group the item belongs to. According to Aigner et al. temporal classification describes the preprocess of finding the correct group for given data or data set. This task is important for large data to abstract the data and make it manageable. As this task is preprocessing and not data presentation or exploration we will not check whether the tools support the user in this task. 
+\\*
+\textbf{T4: Segmentation}\\*
+Segmentation splits a time series into \textit{k} meaningful subsequences (segments)  \cite{Batyrshin2007}. 
+\\*
+\textbf{T5: Prediction}\\*
+In Prediction \textit{k} future events are predicted based on the past \textit{n} time series. This process is also known as \textit{forecasting}. 
+\\*
+\textbf{T6: Anomaly Detection} \\*
+Anomaly detection points out events which behave in a different way than expected.
+\\*
+\textbf{T7: Pattern Discovery}\\*
+Pattern discovery finds regularly appearing structures in a time series.  It covers the exploration of trends, outliers and clusters. Especially, in business this task is one of the most important tasks.
+
+% Visualization Techniques
+\section{Visualization of Time-oriented Data} \label{vis}
+\textbf{How is it presented?}\\*
+% introduction of methodology: selection of vizTechniques, introduction of classes
+The following section discusses several visualization techniques for time-oriented data with regard to their scalability to large data sets. The choice of the technique influences the scalability which is illustrated by the following example. 
+A line chart maps one dimension to the x-axis while a second dimension is mapped to the y-axis as in figure \ref{fig:linechart}. Considering, that each data items requires one screen pixel the maximum number of data items is limited by the window width. 
+\begin{figure}[H]
+    \centering
+    \scalebox{0.2}{\includegraphics{src/images/linechart}}
+    \caption{Linechart}
+    \label{fig:linechart}
+\end{figure}
+ 
+In contrast to the line chart the scatter plot uses three attributes so the maximum number of data items in the scatter plot exceeds the maximum in the line chart which is shown in \ref{fig:scatterplot}. Hence, the technique influences the maximum number of data items that can be visualized. 
+\begin{figure}[H]
+    \centering
+    \scalebox{0.2}{\includegraphics{src/images/SmartDataCompression}}
+    \caption{Scatter plot}
+    \label{fig:scatterplot}
+\end{figure}
+ 
+
+\textbf{Standard Visualizations of time series data:}
+Usually time series data is visualized with line charts. However, line charts can only show \textit{univariate} data. Our selection of visualization techniques is based on Aigner et al.  \cite{Aigner2011} which presents current approaches to visualize time-oriented data. Hereby, we focus on 34 techniques which can be used to show abstract, multivariate and discrete data (compare section \ref{data}). 
+As the work of Aigner was published in 2011 we completed the set of techniques with current approaches based on the \href{http://survey.timeviz.net/}{TimeVizBrowser} a web-based collection of time-oriented techniques. Moreover, we consider only stand-alone visualization techniques - no systems, tools or software. In literature a significant amount of publications describe new tools or systems which tackle the visualization of time-oriented data. These tools usually are specific tools which can only be applied in a limited field. As we write this work with the perspective of business users tools have to be generic and single-task systems are not appropriate.
+
+We are aware that this discussion cannot be exhaustive as time-oriented data is a current research area and new visualization techniques are developed in rapid fashion.
+Moreover, time-oriented data appears in different areas of business: E-commerce, Smart Health, E-Government, Science \& Technology, Security \& Public safety. Each sector collects different types of data and uses different applications, which makes it impossible to name every single existing visualization technique.
+
+
+However, we think that this work gives a good overview of visualization techniques as we apply Keim's taxonomy  \cite{Keim1995} of visualization techniques for large data which classifies visualizations into the following classes: \textit{geometric-projective}, \textit{graph-based}, \textit{hierarchical}, \textit{icon-based} and \textit{pixel-oriented}.
+\\*
+\textbf{Graph-based} techniques present large graphs by using layout algorithms  \cite{Keim1996}.\\*
+\textbf{Geometric projection} techniques (GP-techniques) map multi-dimensional data to the 2D screen  \cite{FerreiradeOliveira2003}.\\*
+\textbf{Pixel-oriented} techniques map each data item to one pixel on the screen. Position and color are used to represent data attributes  \cite{Keim1996}.\\*
+\textbf{Hierarchical} techniques divide the k-dimensional space into subspaces and shows it hierarchically. \\*
+\textbf{Icon-based} techniques map each data item onto one icon. The attributes are mapped to different icon features  \cite{Keim2001}.

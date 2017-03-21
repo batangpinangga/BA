@@ -43,7 +43,7 @@
     }
 
 % The title of your work.
-\piivtitle{Business Information Visualization of time-oriented data: A comparison of current visualization-tools}
+\piivtitle{Business Information Visualization of Time-oriented Data: A Comparison of Current Visualization Tools}
 % Your name.
 \piivauthor{Alena Beyer}
 % Name of your supervisor.
@@ -53,7 +53,11 @@
 
 % If you want to use the glossary make sure your 'makeindex' toolchain is working correctly.
 % Alternetively, you might want to look into the 'xindy' option of the glossaries package.
+
 \makeglossaries
+
+\input{src/glossary}
+
 \setcitestyle{square}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
@@ -62,7 +66,7 @@
 \definecolor{qlikgreen}{rgb}{0.3,0.6,0.03}
 \definecolor{applegreen}{HTML}{5BC236}
 \definecolor{d3orange}{rgb}{0.96,0.5,0.3}
-\input{src/glossary}
+
 
 % Abstract is optional. If you do not use an abstract, remove it.
 % ---------------------------------
@@ -80,11 +84,12 @@
 % If you should not have any figures, tables or acronyms in your paper remove the according list.
 \listoffigures
 \listoftables
+
 % Uncomment the next line if you use listings in your document.
 % \lstlistoflistings
 \microtypesetup{protrusion=true} % enables protrusion
 
-\printglossary[type=\acronymtype]
+\printglossary
 % End of listings
 % ---------------------------------
 
@@ -125,7 +130,7 @@
 
 % Fix for long URLs in bibliography
 \sloppy
-\printglossary
+
 \fussy
 
 \include{src/erklaerung}

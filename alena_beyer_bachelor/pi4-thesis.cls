@@ -70,6 +70,7 @@
 % UTF-8 should be supported by all major editors. If this causes problem change it to another
 % encoding (e.g., 'latin1').
 \RequirePackage[utf8]{inputenc}
+\RequirePackage{natbib}
 % ---------------------------------		   
 
 % Title page details
@@ -114,8 +115,11 @@
 	\insertauthor}
 
 	\newcommand{\insertcitydate}[2]{#1, #2}
-	
-	\bibliographystyle{ieeetr}
+	%\bibliographystyle{plain} Nummern als Zitierung
+	\bibliographystyle{alphaurl} % Abkürzungen als Zitierung
+	%\bibliographystyle{abstract} % NachnameDatum als Zitierung
+	%\bibliographystyle{nature}
+	%\bibliographystyle{apasoft}
 \fi
 
 \babeltags{lang-de = ngerman}
@@ -130,6 +134,8 @@
 % package I recommend that you read the package documentation at http://www.ctan.org/pkg/ (just
 % search for the package name). Of course you also can include more packages if you need them.
 %
+% Biblatex
+%\RequirePackage{natbib}
 % Nicer fonts for your document.
 \RequirePackage[T1]{fontenc}
 \RequirePackage{libertine}
@@ -162,12 +168,13 @@
 			]{hyperref}
 % A more intelligent reference system
 \RequirePackage{cleveref}
+%\RequirePackage{apacite}
 % Provides support for including images in your document.
 \RequirePackage{graphicx}
 \RequirePackage{float}
 % Support for multiple images in one figure environment.
 \RequirePackage{subfig}
-\RequirePackage{subfigure}
+%\RequirePackage{subfigure}
 \RequirePackage{subcaption}
 % More options for tabular envrionments.
 \RequirePackage{array}
@@ -222,6 +229,14 @@
 \fi
 % ---------------------------------
 
+% ---------------------------------
+\renewcommand{\thesubfigure}{\thefigure.\arabic{subfigure}}
+\captionsetup[subfigure]{labelformat=simple,labelsep=colon,
+listofformat=subsimple}
+\captionsetup{lofdepth=2}
+\renewcommand{\p@subfigure}{}
+
+% ---------------------------------
 % Layout tweaks
 %
 % Schusterjungen und Hurenkinder verhindern. Siehe deutsches TeX-FAQ (6.1.3)
