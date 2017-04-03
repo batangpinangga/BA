@@ -70,14 +70,15 @@
 % UTF-8 should be supported by all major editors. If this causes problem change it to another
 % encoding (e.g., 'latin1').
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{natbib}
 % ---------------------------------		   
 
 % Title page details
 \newcommand{\piivsubject}[1]{\newcommand{\insertsubject}{#1}}
 \newcommand{\piivtitle}[1]{\newcommand{\inserttitle}{#1}}
 \newcommand{\piivauthor}[1]{\newcommand{\insertauthor}{#1}}
+\newcommand{\piivmatrikel}[1]{\newcommand{\insertmatrikel}{#1}}
 \newcommand{\piivsupervisor}[1]{\newcommand{\insertsupervisor}{#1}}
+\newcommand{\piivsecondsupervisor}[1]{\newcommand{\insertsecondsupervisor}{#1}}
 % ---------------------------------
 
 % Language selection
@@ -105,12 +106,14 @@
 
 	\newcommand{\abstractchap}{\addchap{Abstract}}
 	\newcommand{\declarationofhonorchap}{\chapter{Declaration of Honour}}
- 	\newcommand{\insertsupervisordetails}{Supervisor: \insertsupervisor}
+	\newcommand{\insertmatrikeldetails}{Matrikel-Nr: \insertmatrikel}
+ 	\newcommand{\insertsupervisordetails}{Supervisor: \\ \insertsupervisor}
 	\newcommand{\insertinstitution}{Department of Simulation and Graphics\\
-	\newcommand{\par}{\paragraph{}}
-	\vspace{0.25cm}
+	%\vspace{0.25cm}
 	Faculty of Computer Science\\
-	University of Magdeburg}
+	Otto-von-Guericke University, Magdeburg}
+	\newcommand{\insertcompanysupervisor}{Advisor: \\ \insertsecondsupervisor}
+    \newcommand{\insertcompany}{Alexander Thamm GmbH\\ Wilhelm-Wagenfeld-Str. 20\\ 81829 Munich}
 	\newcommand{\insertauthordetails}{\vspace{0.2cm}
 	\insertauthor}
 
@@ -199,9 +202,12 @@
 \RequirePackage[toc,
 				acronyms,
 				numberedsection=nameref,
-				translate=babel]{glossaries}
+				translate=babel,
+				xindy,
+				nogroupskip]{glossaries}
 % Some small improvements for the KOMA script packages.
 \RequirePackage{scrhack}
+\KOMAoptions{cleardoublepage=plain}
 % Allows you to rotate a page correctly in the PDF.
 \RequirePackage{pdfpages}
 % Inline Notes
@@ -216,7 +222,11 @@
 \RequirePackage{lscape}
 % For Dashed Line
 \RequirePackage{arydshln}
+% For empty page
+\RequirePackage{emptypage}
 % ---------------------------------
+% Change glossary title
+
 
 % Language options for specific packages
 \if@langgerman
@@ -226,9 +236,14 @@
 \else
 	\renewcommand{\lstlistlistingname}{List of Listings}
 	\microtypecontext{spacing=nonfrench}
+	\renewcommand{\acronymname}{List of Abbreviations}
 \fi
 % ---------------------------------
-
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 % ---------------------------------
 \renewcommand{\thesubfigure}{\thefigure.\arabic{subfigure}}
 \captionsetup[subfigure]{labelformat=simple,labelsep=colon,
@@ -247,12 +262,24 @@ listofformat=subsimple}
 
 % Title page
 \title{\textnormal{\textsc{\Large \insertsubject}}\\
-\vspace{0.4cm}
+\vspace{0.25cm}
 \inserttitle}
-\author{\insertauthordetails}
-\publishers{\insertsupervisordetails\\
-\vspace{1cm}
-\insertinstitution}
+\author{\huge \insertauthordetails \\
+\insertmatrikeldetails
+\vspace{1cm}}
+
+
+\publishers{
+\begin{flushleft}
+    \vspace{3cm}
+    \normalsize \insertsupervisordetails\\
+    \vspace{0.25cm}
+    \insertinstitution\\
+    \vspace{1cm}
+    \insertcompanysupervisor\\
+    \vspace{0.25cm}
+    \insertcompany
+\end{flushleft}}
 % ---------------------------------
 
 % Adaptions for the actual document

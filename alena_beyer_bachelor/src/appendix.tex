@@ -1,1 +1,49 @@
-\chapter{Tables}
+\chapter{Appendix}
+%\pagestyle{empty}
+%\rotatebox{90}{
+\begin{sidewaystable}
+\centering
+  \begin{tabular}{|l| l l l l l|}
+        \hline
+        \multicolumn{2}{|c}{}   & d3.js  & \gls{QS}    & Power BI & Tableau\\\hline
+        \multirow{9}*{Analytics}
+        & \multicolumn{5}{l|}{\cellcolor{gray!30} Horizontal Data Reduction}\\\cline{2-6}
+        & \makecell[|l]{Data can be reduced \\to $k$ dimensions} & With Library & Dimension Limitations & - & \makecell[l]{Hide Columns in \\Data Extracts} \\
+        & Dimensions can be aggregated & With Library & Calculated Dimensions & Calculated Columns & Calculated Fields\\ \cline{2-6}
+        & \multicolumn{5}{l|}{\cellcolor{gray!30}Vertical Data Reduction}\\\cline{2-6} 
+        & Omit rows in SQL-Script & With Library & Dynamic Data Reduction & \makecell[l]{Joins and Views \\on the database} & \makecell[l]{Data Extracts, \\with Extensions}\\
+        & Filtering & With Library & \makecell[l]{Dynamic Queries, \\Brushing} & Dynamic Queries & \makecell[l]{Data Extracts, \\Dynamic Queries, \\Brushing}\\
+        & Removal & With Library & Omit rows in SQL-Script & Data Extracts & Data Extracts \\
+        & Abstraction & With Library & - & - & - \\
+        & Aggregation & With Library & Aggregation & Aggregation & Aggregation \\\cline{2-6}
+        \rowcolor{gray!30} \cellcolor{white} &  Data Modeling & With Library  & -    & Trends, Min/Max    & \makecell[l]{Trends, Min/Max, \\Forecast} \\\cline{2-6}
+        \rowcolor{gray!30} \cellcolor{white} &  Pattern Search& With Library  & -    & -       & - \\
+        \hline
+        \multirow{3}*{Visualization}
+        & Offers ADV                & Programmable     & with Extension    & with Extension &-   \\
+        & Multi-Resolution          & Programmable     & with Extension    & with Extension & -  \\
+        & Aggregation Markers       & Marker Clustering    & Smart Data Compression  & with Extension & -  \\
+        
+        \hline
+        \multirow{11}*{Interaction}
+        
+        & \multicolumn{5}{l|}{\cellcolor{gray!30}Drill-Down Functions}\\\cline{2-6}
+        & Filter    & Programmable & Native Integration & Native Integration & Native Integration \\
+        & Zoom      & Programmable & Native Integration & Native Integration & Native Integration \\ \cline{2-6}
+        
+        & \multicolumn{5}{l|}{\cellcolor{gray!30}Distortion Techniques}\\\cline{2-6}
+        & Graphical Fish-eye    & \hyperlink{https://bost.ocks.org/mike/fisheye/}{Fisheye Distortion}  & with Extension  & with Extension  & - \\
+        & Bifocal-Display       & \hyperlink{https://bost.ocks.org/mike/fisheye/}{Fisheye Distortion} & with Extension  & with Extension  & - \\
+        & Perspective Walls     & \makecell[l]{Perspective \\ Transformation} & with Extension & with Extension & - \\ \cline{2-6}
+        
+        & \multicolumn{5}{l|}{\cellcolor{gray!30}Navigation Techniques}\\\cline{2-6}
+        & Brushing \& Linking   & Programmable & Native Integration & Native Integration & Native Integration \\
+        & Search                &  with Library & \hyperlink{https://help.qlik.com/en-US/sense/2.2/Subsystems/Hub/Content/Search/search-tool.htm}{Smart Search}& \hyperlink{https://powerbi.microsoft.com/en-us/documentation/powerbi-service-q-and-a/}{Q+A}& - \\
+        & Native Integration & Navigational Maps     & Programmable & \hyperlink{https://help.qlik.com/en-US/sense/1.1/Subsystems/Hub/Content/Visualizations/BarChart/BarChart.htm}{Mini Charts}  & -           \\
+        \hline
+    \end{tabular}
+    \caption{Long version: Tool Implementations of Success Criteria}
+    \label{table:long:features}
+    \end{sidewaystable}
+%}
+\markboth{}{}

@@ -1,26 +1,137 @@
-\chapter{Future Work}
-\label{Future Work}
-Throughout this work we identified limitations of this work and remaining challenges for future work which are represented in this chapter. 
-\section{Conclusion}\label{conclusion}
-In summary, currently there exists no all-in-one solution for the analysis of large time-oriented data in business. While d3.js any possibility regarding visualization and  interaction programming knowledge is required. However, this conflicts with the business approach to do self-service data science. When business decide to use tools such as Tableau, QS and Power BI they need to be aware about the limitations in displaying large data in an effective manner. 
+\chapter{Discussion and Future Work}
+\label{chap:conclusion}
 
+\section{Discussion}
+The research question in \ref{research} asked whether tools are able to display large data in an effective manner with respect to the user tasks \ref{tasks}. Therefore, this work proposed ten success criteria. Table \ref{table:tasks} shows that all time-oriented user tasks in business are covered by the suggested success criteria. Consequently, the proposed criteria are able to display large data effectively.
+% analysis tasks: 
+\newcommand*{\MyIndent}{\hspace*{1cm}} 
+\begin{table}[H]
+\centering
+    \begin{tabular}{l l l l l l l l l l l l}
+        \hline
+            & & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+        \hline
+            & User Task/ \MyIndent \begin{turn}{90} Tool Feature \end{turn} & 
+            \begin{turn}{90} Dimension Reduction\end{turn} &
+            \begin{turn}{90} Data Reduction\end{turn} &
+            \begin{turn}{90} Data Modeling\end{turn} &
+            \begin{turn}{90} Pattern Search \end{turn} &
+            \begin{turn}{90} ADV \end{turn} &
+            \begin{turn}{90} Multi-Resolution\end{turn}   & 
+            \begin{turn}{90} Aggregation Markers\end{turn} & 
+            \begin{turn}{90} Drill-Down\end{turn} &
+            \begin{turn}{90} Distortion\end{turn} &
+            \begin{turn}{90} Navigation\end{turn}\\
+        \hline
+        \rowcolor{lightblue}T1   & Query by content  & x & x & x & \checkmark & x & x & x & \checkmark & \checkmark & \checkmark\\
+        T2   & Clustering        & \checkmark & \checkmark & \checkmark & x & \checkmark & \checkmark & x & x & x & x\\
+        \rowcolor{lightblue}T3   & Classification    & x & x & \checkmark & x & \checkmark & x & x & \checkmark & \checkmark & x \\
+        T4   & Segmentation      & \checkmark & \checkmark & x & \checkmark & \checkmark & x & x & \checkmark & x & x\\
+        \rowcolor{lightblue}T5   & Prediction        & \checkmark & \checkmark & \checkmark & \checkmark & x & x & \checkmark & \checkmark & \checkmark & \checkmark \\
+        T6   & Anomaly Detection & \checkmark & x, \checkmark & \checkmark & x & \checkmark & x & \checkmark & \checkmark & \checkmark & \checkmark\\
+        \rowcolor{lightblue}T7   & Pattern Discovery & \checkmark & x, \checkmark & x & \checkmark & \checkmark & x & \checkmark & x & x & \checkmark \\
+        \hline
+    \end{tabular}
+    \caption[Overview of User Tasks and Features]{Overview which user tasks is covered by which feature}
+    \label{table:tasks}
+\end{table}
+
+In order to quantify the visual scalability of tools, this work also considered database metrics and visualization characteristics. Visualization characteristics are covered by the success criteria \textit{ADV}. Database metrics are discussed separately. 
+
+\subsection{More than database metrics}
+With the current development in technology, data management is shifting from importing csv-files or Excel Spreadsheets to working with technologies such as clouds or databases. Thus, the maximum number of rows is no longer an appropriate measure for database metrics. Instead of measuring the loading time of data rows, the connectivity to large scale clusters is the decisive factor. Most of the visualization tools today provide a data engine (an underlying software component), which manages the data. Thus, the tool performance depends on the following factors:
+\begin{enumerate}
+    \item The underlying engine
+    \item The connectivity to Big Data Technologies
+\end{enumerate}
+Other limiting factors are the connection to multiple data sources and the perceived performance by the user and hardware resources.  Of these factors, visualization tools can influence the underlying engine, the connection, incremental loading and the connectivity to Big Data technologies. As this work focuses on the frontend perspective of scalability to large data sets the connectivity to Big Data Technology goes beyond the scope of this work. Here, we shortly discuss the tool's underlying engine to make clear how the definition of database metrics needs to be adjusted. 
+
+\textbf{The Underlying Engine: In-memory versus Live Connection}\\
+The architecture of engines in visualization tools can have the two forms: in-memory and live connection.
+In-memory techniques store data inside the RAM while live connections work directly on the database. 
+With large data sets in-memory technologies might not be feasible. Even though working in-memory is faster than working directly at the database. With a smaller subset of large databases, working in-memory might be the better option. 
+\textbf{\gls{QS}} data engine  (QIX Engine) and \textbf{Power BI} use in-memory column-based technology. While the data engine processes the calculation, RAM is temporarily allocated. Thus, \gls{QS}   is limited by the primary memory of the computer. \textbf{Power BI} extends to live connections to clouds -  functionality that is also offered by \textbf{Tableau}. Both tools offer in-memory technology as well as live connection. Tableau promotes the use of live connections instead of working in-memory, even though working in-memory might be faster for small sets. For this purpose Tableau also offers data extraction in order to work in-memory with smaller data sets. The limits for data extracts are not published, but Tableau Public (the free version of Tableau) recently extended the limit of one million rows to ten million rows in-memory. 
+d3.js is built to manage the visual frontend for visualizations. The data loading is outsourced to the backend. Therefore, d3.js can connect with any backend which implements the REST API. Thus, d3.js can not be compared with QS, Power BI and Tableau in this context. 
+In summery, \gls{QS}   only offers in-memory and thus, has difficulties to work live on large data sets. Tableau and Power BI outperform \gls{QS}   in the criterion of database metrics. The overview is given in table \ref{tab:integration}.\\*
+\textbf{Further Aspects: }
+Scalability of tools can also be measured in terms of users and delivery. But this goes beyond our scope.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l l l l l l l}
+        Tool  & \makecell{Stand Alone,\\ Client-Server,\\ Cloud} & Memory concept & Web-View & Mobile App  \\
+        \rowcolor{lightblue} Power BI & \checkmark,\checkmark,\checkmark  & \makecell{In-Memory Engine,\\Live Connection} & \checkmark & \checkmark  \\
+        Qlik Sense & \checkmark,\checkmark,\checkmark & \makecell{In-Memory Engine} & \checkmark, by server & \checkmark \\
+        \rowcolor{lightblue} Tableau & \checkmark,\checkmark,\checkmark   & \makecell{In-Memory Engine,\\Live Connection} & \checkmark, by server & \checkmark \\
+        d3.js & x & x & x & \checkmark 
+    \end{tabular}
+    \caption{System Integration of Tools}
+    \label{tab:integration}
+\end{table}
+
+
+
+\subsection{Different strategies for large visualization}
+The tool comparison demonstrates that there exists different strategies for visualizing  large data in visualization tools: the analytical strategy and the visualization/interaction strategy. 
+The analytical strategy is demonstrated in
+\begin{itemize}
+    \item support of data reduction techniques
+    \item integration of statistical program
+    \item data modeling options
+\end{itemize}
+Tableau follows the analytical strategy as it focuses on \textit{data preprocessing}, as shown in \ref{table:rankingPS}. Tableau occupies the first and the second places in \ref{table:rankingC} as this tool offers a broad range of automatic analytical functions. In addition, the user can drag functions such as clustering and prediction inside the dashboard. Moreover, the integration of R exploits its \textit{data reduction} techniques and time-oriented user tasks. Tableau  promotes the reduction of a data set before loading it into Tableau. This is manifested as some features are only available for reduced data extracts. These features are \textit{count distinct, offline access and incremental refresh}. d3.js itself does not offer any analytical methods. But as d3.js is a JavaScript library it can be extended by other libraries that support data reduction, data modeling or pattern search. While comparing QS, Power BI, Tableau and d3.js one has to consider that JavaScript is a Turing complete programming language. Thus, all success criteria defined in \ref{chap:scalability} can be programmed with JavaScript, which explains the first rank of d3.js among all categories in the ranking of \textit{completeness}. Nevertheless, visualizing in d3.js requires programming-skills and time and thus, d3.js never took the first place in the \textit{programming-skills} ranking.
+On the contrary QS' lacks in analytical options. While Tableau can integrate R-algorithms to reduce data, \gls{QS}   can only manipulate data with the \gls{QS}   specific set expressions. However, set expressions are limited in data reduction possibilities.\\
+Power BI combines both analytical and visualization features. One can build visualizations with R and TypeScript, and also execute R scripts in Power BI. \\
+Still, the support of analytic techniques for time-oriented user tasks is only partially implemented. Tableau and Power BI provide forecasting, but time-oriented analytical techniques such as temporal abstraction or pattern search are not provided by any tool at the moment.
+\par
+
+The visualization strategy goes along with interaction as both consider the frontend for visualizations. The visualization strategy consists of \begin{itemize}
+    \item support of advanced chart types
+    \item broad offer of interactions
+    \item extendability for custom visualizations
+\end{itemize} 
+\gls{QS}   pursues the visualization strategy that is shown in the implementation of aggregation markers with Smart Data Compression and the extendability to \gls{ADV}. Its strength is the JavaScript-interface in which new visualizations can be integrated into QS. \\
+Similarly to \gls{QS},   visualization extensions are supported by Power BI, whereas Tableau's support of visualization techniques lacks the integration of ADV visualizations. Besides the standard repertoire, no extensions can be installed. Hence, visualization of many data items currently lead to clutter and disorientation. Since d3.js is a JavaScript library, any visualization and advanced visual metaphor can be created.
+The tool comparison regarding visualization showed that ADV requires the use of programming languages across all tools and frameworks. Current visualization tools offer a standard repertoire of visualizations. These techniques are easy to use as they apply drag and drop. Yet, none of the techniques for multivariate time-oriented data is implemented by Tableau, \gls{QS}   or Power BI. Therefore, extensions are required that are implemented in a programming language and visualization extensions have to be written in tool specific languages such as Type Script and QEXT which requires additional training.
+\par
+Large-scale interaction techniques show the following pattern: Either they are automatically integrated into tools (such as drill-down functions) or they are not implemented in any tool (such as distortion functions). The only way to integrate interactive distortion functions is via extensions. In this case the particular interaction technique is only available for the respective visualization technique. Yet, interaction is important to be used with visualizations, because interactions facilitate overview and detail level in large data sets. 
+Regarding navigation techniques, coordinated windows are supported by all tools while \gls{QS}   and Power BI are the only tools which implement search. \gls{QS} is the only tool that provides navigational maps.
+In short, all tools lack in distortion techniques and additionally, Tableau and Power BI in navigation techniques. 
+\par
+Yet, even though Tableau pursues the analytical, \gls{QS} and d3.js the visualization strategy and Power Bi offer features for both strategies - there exists no perfect tool. The question which is the best tool depends on the purpose. 
 
 \section{Limitations} \label{limitations}
-In Chapter \ref{chap:BIV} we classified the visualization techniques according to their scalability. Therefore, we made assumptions such as the number of data rows and number of attributes \textit{based on the original paper} when they got published. To give an example, the scalability of \textit{TimeWheel} was set on the 2D-TimeWheel although an extended 3D-Version exists. We decided to consider the visualization techniques mentioned in \cite{Aigner2011} as they are recommended for time-oriented data but extensions may have a better scalability.  
-Moreover, we took the classification of Aigner et al. \cite{Aigner2011} regarding univariate and multivariate. If the judgement was wrong, our findings are also affected.
-In Chapter \ref{chap:Tools} we created the tool criteria score. Therefore, the required programming skills and completeness were considered as criteria. The criterion programming-skills is based on the assumption that writing in a tool specific language is more difficult for a business user than writing in a known language such as Java, JavaScript or R. We assumed that a tool specific language requires more training than a popular programming language. If the tool specific language supports the user better than the popular language our results are affected. This limitation has to be considered in the interpretation of our results. Both criteria were mapped to a numerical scale. The reader might assume that the distance between the numbers are equidistant. This is not true. The scale is an ordinal scale which only positions the tools relative to each other. Moreover, the ranking is \textit{not-weighted} and thus not considering that some features may be more important than others. We decided for a \textit{not-weighted} approach as the weighting depends on the data set and the visualization purpose. 
-
+Throughout this work we identified limitations while selecting the visualizations in chapter \ref{chap:scalability}, and while developing the classification scheme in chapter \ref{chap:Tools} .
+In chapter \ref{chap:scalability} we classified time-oriented visualization techniques. We assigned them to one of Keim's visualization classes and determined their visual scalability. Therefore, the techniques were assessed based on the description of their first publication. Sometimes, there exists further publications which extend the visualization technique. To give an example, the scalability of \textit{TimeWheel} was set on the 2D-TimeWheel although an extended 3D-Version exists. These extensions were not considered, even though enhancements may have a better scalability. 
+Moreover, we took the classification of Aigner et al. with respect to univariate and multivariate techniques  \cite{Aigner2011}. If the judgement was wrong, our findings are also affected. 
+\par
+In chapter \ref{chap:Tools} we created a ranking model with which to score tools. The extent to which programming skills are required and completeness of the tool's functionality were considered as scales. The requirement for programming skills is based on the assumption that writing in a tool-specific language is more difficult for a business user than writing in a known language such as Java, JavaScript or R. We assumed that a tool-specific language requires more training than a popular, programming language. If the tool specific language supports the user better than the popular language our scale for programming-skills needs to be adjusted. \\ Furthermore, the criteria were mapped to a numerical scale. The reader might assume that the distance between the numbers are equidistant which is not true, as the scale is \textit{ordinal}. The tools are positioned relative to each other. \\ Moreover, the ranking is \textit{non-weighted} and thus does not consider the fact that some features may be more important than others. 
+\par
+These limitation has to be considered in the interpretation of our results. 
 
 \section{Future Work}
-As this work intersects with various research areas we identified topics which were beyond the scope of this work but needs to be studied in the context of large scale data visualization. 
-\textbf{Application depending analysis}\\
-In table \ref{table:applications} we described business applications and in section \ref{tasks} user tasks. The described user tasks are abstractly defined user tasks. Yet, each business application has its own specific user tasks and tools. In the context of large data visualization we encourage a application dependent analysis as we think that this analysis can locate specific problems in visualizing huge data amounts. \\*
-\textbf{Connection to Cloud}\\
-The challenges of visualization for large data also includes the technical challenges such as integration to the cloud and distributed data sets. All of the tools can connect to multiple data sources. In future work, a performance review for the connection of the tools to multiple data sources and to the cloud is recommended. \\*
-\textbf{Univariate Data}\\
-This work tried to contribute in the visualization of large multivariate time-oriented data. As we excluded univariate data visualization techniques for univariate time-series data were not studied. However, time-series are an important subject of interest in business. Thus, we encourage the evaluation of time-series visualiaztions.\\
-\textbf{Evaluation in business}
-The techniques considered in this work were all techniques for ADV. Yet, we talked with domain experts which described the problem that business user are unfamiliar with advanced visualization techniques. Tegarden already described that business users should not be distracted by complex visualization systems \cite{Tegarden1999}. That is why evaluating the business applicability of the proposed visualization techniques would be an important future work. 
+Since this work intersects with various research areas we identified topics which were beyond the scope of this work but needs to be studied in the context of large scale data visualization.
+\par
+\textbf{User evaluation}: 
+As mentioned in section \ref{tasks} our considerations for large data visualizations can be considered as successful if the user is able to fulfill his tasks. This work presented techniques developed in research to visualize large scale data. However, business users are often unfamiliar with advanced visualizations and have difficulties in interpreting new visualization techniques. Therefore, the advantanges to business users of multivariate time-oriented techniques, multi-resolution and aggregation markers need to be evaluated. In order to evaluate whether visualizations in large scale data sets support the user tasks (\ref{tasks}) abstractly defined user tasks should be refined by application-dependent user tasks, which would allow for the identification of specific problems in visualizing huge data amounts.
+\par
+\textbf{Performance Review of connection to Big Data Technologies}: 
+The challenges of visualization for large data also includes the technical challenges such as integration to the cloud and distributed data sets. All of the tools can connect to multiple data sources. In future work, a performance review for the connection of the tools to distributed data sources and to the cloud is recommended. 
+\par
+\textbf{Further analysis of large time-oriented data}: 
+This work tried to contribute in the visualization of large multivariate time-oriented data. Since we excluded univariate data visualization, techniques for univariate time-series data were not studied. However, the study of time-series is an important subject of interest in business. Thus, we encourage the evaluation of time-series visualizations.\\
+
+\section{Conclusion}\label{conclusion}
+Large data sets challenge visual data exploration in businesses. In order to explore a data set visually the analyst needs to gain an overview of the underlying data - often achieved by plotting the whole data set. The resulting visual clutter covers the underlying patterns and complicates visual data analysis. Therefore, the research question asked how current visualization tools used in business are able to visualize large data sets - in the context of time-oriented data.  
+\par
+Therefore, this work reviewed existing data reduction, visualization and interaction techniques which exist in literature. Methods such as aggregation, advanced metaphors and distortion techniques enhance the limited screen and support perception. Algorithms for aggregation in visualization techniques can bundle clusters and reduce visual clutter. 
+\par
+The tool comparison showed that Qlik Sense, Power BI and Tableau only partially implement those techniques. While some techniques such as drill-down functions  are implemented by all tools, other features, such as perspective walls, are still missing. Instead, tools follow different strategies with a focus either on data reduction or on visualization. 
+\par
+Moreover, the comparison demonstrated that the use of clutter reduction techniques in visualization tools or frameworks currently requires programming skills.
+While the framework d3.js can implement any feature of large data visualization the business user needs to have programming knowledge. Tableau, Power BI and Qlik Sense each offer a limited set of features as built-in functions. With the help of extensions the range of features can be expanded, but this requires coding skills. However, the necessity for the user to have programming knowledge conflicts with the self-service paradigm. If companies decide to do visual data exploration on huge data sets they must be aware that there currently exists no all-in-one solution. Either tools partially supply large visualization features and are easy-to-use, or frameworks and extensions support a broad range of features and require programming knowledge.
+
+
 
 
 

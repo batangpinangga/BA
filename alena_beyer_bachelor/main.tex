@@ -43,43 +43,60 @@
     }
 
 % The title of your work.
-\piivtitle{Business Information Visualization of Time-oriented Data: A Comparison of Current Visualization Tools}
+\piivtitle{Business Information Visualization of \\Large Time-Oriented Data}
 % Your name.
 \piivauthor{Alena Beyer}
+% Your matrikel number.
+\piivmatrikel{203234}
 % Name of your supervisor.
 \piivsupervisor{Prof. Dr.-Ing. Bernhard Preim}
+\piivsecondsupervisor{Frank Moritz}
 % The date you submit your thesis. You can substitute the command with any date.
 \date{\today}
 
 % If you want to use the glossary make sure your 'makeindex' toolchain is working correctly.
 % Alternetively, you might want to look into the 'xindy' option of the glossaries package.
 
-\makeglossaries
+
 
 \input{src/glossary}
+\makenoidxglossaries
 
 \setcitestyle{square}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
-\begin{document}
-\definecolor{qlikgreen}{rgb}{0.3,0.6,0.03}
-\definecolor{applegreen}{HTML}{5BC236}
-\definecolor{d3orange}{rgb}{0.96,0.5,0.3}
 
+\begin{document}
+%\newcommand{\par}{\paragraph}
+\definecolor{qlikgreen}{rgb}{0.3,0.6,0.03}
+\definecolor{applegreen}{HTML}{F0F8FF}
+\definecolor{lightblue}{HTML}{87CEFA}
+\definecolor{d3orange}{rgb}{0.96,0.5,0.3}
+%\afterpage{\null\newpage}
+\include{src/acknowledgement}
+%\afterpage{\blankpage}
+\afterpage{\null\newpage}
 
 % Abstract is optional. If you do not use an abstract, remove it.
 % ---------------------------------
 % Begin of abstract
 \abstractchap
-% \blindtext creates a paragraph of non-sense text. Replace it with your actual content.
-\blindtext
+Information Visualization is widely used to support data analysis. Especially, interactive visual data exploration supports the analyst in gaining insights from the data. Also companies discovered the value of visual data exploration for improving their business by understanding their data. Some examples are understanding customers, predicting machine maintenance or forecasting the business development. Even though industries collect different kinds of data business data usually share the commonality of time-linkage - the so called time-oriented data. Time-oriented data is challenging as this data type is usually of high volume which causes similar problems as Big Data. The visualization of Big Data is problematic because visual clutter, information and orientation loss appear. These problems complicate visual data analysis. 
+\par
+In literature exist various clutter reduction techniques such as aggregation or multi-resolution. Different visualization techniques scale better and reduce visual clutter. In the context of time-oriented data this thesis analyzes multivariate time-oriented visualization techniques and determines their scalability. As scalable visualization techniques alone are not sufficient data reduction methods and interaction techniques are reviewed to reduce Big Data challenges in visualization. After the analysis of data reduction techniques a criteria catalogue is suggested for displaying large scale data effectively. 
+\par
+This schema is applied to current visualization tools and frameworks used in business. Data companies make use of visualization tools and frameworks to visually explore their data. They expect to have a tool with many features or an easy-to-use tool. Often, they expect both completeness and ease-of-use.  In order to answer the question of feature support three tools and one framework have been studied with respect to completeness and ease-of-use. 
+
+\markboth{}{}
+
+\afterpage{\null\newpage}
 % End of abstract
 % ---------------------------------
 
 % ---------------------------------
 % Begin of listings
-\microtypesetup{protrusion=false} % disables protrusion locally in the document
+%\microtypesetup{protrusion=false} % disables protrusion locally in the document
 \tableofcontents
 % If you should not have any figures, tables or acronyms in your paper remove the according list.
 \listoffigures
@@ -89,7 +106,7 @@
 % \lstlistoflistings
 \microtypesetup{protrusion=true} % enables protrusion
 
-\printglossary
+
 % End of listings
 % ---------------------------------
 
@@ -116,21 +133,23 @@
 
 % ---------------------------------
 % Begin of appendix
+
 \appendix
+
+\printnoidxglossary[title={List of Abbreviations}]
 % Appendix chapters are optional. Use it if you have very long tables or additional figures that
 % do not belong to the main text.
-% \input{src/appendix}
+\input{src/appendix}
 
 % Remove this from the final document
 %\include{src/checklist}
 
 \backmatter
 
-\bibliography{mendeley}
 
 % Fix for long URLs in bibliography
 \sloppy
-
+\bibliography{mendeley}
 \fussy
 
 \include{src/erklaerung}
